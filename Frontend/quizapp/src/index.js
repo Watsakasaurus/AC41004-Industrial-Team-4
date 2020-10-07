@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 
 // Style Related Imports
 import './index.css';
-import './components/Menu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Components
