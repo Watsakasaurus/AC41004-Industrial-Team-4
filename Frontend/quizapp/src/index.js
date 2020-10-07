@@ -1,12 +1,19 @@
 import React from 'react';
+// React Related Imports
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+// Style Related Imports
+import './index.css';
+import './components/Menu.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Components
+import Menu from './components/Menu';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Menu />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
+body{
+    font-family: 'Lexend Deca', sans-serif !important;
+    background-image: url("../assets/banner.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.Menu-container{
+    margin-top: 7.5rem;
+}
+
+.Menu-row{
+    padding-top: 1rem;
+    max-height: inherit;
+}
+
+.Menu-title{
+    color: rgb(21, 22, 66);
+    font-size: 3rem;
+}
+
+.Menu-button{
+    height: 7.5rem;
+    border-radius: 25px !important;
+}
+
+.Menu-green-circles{
+    background-image: url("../assets/greenCircles.png");
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.Menu-blue-circles{
+    background-image: url("../assets/blueCircles.png");
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.Menu-button-text{
+    font-size: 2rem;
+    text-align: left;
+}
+
+.Menu-cancel{
+    font-size: 4.5rem;
+    color: white;
+    padding-bottom: 5rem;
+}
