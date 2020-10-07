@@ -1,0 +1,1 @@
+The folder containing the core react app and any other front-end work
