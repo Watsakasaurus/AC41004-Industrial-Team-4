@@ -1,7 +1,7 @@
 //Include expressJS
 
 const express = require('express')
-const room = require('./room.js')
+let room = require('./room.js')
 let Room = room.Room;
 const quiz = require('./quiz.js')
 const player = require('./player.js')
@@ -11,8 +11,9 @@ const PORT = 5000
 var nonactivePlayers = [];
 var rooms = [];
 
-function addNewRoom() {
-    var code = Math.floor(Math.random() * 100);
+function addNewRoom() 
+{
+    let code = Math.floor(Math.random() * 100);
     var newRoom = new room(rooms.length, code);
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
@@ -22,7 +23,7 @@ function addNewRoom() {
 function findNonactiveRooms() {
     var nonactive = [];
     for (i = rooms.length -1; i > 0; i--) {
-        if (!rooms[i].active)
+        if (rooms[i].active == false)
         {
             nonactive.push(i);
         }
@@ -30,9 +31,12 @@ function findNonactiveRooms() {
     return nonactive;
 }
 
-function removeNonactiveRooms() {
+function removeNonactiveRooms() 
+{
     var indexes = findNonactiveRooms();
-    for(i = 0; i < indexes.length; i++){
+    console.log(indexes)
+    for(i = 0; i < indexes.length; i++)
+    {
         rooms = rooms.splice(indexes[i], 1);
     }
 }

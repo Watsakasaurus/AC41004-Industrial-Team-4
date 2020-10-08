@@ -1,24 +1,34 @@
 module.exports = class room{
 
-constructor(id, passcode, players)
+constructor(id, passcode/*, players*/)
 {
-    var roomID = id;
-    var roomCode = passcode;
-    var players = players;
+    this.roomID = id;
+    this.roomCode = passcode;
+    //var players = players;
     //var currentQuiz = newQuiz();
-    var active = true;
+    this.active = true;
+    console.log("Room created");
+    console.log("roomID: " + this.roomID + " passcode: " + this.roomCode + " status: " + this.active);
 }
 
- Room(id, code)
+    getRoomId()
+    {
+        return this.roomID
+    }
+
+
+
+    Room(id, code)
 {
+    /*
     var active = true;
     var roomID = id;
     var roomCode = code;
     //var players = players;
     //var currentQuiz = newQuiz();
     console.log("Room created");
-    console.log("roomID: " + roomID + " passcode: " + roomCode);
-
+    console.log("roomID: " + this.roomID + " passcode: " + this.roomCode);
+    */
 }
 
  showWelcomeMsg()
@@ -28,8 +38,10 @@ constructor(id, passcode, players)
 
  newQuiz()
 {
+    /*
     var quiz = new quiz();
     return quiz;
+    */
 }
 
  closeRoom()
