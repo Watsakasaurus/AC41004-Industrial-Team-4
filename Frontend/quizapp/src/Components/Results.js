@@ -18,7 +18,19 @@ function Result(props) {
     return <h2 className="header"> {props.points} Points! </h2>
   }
 
-const Results = () => (
+  function Score(props){
+    return <ProgressBar>
+  <ProgressBar animated variant="success" now={props.score} key={1}  />
+        </ProgressBar>
+  }
+  
+
+  function UserBadge(props){
+     return <Badge pill variant = "primary" > {props.name} </Badge>
+  }
+
+function Results() {
+  return(
 
 <Container className="p-3">
 
@@ -35,11 +47,11 @@ const Results = () => (
 
 
     <div>
-        <Badge pill variant="primary" >Name 1 </Badge>{' '}
-    
-        <ProgressBar>
-        <ProgressBar animated variant="success" now={35} key={1} />
-        </ProgressBar>
+    <UserBadge name/>
+ 
+
+    <Score score= "" />
+ 
     </div>
 
     <div>
@@ -53,4 +65,5 @@ const Results = () => (
   </Container>
 );
 
+}
 export default Results;
