@@ -3,40 +3,70 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function onButtonClick(identifier){
-    console.log(identifier);
-}
 
 
-// function that simply creates and returns a button with text and onclick funciton
-function makeButton(text, onClick){
-    return(<Button
-        // style={}
-        onClick={() => onButtonClick(onClick)}>
-            {text}
-        </Button>);
-}
+
+//function that simply creates and returns a button with text and onclick funciton
+// function
 
 class QuestionPage extends Component {
     constructor(props) {
         super(props);
-        var cars = ["Which of these is not a car","Saab", "Volvo", "BMW","Dog"];
-        const map1 = cars.map(x => makeButton(x,x));
-        this.state = {bog: "bog", questions: cars, buttonMap: map1};
+        this.state = {bog: "bog",
+                    questions: props.questions,
+                    questionsIterator: 0,
+                    maxQuestions: props.questions.length,
+                    answers: []};
+                    
       }
 
-    render() {
-        const element = makeButton("1")
-        return (
-            <div>
-                <h1>{this.state.questions[0]}</h1>
-                {this.state.buttonMap[1]}
-                {this.state.buttonMap[2]}
-                <br/>
-                {this.state.buttonMap[3]}
-                {this.state.buttonMap[4]}
-            </div>
+    makeButton(text, onClick){
+        return(
+            <Button
+             // style={}
+             onClick={() => this.onButtonClick(onClick)}>
+                {text}
+            </Button>
         );
+    }
+
+    onButtonClick(identifier){
+        // Send answer to backend
+        console.log(identifier);
+        if(this.state.questionsIterator+1<this.state.maxQuestions){
+            this.setState( {questionsIterator: this.state.questionsIterator+1,
+                            answers: this.state.answers.concat(identifier)})
+        }else{
+            //round over
+            console.log(this.state.answers)
+        }
+    }
+
+    render() {
+        // const element = this.makeButton("1")
+        var layout = 0;
+        if(layout){
+            return (
+                <div>
+                    <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
+                    <br/>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
+                </div>
+            );
+        }else{
+            return (
+                <div>
+                    <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}<br/>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}<br/>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}<br/>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}<br/>
+                </div>
+            );
+        }
     }
 
 }
