@@ -19,6 +19,7 @@ class QuestionPage extends Component {
         super(props);
         this.state = {bog: "bog",
                     questions: props.questions,
+                    currentQuestion: props.questions[0],
                     questionsIterator: 0,
                     maxQuestions: props.questions.length,
                     answers: [],
@@ -44,8 +45,10 @@ class QuestionPage extends Component {
 
         console.log(identifier);
         if(this.state.questionsIterator+1<this.state.maxQuestions){
-            this.setState( {questionsIterator: this.state.questionsIterator+1,
-                            answers: this.state.answers.concat(identifier)});
+            this.setState( {currentQuestion: this.state.questions[this.state.questionsIterator+1],
+                            questionsIterator: this.state.questionsIterator+1,
+                            answers: this.state.answers.concat(identifier),
+                            });
         }else{
             //round over
             console.log(this.state.answers);
@@ -66,14 +69,14 @@ class QuestionPage extends Component {
                 
             <Row className="Question-row" mx-auto>
                 <Col>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
+                    {this.makeButton(this.state.currentQuestion[1],1)}
+                    {this.makeButton(this.state.currentQuestion[2],2)}
                 </Col>
             </Row> 
             <Row className="Question-row">
                 <Col>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
+                    {this.makeButton(this.state.currentQuestion[3],3)}
+                    {this.makeButton(this.state.currentQuestion[4],4)}
                 </Col>
             </Row>
             
