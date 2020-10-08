@@ -23,10 +23,13 @@ class App extends Component {
     this.setState({nickname: newNickname})
   }
 
+  // Using this for testing :)
   onClick(){
     this.setState({inApp: true})
   }
 
+
+  // Yes the code below this is an utter mess, its for testing, dont panic ;)
   render() {
     return (
       <div>
@@ -41,6 +44,8 @@ class App extends Component {
           <div></div>}
 
         {this.state.nickname ?
+
+          // When calling the menu, pass the player nick name as a prop
           <Menu playerNickname ={this.state.nickname} onClick={this.onClick.bind(this)} />
           :
           <div></div>}

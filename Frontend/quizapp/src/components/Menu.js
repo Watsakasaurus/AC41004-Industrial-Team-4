@@ -4,8 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+// This code should recieve one prop, 'playerNickname' which is displayed in the hello message.
+
 function Menu(props) {
 
+  // Saves having to type 'this.props', instead just 'props'
   const { playerNickname } = props;
 
   return (

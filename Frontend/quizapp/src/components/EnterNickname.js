@@ -15,18 +15,18 @@ class EnterNickname extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // This will update the component state each input
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
 
+    // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
     handleSubmit(event) {
-        event.preventDefault()
-        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault() // Prevent default prevents the page refreshing
         this.props.changeValue(this.state.value);
     }
 
     render() {
-
         return (
             <div className="Splash">
 
@@ -46,7 +46,7 @@ class EnterNickname extends React.Component {
                                 </form>
                             </Row>
                             <Row className="justify-content-center">
-                                <p className="Generic-center">Please do not choose a Nickname that could reveal personal infomation about yourself.</p>
+                                <p className="Disclaimer Generic-center">Please do not choose a Nickname that could reveal personal infomation about yourself.</p>
                                 <p>eg AnnoyingSeagull69</p>
                             </Row>
                         </Col>
