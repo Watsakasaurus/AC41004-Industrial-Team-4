@@ -22,10 +22,11 @@ function addNewRoom()
 
 function findNonactiveRooms() {
     var nonactive = [];
-    for (i = rooms.length -1; i > 0; i--) {
-        if (rooms[i].active == false)
+    for (i = 0; i < rooms.length; i++) {
+        if (rooms[i].active === false)
         {
             nonactive.push(i);
+            console.log("Removing room ID: " + i)
         }
     }
     return nonactive;
@@ -35,9 +36,31 @@ function removeNonactiveRooms()
 {
     var indexes = findNonactiveRooms();
     console.log(indexes)
+    /*
     for(i = 0; i < indexes.length; i++)
     {
-        rooms = rooms.splice(indexes[i], 1);
+        console.log(rooms[i].roomID)
+        if(rooms[i].roomID == indexes[i])
+        {
+            rooms.splice(indexes[i], 1);
+        }
+    }
+    */
+
+    for(i = 0; i < rooms.length; i++)
+    {
+        if(i > indexes.length)
+        {
+
+        }
+        else
+        {
+            if(rooms[i].roomID === indexes[i])
+            {
+                rooms.splice(indexes[i], 1);
+            }
+        }
+
     }
 }
 
