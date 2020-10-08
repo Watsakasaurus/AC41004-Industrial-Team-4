@@ -1,14 +1,16 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
+
 import './Scoreboard.css';
 
+class Scoreboard extends React.Component {
 
-function Scoreboard() {
+    
+  render() {
 
     let winnerName = "Bob";
+    let playerName = "Bobby";
     let players = ["player1", "player2", "player3", "player4"];
     let noOfQuestions = "20"
     let winnerCorrectAnswers = "14"
@@ -17,132 +19,79 @@ function Scoreboard() {
     let playerScore = "23";
     let position = "3rd";
 
-  return (
-
-    <div className="Scoreboard">
-      <Container align='center' className="Scoreboard-container">
-        <Container>
-            <h1 class="Scoreboard-title">Scoreboard </h1>
-        </Container>
-
-        <Container fluid className="Scoreboard-greencontainer">
-          <Row>
-            <Col>
-              <p1 className="Scoreboard-med" block variant="success">
-                <Row>
-                    <Col>
-                        <div>
-                        Winner!
-                        </div>
-                    </Col>
-                </Row>
-              </p1>
-            </Col>
-          </Row>
-          <Row className="Scoreboard-row">
-            <Col>
-              <p1 className="Scoreboard-big" block>
-                <Row>
-                  <Col>
-                    <div>
-                      {winnerName}
-                    </div>
-                  </Col>
-                </Row>
-              </p1>
-              <p1 className="Scoreboard-small" block>
-                <Row>
-                  <Col>
-                    <div>
-                      <br /> Winning Score: {winnerScore} <br /> Questions: {winnerCorrectAnswers}/{noOfQuestions}
-                    </div>
-                  </Col>
-                </Row>
-              </p1>
-            </Col>
-          </Row>
-        </Container>
-        <Container fluid className="Scoreboard-greencontainer" >
-          <Row>
-            <Col>
-              <p1>
-                <Row>
-                  <Col>
-                    <div className="Scoreboard-med">
-                    You came: {position}  
-                    </div>
-                  </Col>
-                </Row>
-              </p1>
-            </Col>
-          </Row>
-          <Row className="Scoreboard-row">
-            <Col>
-              <p1 block>
-                <Row>
-                  <Col>
-                    <div class="Scoreboard-small">
-                     Your Score: {playerScore} <br /> Questions: {playerCorrectAnswers}/{noOfQuestions} <br />  <br />
-                    </div>
-                  </Col>
-                </Row>
-              </p1>
-            </Col>
-          </Row>
-          </Container>
-          <Container fluid className="Scoreboard-whitecontainer">
-          <Row className="Scoreboard-row">
-            <Col>
-              <p1 block>
-                <Row>
-                    <Col>
-                        <div class="Scoreboard-table">
-                            <Col>
-                                <table>
-                                        <tr>
-                                            <th>Player</th>
-                                            <th>Score</th>
-                                        </tr>
-                                        <tr>
-                                            <td>{players[0]}</td>
-                                            <th>12</th>
-                                        </tr>
-                                        <tr>
-                                            <td>{players[1]}</td>
-                                            <th>8</th>
-                                        </tr>
-                                        <tr>
-                                            <td>{players[2]}</td>
-                                            <th>3</th>
-                                        </tr>
-                                        <tr>
-                                            <td>{players[3]}</td>
-                                            <th>1</th>
-                                        </tr>
-                                </table>
-                                <br />
-                            </Col>
-                        </div>
-                    </Col>
-                </Row>
-              </p1>
-            </Col>
-          </Row>
-          </Container>
-          <Container fluid>
-          <Row className="Scoreboard-row">
-            <Col>
-              <Button className="Scoreboard-button">
+    return (
+        <div>
+          <Card fluid className="Scoreboard-title">
+              <Card.Body>
+                  <Card.Title>Scoreboard</Card.Title>
+              </Card.Body>
+          </Card>
+          <Card fluid className="Scoreboard-greencontainer">
+              <Card.Body className="body">
+                  <Card.Title className="Scoreboard-tmed">Winner</Card.Title>
+                  <hr></hr>
+                  <Card.Subtitle className="Scoreboard-tbig">{winnerName}</Card.Subtitle>
+                  <hr></hr>
+                  <Card.Text className="Scoreboard-tsmall">Score:{winnerScore} <br/>
+                      Question: {winnerCorrectAnswers}/{noOfQuestions}
+                  </Card.Text>
+              </Card.Body>
+          </Card>
+        <Card>
+        <Card fluid className="Scoreboard-whitecontainer">
+            <Card>
+                <Card.Body>
+                    <Card.Title className="Scoreboard-med">You came {position} </Card.Title>
+                    <Card.Subtitle className="Scoreboard-big">{playerName}</Card.Subtitle>
+                    <Card.Text className="Scoreboard-small">Score:{playerScore} <br/>
+                        Question: {playerCorrectAnswers}/{noOfQuestions}
+                    </Card.Text>
+                </Card.Body>
+            </Card>  
+          <Card>
+              <Card.Body>
+                  <Card.Text>
+                    <table className="Scoreboard-table">
+                        <tr>
+                            <th> </th>
+                            <th> </th>
+                        </tr>
+                        <tr>
+                            <td>{players[0]}</td>
+                            <th>12</th>
+                        </tr>
+                        <tr>
+                            <td>{players[1]}</td>
+                            <th>8</th>
+                        </tr>
+                        <tr>
+                            <td>{players[2]}</td>
+                            <th>3</th>
+                        </tr>
+                        <tr>
+                            <td>{players[3]}</td>
+                            <th>1</th>
+                        </tr>
+                    </table>
+                  </Card.Text>
+              </Card.Body>
+          </Card>
+        </Card>
+        </Card>
+        <div>
+            <Button className="Scoreboard-button">
                 <h1 className="Scoreboard-buttontext">
                   Next
                 </h1>
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </Container>
-    </div>
-  );
+            </Button>
+        </div>
+
+        </div>
+   
+    );
+  }
 }
 
 export default Scoreboard;
+
+

@@ -20,11 +20,12 @@ body{
     margin-left: 30%;
     margin-right: 30%;
     box-shadow:2px 2px whitesmoke;
+    border-radius: 25px
 }
+
 
 .Scoreboard-whitecontainer{
     margin-top: 2.5rem;
-    /* background-image: url("../assets/greenCircles.png"); */
     background-color: white;
     background-size: 10rem;
     background-position: right;
@@ -32,7 +33,17 @@ body{
     margin-left: 30%;
     margin-right: 30%;
     box-shadow:2px 2px whitesmoke;
+    border-radius: 25px
 }
+
+hr {
+    border:none;
+    border-top:1px dotted white;
+    color:#fff;
+    background-color:#fff;
+    height:10%;
+    width:100%;
+  }
 
 .Scoreboard-row{
     padding-top: 1rem;
@@ -46,21 +57,38 @@ body{
 
 .Scoreboard-table{
     color:black;
-    font-size: 1rem;
-
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .Scoreboard-small{
+    color:black;
+    font-size: 0.8rem;
+}
+
+.Scoreboard-med{
+    color:black;
+    font-size: 1rem;
+}
+
+.Scoreboard-big{
+    color:black;
+    font-size: 1.2rem;
+}
+
+.Scoreboard-tsmall{
     color:white;
     font-size: 1rem;
 }
 
-.Scoreboard-med{
+.Scoreboard-tmed{
     color:white;
     font-size: 2rem;
 }
 
-.Scoreboard-big{
+.Scoreboard-tbig{
     color:white;
     font-size: 2.5rem;
 }
@@ -69,10 +97,13 @@ body{
     height: 5rem;
     border-radius: 25px !important;
     background-color: green;
+    margin-left: 30%;
 }
 
 .Scoreboard-buttontext{
     font-size: 2rem;
     text-align: center;
     color: white;
+    
 }
+
