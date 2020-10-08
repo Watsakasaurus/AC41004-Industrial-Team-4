@@ -1,24 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
 body{
     font-family: 'Lexend Deca', sans-serif !important;
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
-.Scoreboard_card{
+.Scoreboard-container{
     margin-top: 7.5rem;
 }
 
-.Scoreboard_title{
+.Scoreboard-greencontainer{
+    margin-top: 2.5rem;
+    /* background-image: url("../assets/greenCircles.png"); */
+    background-color: green;
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+    margin-left: 30%;
+    margin-right: 30%;
+    box-shadow:2px 2px whitesmoke;
+}
+
+.Scoreboard-whitecontainer{
+    margin-top: 2.5rem;
+    /* background-image: url("../assets/greenCircles.png"); */
+    background-color: white;
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+    margin-left: 30%;
+    margin-right: 30%;
+    box-shadow:2px 2px whitesmoke;
+}
+
+.Scoreboard-row{
+    padding-top: 1rem;
+    max-height: inherit;
+}
+
+.Scoreboard-title{
     color: rgb(21, 22, 66);
     font-size: 3rem;
 }
 
-.Scoreboard_button{
-    height: 7.5rem;
-    border-radius: 25px !important;
+.Scoreboard-table{
+    color:black;
+    font-size: 1rem;
+
 }
 
-.Scoreboard_buttontext{
+.Scoreboard-small{
+    color:white;
+    font-size: 1rem;
+}
+
+.Scoreboard-med{
+    color:white;
     font-size: 2rem;
-    text-align: left;
+}
+
+.Scoreboard-big{
+    color:white;
+    font-size: 2.5rem;
+}
+
+.Scoreboard-button{
+    height: 5rem;
+    border-radius: 25px !important;
+    background-color: green;
+}
+
+.Scoreboard-buttontext{
+    font-size: 2rem;
+    text-align: center;
+    color: white;
 }
