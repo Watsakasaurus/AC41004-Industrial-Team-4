@@ -25,8 +25,8 @@ function findNonactiveRooms() {
     for (i = 0; i < rooms.length; i++) {
         if (rooms[i].active === false)
         {
-            nonactive.push(i);
-            console.log("Removing room ID: " + i)
+            nonactive.push(rooms[i].roomID);
+            console.log("Removing room ID: " + rooms[i].roomID)
         }
     }
     return nonactive;
@@ -36,32 +36,13 @@ function removeNonactiveRooms()
 {
     var indexes = findNonactiveRooms();
     console.log(indexes)
-    /*
+    
+    //https://stackoverflow.com/questions/3396088/how-do-i-remove-an-object-from-an-array-with-javascript
     for(i = 0; i < indexes.length; i++)
     {
-        console.log(rooms[i].roomID)
-        if(rooms[i].roomID == indexes[i])
-        {
-            rooms.splice(indexes[i], 1);
-        }
+       rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
-    */
-
-    for(i = 0; i < rooms.length; i++)
-    {
-        if(i > indexes.length)
-        {
-
-        }
-        else
-        {
-            if(rooms[i].roomID === indexes[i])
-            {
-                rooms.splice(indexes[i], 1);
-            }
-        }
-
-    }
+    
 }
 
 //Server start up message
