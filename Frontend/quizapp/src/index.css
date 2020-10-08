@@ -16,6 +16,21 @@ code {
     monospace;
 }   
 
+.Generic-center-title{
+    text-align: center;
+    font-size: 3.5rem;
+    color: rgb(21, 22, 66);
+}
+
+.Generic-center{
+    text-align: center;
+    justify-content: center;
+}
+
+.Nickname-inputbox{
+    background-color: lightgray !important;
+}
+
 .Splash-logo{
     height: 5rem;
 }
