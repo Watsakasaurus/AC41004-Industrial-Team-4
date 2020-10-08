@@ -15,7 +15,7 @@ function addNewRoom() {
     var code = Math.floor(Math.random() * 100);
     var newRoom = new Room(rooms.length, code);
     rooms.push(newRoom);
-    //const roomMsg = newRoom.showWelcomeMsg();
+    const roomMsg = newRoom.showWelcomeMsg();
     //res.send(`<h1>${roomMsg}</h1>`);
 }
 
@@ -59,8 +59,8 @@ app.get('/', (req, res) => {
     //rooms[0].closeRoom();
     //rooms[5].closeRoom();
     //rooms[3].closeRoom();
-    removeNonactiveRooms();
-    console.log(rooms);
+    //removeNonactiveRooms();
+    //console.log(rooms);
 });
 
 //Start the server

@@ -41,7 +41,7 @@ function closeRoom()
     return active;
 }
 
-module.exports = {
- Room: Room
+//module.exports = {
+ //Room: Room
  //closeRoom(): closeRoom()
-}
+//}
