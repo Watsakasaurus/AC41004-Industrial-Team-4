@@ -8,11 +8,11 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Components
-import Menu from './components/Menu';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Menu />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

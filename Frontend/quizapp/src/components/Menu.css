@@ -5,6 +5,7 @@ body{
     background-image: url("../assets/banner.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    background-color: darkblue;
 }
 
 .Menu-container{
