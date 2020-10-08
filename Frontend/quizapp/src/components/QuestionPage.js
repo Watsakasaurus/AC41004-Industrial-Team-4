@@ -57,16 +57,19 @@ class QuestionPage extends Component {
 
     timeOut(father){
         console.log("Timer reached 0");
-        console.log(this);
+        // console.log(this);
         father.onButtonClick(5)        // QuestionPage.onButtonClick(5);
+        // father.setState({timerKey: father.state.timerKey+1})
         // this.setState({questionsIterator: this.state.questionsIterator+1,
         //                answers: this.state.answers.concat(5)});
     }
 
     buttonLayout(){
+    var timmyTheTimer = (<QuestionTimer startCount={3} timeFinished={this.timeOut} parent = {this}/>);
+    
         return(
-            <Container className="Question-row-container">
-                
+        <Container>
+            {timmyTheTimer}
             <Row className="Question-row" mx-auto>
                 <Col>
                     {this.makeButton(this.state.currentQuestion[1],1)}
@@ -98,7 +101,7 @@ class QuestionPage extends Component {
                     <Container>
                         <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
                     </Container>
-                    <QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/>
+                    {/* <QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/> */}
                     {(this.state.layout && this.buttonLayout()) || this.answerLayout()}
                    
                 </Container> 

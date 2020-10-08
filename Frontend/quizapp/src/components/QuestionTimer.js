@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+var _isMounted;
 class QuestionTimer extends Component {
     constructor (props) {
         super(props)
@@ -18,23 +19,32 @@ class QuestionTimer extends Component {
     }
 
     componentDidMount () {
+        _isMounted = true;
         this.doIntervalChange()
     }
 
     doIntervalChange = () => {
+        if(_isMounted){
         this.myInterval = setInterval(() => {
-            this.setState(prevState => ({
-                count: prevState.count - 1
-            }))
+            
+                if(this.state.count<1){
+                    _isMounted = false;
+                    this.setState({count: this.props.startCount});
+                    this.props.timeFinished(this.props.parent);
+                    // showtimer = 0
+                }
 
-        if(this.state.count<0){
-            this.props.timeFinished(this.props.parent);
-            this.setState({count: this.props.startCount});
-            // showtimer = 0
-        }}, 1000)
+                this.setState(prevState => ({
+                    count: prevState.count - 1
+                }))
+            
+            
+
+        }, 1000)}
     }
 
     componentWillUnmount () {
+        _isMounted = false;
         clearInterval(this.myInterval)
     }
 }
