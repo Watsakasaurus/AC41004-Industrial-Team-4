@@ -1,8 +1,8 @@
 module.exports = class player
 {
-    constructor(){
-        var nickname;
-        var score;
+    constructor(nickname){
+        this.name = nickname;
+        //var score;
     }
 
 }

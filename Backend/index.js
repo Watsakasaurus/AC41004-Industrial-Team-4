@@ -4,7 +4,7 @@ const express = require('express')
 let room = require('./room.js')
 let Room = room.Room;
 const quiz = require('./quiz.js')
-const player = require('./player.js')
+let player = require('./player.js')
 const app = express()
 const PORT = 5000
 
@@ -18,6 +18,13 @@ function addNewRoom()
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
     //res.send(`<h1>${roomMsg}</h1>`);
+}
+
+function addNewPlayer()
+{
+    var newPlayer = new player("arran");
+    nonactivePlayers.push(newPlayer);
+    console.log("new player: " + nonactivePlayers[0].name);
 }
 
 function findNonactiveRooms() {
@@ -42,7 +49,6 @@ function removeNonactiveRooms()
     {
        rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
-    
 }
 
 //Server start up message
@@ -70,6 +76,8 @@ app.get('/', (req, res) => {
     rooms[3].closeRoom();
     removeNonactiveRooms();
     console.log(rooms);
+    addNewPlayer();
+
 });
 
 //Start the server
