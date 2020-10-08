@@ -12,27 +12,40 @@ import "./Results.css";
 var jumbo = document.getElementById("jumbotron")
 
 function Result(props) {
-  return <h1 className="header"> {props.result}!</h1>;
+  return <h1 className="Ques_result"> {props.result}!</h1>;
 }
 
 function Points(props) {
-  return <h2 className="header"> {props.points} Points! </h2>;
+  return <h2 className="user_points"> {props.points} Points! </h2>;
 }
 
 function Score(props) {
   return (
     <ProgressBar>
-      <ProgressBar animated variant="success" now={props.score} key={1} />
+      <ProgressBar animated variant="success" now={props.score} label={`${props.score} points`} key={1} />
     </ProgressBar>
   );
 }
 function UserBadge(props) {
   return (
-    <Badge pill variant="primary">
-      {"hh "}
-      {props.name}{"hh "}
+    <Badge className="user_badge" pill variant="primary">
+      {" "}
+      {props.name}{" "}
     </Badge>
   );
+}
+
+
+window.onload = function(){
+  setInterval(count, 1000);
+};
+
+let counter = 0;
+function count(){
+  counter++;
+  
+  if (counter == 5)
+    return
 }
 
 class ResultsPage extends Component {
@@ -48,8 +61,8 @@ class ResultsPage extends Component {
 
   setclr = () => {
     if (Result === this.state.correct) {
-      this.setState({ color: "green" });
-      jumbo.style.backgroundColor = this.state.color;
+      this.setState({ colour: "green" });
+      //jumbo.style.backgroundColor = this.state.colour;
   }
     else;
 
@@ -68,14 +81,14 @@ class ResultsPage extends Component {
         </Jumbotron>
 
         <div>
-          <UserBadge name />
+          <UserBadge name = "Andrew" />
 
-          <Score score="10" />
+          <Score  score="10" />
         </div>
 
         <div>
           <Badge pill variant="secondary">
-            Name 2{" "}
+            Alfie{" "}
           </Badge>{" "}
           <ProgressBar>
             <ProgressBar animated variant="success" now={80} key={1} />
@@ -84,19 +97,19 @@ class ResultsPage extends Component {
 
         <div>
           <Badge pill variant="secondary">
-            Name 3{" "}
+            Callum{" "}
           </Badge>{" "}
           <ProgressBar>
-            <ProgressBar animated variant="success" now={80} key={1} />
+            <ProgressBar animated variant="success" now={50} key={1} />
           </ProgressBar>
         </div>
 
         <div>
           <Badge pill variant="secondary">
-            Name 4{" "}
+            Sophie{" "}
           </Badge>{" "}
           <ProgressBar>
-            <ProgressBar animated variant="success" now={80} key={1} />
+            <ProgressBar animated variant="success" now={30} key={1} />
           </ProgressBar>
         </div>
       </Container>
