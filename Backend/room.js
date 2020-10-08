@@ -1,18 +1,15 @@
+module.exports = class room{
 
-/*constructor(id, passcode, players)
+constructor(id, passcode, players)
 {
     var roomID = id;
     var roomCode = passcode;
     var players = players;
-    var currentQuiz = newQuiz();
+    //var currentQuiz = newQuiz();
+    var active = true;
+}
 
-}*/
-
-var active = true;
-var roomID = 0;
-var roomCode = 0;
-
-function Room(id, code)
+ Room(id, code)
 {
     var active = true;
     var roomID = id;
@@ -24,24 +21,26 @@ function Room(id, code)
 
 }
 
-function showWelcomeMsg()
+ showWelcomeMsg()
 {
     return "Welcome to the quiz room"
 }
 
-function newQuiz()
+ newQuiz()
 {
     var quiz = new quiz();
     return quiz;
 }
 
-function closeRoom()
+ closeRoom()
 {
-    active = false;
-    return active;
+    this.active = false;
+    return this.active;
 }
 
 //module.exports = {
  //Room: Room
  //closeRoom(): closeRoom()
 //}
+}
+

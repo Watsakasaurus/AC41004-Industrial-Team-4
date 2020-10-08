@@ -13,7 +13,7 @@ var rooms = [];
 
 function addNewRoom() {
     var code = Math.floor(Math.random() * 100);
-    var newRoom = new Room(rooms.length, code);
+    var newRoom = new room(rooms.length, code);
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
     //res.send(`<h1>${roomMsg}</h1>`);
@@ -21,7 +21,7 @@ function addNewRoom() {
 
 function findNonactiveRooms() {
     var nonactive = [];
-    for (i = rooms.length; i > 0; i--) {
+    for (i = rooms.length -1; i > 0; i--) {
         if (!rooms[i].active)
         {
             nonactive.push(i);
@@ -56,11 +56,12 @@ app.get('/', (req, res) => {
     addNewRoom();
     addNewRoom();
     addNewRoom();
-    //rooms[0].closeRoom();
-    //rooms[5].closeRoom();
-    //rooms[3].closeRoom();
-    //removeNonactiveRooms();
-    //console.log(rooms);
+    console.log(rooms);
+    rooms[0].closeRoom();
+    rooms[5].closeRoom();
+    rooms[3].closeRoom();
+    removeNonactiveRooms();
+    console.log(rooms);
 });
 
 //Start the server
