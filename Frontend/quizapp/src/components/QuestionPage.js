@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
 
 
@@ -22,8 +25,7 @@ class QuestionPage extends Component {
 
     makeButton(text, onClick){
         return(
-            <Button
-             // style={}
+            <Button className="Question-button"
              onClick={() => this.onButtonClick(onClick)}>
                 {text}
             </Button>
@@ -44,27 +46,36 @@ class QuestionPage extends Component {
 
     render() {
         // const element = this.makeButton("1")
-        var layout = 0;
+        var layout = 1;
         if(layout){
             return (
-                <div>
-                    <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
-                    <br/>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
-                </div>
+                <Container className="Question-container">
+                    <Container>
+                        <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
+                    </Container>
+                    <Container className="Question-row-container">
+                        <Row className="Question-row" mx-auto>
+                            <Col>
+  
+                                {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
+                                {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
+                            
+
+                            </Col>
+                        </Row> 
+                        <Row className="Question-row">
+                            <Col>
+                            {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
+                            {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
+                            </Col>
+                        </Row>
+                        
+                    </Container>
+                </Container> 
             );
         }else{
             return (
-                <div>
-                    <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}<br/>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}<br/>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}<br/>
-                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}<br/>
-                </div>
+                <br/>
             );
         }
     }
