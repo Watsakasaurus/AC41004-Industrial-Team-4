@@ -42,13 +42,15 @@ body{
   margin-left: 20%;
   margin-right: 20%;
   margin-top: 7.5rem;
-  background-color: aqua;
+  /* background-color: aqua; */
   text-align:center;
+  /* height: 100%; */
 }
 
 .Question-row-container{
   margin-left: 10%;
   margin-right: 10%;
+  height: 100%;
   background-color: blueviolet;
   /* float: none; */
   /* padding: 0 auto; */
@@ -57,6 +59,8 @@ body{
 .Question-row{
   padding-top: 1rem;
   float: none;
+  min-width: 11rem;
+  /* height: 50%; */
   /* margin: 0 auto; */
   background-color: brown;
 
@@ -67,18 +71,21 @@ body{
   /* padding-top: 1rem;
   float: none; */
   /* margin: 0 auto; */
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
   /* max-height: 8rem; */
 }
 
 .Question-button{
-  height: 7.5rem;
-  width: 10rem;
+  height: 50%;
+  min-height: 5rem;
+  width: 50%;
+  min-width: 10rem;
+
   border-radius: 25px !important;
 }
 
 .Question-div{
-  background-color: crimson;
+  /* background-color: crimson; */
   float: none;
   margin: 0 auto;
 

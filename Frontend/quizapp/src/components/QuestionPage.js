@@ -2,7 +2,9 @@ import React, {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import QuestionTimer from '../components/QuestionTimer';
 import Container from 'react-bootstrap/Container';
+
 
 
 
@@ -19,7 +21,8 @@ class QuestionPage extends Component {
                     questions: props.questions,
                     questionsIterator: 0,
                     maxQuestions: props.questions.length,
-                    answers: []};
+                    answers: [],
+                    layout: 1};
                     
       }
 
@@ -34,50 +37,70 @@ class QuestionPage extends Component {
 
     onButtonClick(identifier){
         // Send answer to backend
+        this.setState({layout: 0})
+        setTimeout(function() { //Start the timer
+            this.setState({layout: 1}) //After 1 second, set render to true
+        }.bind(this), 1000);
+
         console.log(identifier);
         if(this.state.questionsIterator+1<this.state.maxQuestions){
             this.setState( {questionsIterator: this.state.questionsIterator+1,
-                            answers: this.state.answers.concat(identifier)})
+                            answers: this.state.answers.concat(identifier)});
         }else{
             //round over
-            console.log(this.state.answers)
+            console.log(this.state.answers);
         }
+    }
+
+    timeOut(father){
+        console.log("Timer reached 0");
+        console.log(this);
+        father.onButtonClick(5)        // QuestionPage.onButtonClick(5);
+        // this.setState({questionsIterator: this.state.questionsIterator+1,
+        //                answers: this.state.answers.concat(5)});
+    }
+
+    buttonLayout(){
+        return(
+            <Container className="Question-row-container">
+                
+            <Row className="Question-row" mx-auto>
+                <Col>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
+                </Col>
+            </Row> 
+            <Row className="Question-row">
+                <Col>
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
+                    {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
+                </Col>
+            </Row>
+            
+        </Container>
+        );
+    }
+
+    answerLayout(){
+        return(
+            <h1>Answered</h1>
+        );
     }
 
     render() {
         // const element = this.makeButton("1")
-        var layout = 1;
-        if(layout){
+        // var layout = 1;
             return (
                 <Container className="Question-container">
                     <Container>
                         <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
                     </Container>
-                    <Container className="Question-row-container">
-                        <Row className="Question-row" mx-auto>
-                            <Col>
-  
-                                {this.makeButton(this.state.questions[this.state.questionsIterator][1],1)}
-                                {this.makeButton(this.state.questions[this.state.questionsIterator][2],2)}
-                            
-
-                            </Col>
-                        </Row> 
-                        <Row className="Question-row">
-                            <Col>
-                            {this.makeButton(this.state.questions[this.state.questionsIterator][3],3)}
-                            {this.makeButton(this.state.questions[this.state.questionsIterator][4],4)}
-                            </Col>
-                        </Row>
-                        
-                    </Container>
+                    <QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/>
+                    {(this.state.layout && this.buttonLayout()) || this.answerLayout()}
+                   
                 </Container> 
             );
-        }else{
-            return (
-                <br/>
-            );
-        }
+
     }
 
 }
