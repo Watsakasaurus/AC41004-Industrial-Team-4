@@ -1,0 +1,24 @@
+body{
+    font-family: 'Lexend Deca', sans-serif !important;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.Scoreboard_card{
+    margin-top: 7.5rem;
+}
+
+.Scoreboard_title{
+    color: rgb(21, 22, 66);
+    font-size: 3rem;
+}
+
+.Scoreboard_button{
+    height: 7.5rem;
+    border-radius: 25px !important;
+}
+
+.Scoreboard_buttontext{
+    font-size: 2rem;
+    text-align: left;
+}
