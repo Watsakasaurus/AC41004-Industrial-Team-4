@@ -3,7 +3,7 @@ import Menu from './components/Menu';
 import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
-import ResultsPage from './Components/Results';
+import ResultsPage from './components/Results';
 
 class App extends Component {
 
