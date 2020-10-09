@@ -10,9 +10,13 @@ import Badge from "react-bootstrap/Badge";
 import "./Results.css";
 
 var jumbo = document.getElementById("jumbotron")
+var question_right = null
 
 function Result(props) {
-  return <h1 className="Ques_result"> {props.result}!</h1>;
+
+  //if (question_right ==  1)
+    return <h1 className="Ques_result"> {props.result}!</h1>;
+ 
 }
 
 function Points(props) {
@@ -22,10 +26,8 @@ function Points(props) {
 function Score(props) {
   return (
     <ProgressBar>
-      <ProgressBar  variant="success" now={props.score} label={`${props.score} points`} key={1} />
-      <ProgressBar  variant="info" now={props.score} label={`${props.score} points`} key={2} />
-      <ProgressBar  variant="danger" now={props.score} label={`${props.score} points`} key={1} />
-
+      <ProgressBar  variant={props.user_clr} now={props.score} label={`${props.score} points`} key={1} />
+      
     </ProgressBar>
   );
 }
@@ -47,7 +49,7 @@ let counter = 0;
 function count(){
   counter++;
   
-  if (counter == 5)
+  if (counter == 10)
     return
 }
 
@@ -57,7 +59,7 @@ class ResultsPage extends Component {
     this.state = {
       correct: "Correct",
       incorrect: "Incorrect",
-      colour: "green"
+      colour: "#28A745"
     };
    // const { playerNickname } = props;
 
@@ -67,11 +69,17 @@ class ResultsPage extends Component {
   setclr = () => {
     if (Result === this.state.correct) {
       this.setState({ colour: "green" });
-      //jumbo.style.backgroundColor = this.state.colour;
+    }
+    else if (Result === this.state.incorrect) {
+      this.setState({ colour: "red"});
+    
   }
-    else;
-
+      
   };
+
+   
+
+ 
   render() {
 
 
@@ -82,39 +90,42 @@ class ResultsPage extends Component {
 
     return (
       <Container className="p-3">
-        <Jumbotron>
-          <div>
-            <Result result={this.state.correct} />
-          </div>
 
-          <div>
-            <Points points="100" />
-          </div>
-        </Jumbotron>
+        <div> 
+          <Jumbotron className="jumbotron" style={{backgroundColor: this.state.colour}}>
+            <div>
+              <Result result={this.state.correct} />
+            </div>
+
+            <div>
+              <Points points="100" />
+            </div>
+          </Jumbotron>
+        </div>
 
         <div>
           <UserBadge name = {players[0]} user_clr = {colours[0]} />
 
-          <Score  score = {plyr_score[0]} />
+          <Score  score = {plyr_score[0]} user_clr = {colours[0]} />
         </div>
 
         <div>
         <UserBadge name = {players[1]} user_clr = {colours[1]} />
 
-        <Score  score = {plyr_score[1]} />   
+        <Score  score = {plyr_score[1]} user_clr = {colours[1]}/>   
         </div>
 
         <div>
           <UserBadge name = {players[2]} user_clr = {colours[2]}/>
           <ProgressBar>
-            <ProgressBar  variant="success" now={plyr_score[2]} key={1} />
+            <ProgressBar  variant={colours[2]} now={plyr_score[2]} key={1} />
           </ProgressBar>
         </div>
 
         <div>
         <UserBadge name = {players[3]} user_clr = {colours[3]}/>
           <ProgressBar>
-            <ProgressBar  variant="success" now={plyr_score[3]} key={1} />
+            <ProgressBar  variant={colours[3]} now={plyr_score[3]} key={1} />
           </ProgressBar>
         </div>
       </Container>
