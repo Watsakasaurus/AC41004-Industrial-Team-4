@@ -65,6 +65,8 @@ function movePlayerToRoom(nickname, roomNumber)
     //remove player (that has just been moved into room) from nonActivePlayers array
     nonactivePlayers = nonactivePlayers.filter((item) => item.name !== nickname);
 
+    console.log("Player " + nickname + " moved to room " + roomNumber);
+
     //find the index(in nonactivePlayers array) of the player that has been moved
     // for(i = 0; i < nonactivePlayers.length; i++)
     // {
@@ -104,6 +106,7 @@ app.get('/', (req, res) => {
     removeNonactiveRooms();
     console.log(rooms);
     addNewPlayer("arran");
+    console.log("Non Active Players: " + nonactivePlayers);
     movePlayerToRoom("arran", 1);
     console.log("Room 1 players: " + rooms[1].players[0].name);
     console.log("Non Active Players: " + nonactivePlayers);
