@@ -73,12 +73,16 @@ class QuestionPage extends Component {
             <Row className="Question-row" mx-auto>
                 <Col>
                     {this.makeButton(this.state.currentQuestion[1],1)}
+                </Col>
+                <Col>
                     {this.makeButton(this.state.currentQuestion[2],2)}
                 </Col>
             </Row> 
             <Row className="Question-row">
                 <Col>
                     {this.makeButton(this.state.currentQuestion[3],3)}
+                </Col>
+                <Col>
                     {this.makeButton(this.state.currentQuestion[4],4)}
                 </Col>
             </Row>

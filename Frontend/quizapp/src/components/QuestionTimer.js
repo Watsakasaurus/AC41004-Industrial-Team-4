@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row'
 import ProgressBar from 'react-bootstrap/ProgressBar'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 var _isMounted;
 class QuestionTimer extends Component {
@@ -13,14 +16,18 @@ class QuestionTimer extends Component {
     render () {
         const now = 60;
         const {count} = this.state;
-        const progressInstance = <ProgressBar className="Question-timerbar" max={10} min={0} now={count} label={`${count}s`}/>;
+        // label={`${count}s`}
+        const progressInstance = <ProgressBar className="Question-timerbar" max={10} min={0} now={count} />;
         var showtimer = 1;
        
         return (
             
         <div>
-            {progressInstance}
-            <h1>{showtimer && count}</h1>
+
+            <Row className="Question-row">
+            <Col sm={true}>{progressInstance}</Col>
+            <Col sm={1}><h3 className="Question-showTimer">{showtimer && count}</h3></Col>
+            </Row>
         </div>
         )
     }

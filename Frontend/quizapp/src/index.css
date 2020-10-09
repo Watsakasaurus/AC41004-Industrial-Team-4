@@ -39,12 +39,17 @@ body{
 }
 
 .Question-container{
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 7.5rem;
+  /* margin-left: 20%;
+  margin-right: 20%; */
+  /* margin-top: 7.5rem; */
   /* background-color: aqua; */
   text-align:center;
   /* height: 100%; */
+}
+
+.Question-showTimer{
+  display: inline-block;
+  vertical-align: text-top;
 }
 
 .Question-indicator{
@@ -55,6 +60,8 @@ body{
   background-color: blue;
   border-color: blueviolet;
   border-radius: 1;
+  border-width: 1; 
+
 }
 
 .Question-row-container{
@@ -68,11 +75,12 @@ body{
 
 .Question-row{
   padding-top: 1rem;
-  float: none;
+  /* float: none; */
   min-width: 11rem;
+  align-items: center;
   /* height: 50%; */
   /* margin: 0 auto; */
-  background-color: brown;
+  /* background-color: brown; */
 
   /* max-height: 8rem; */
 }
@@ -88,8 +96,9 @@ body{
 .Question-button{
   height: 50%;
   min-height: 5rem;
-  width: 50%;
+  width: 90%;
   min-width: 10rem;
+  margin-bottom: 2rem;
 
   border-radius: 25px !important;
 }
