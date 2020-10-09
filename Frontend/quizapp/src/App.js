@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       nickname: "",
-      inApp: false
+      inApp: false,
+      inQs: false,
     }
   }
 
@@ -28,6 +29,10 @@ class App extends Component {
   // Using this for testing :)
   onClick(){
     this.setState({inApp: true})
+  }
+
+  onQClick(){
+    this.setState({inQs: true})
   }
 
   returnComponent(compID){
@@ -74,7 +79,7 @@ class App extends Component {
         break;
       case 5:
         return(
-          <Menu playerNickname ={this.state.nickname} onClick={this.onClick.bind(this)} />
+          <Menu playerNickname ={this.state.nickname} onClick={this.onQClick.bind(this)} />
         );
         break;
       default:
@@ -115,8 +120,10 @@ class App extends Component {
       compNo = 1;
     }else if(this.state.inApp && !this.state.nickname){
       compNo = 2;
-    }else if(this.state.nickname){
+    }else if(this.state.nickname && !this.state.inQs){
       compNo = 5; 
+    }else if(this.state.inQs){
+      compNo = 3;
     }
 
 
