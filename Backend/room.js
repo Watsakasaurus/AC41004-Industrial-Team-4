@@ -4,8 +4,8 @@ constructor(id, passcode/*, players*/)
 {
     this.roomID = id;
     this.roomCode = passcode;
-    //var players = players;
-    //var currentQuiz = newQuiz();
+    this.players = [];
+    //this.currentQuiz = newQuiz();
     this.active = true;
     console.log("Room created");
     console.log("roomID: " + this.roomID + " passcode: " + this.roomCode + " status: " + this.active);
