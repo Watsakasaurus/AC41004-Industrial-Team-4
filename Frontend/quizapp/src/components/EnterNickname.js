@@ -42,10 +42,12 @@ class EnterNickname extends React.Component {
                             </Row>
                             <Row className="justify-content-center">
                                 <form id="nickname-form" onSubmit={this.handleSubmit}>
-                                    <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" value={this.state.value} onChange={this.handleChange} />
+                                    <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" pattern="^\S+$" maxlength="15" value={this.state.value} onChange={this.handleChange} />
                                 </form>
                             </Row>
                             <Row className="justify-content-center">
+                                
+                                <p>No Spaces, 15 Characters Max</p>
                                 <p className="Disclaimer Generic-center">Please do not choose a Nickname that could reveal personal infomation about yourself.</p>
                                 <p>eg AnnoyingSeagull69</p>
                             </Row>
