@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Container from "react-bootstrap/Container";
-
+import Spinner from "react-bootstrap/Spinner";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
@@ -40,6 +40,14 @@ function UserBadge(props) {
   );
 }
 
+function TimeLeft(props){
+
+    return <h2 className="time_left">   Loading Next Question!</h2>;
+ 
+           
+
+}
+
 
 window.onload = function(){
   setInterval(count, 1000);
@@ -48,8 +56,10 @@ window.onload = function(){
 let counter = 0;
 function count(){
   counter++;
-  
-  if (counter == 10)
+ 
+  if (counter < 10)
+    return <h1 className="counter"> 10 </h1>
+  else if (counter == 10)
     return
 }
 
@@ -117,16 +127,35 @@ class ResultsPage extends Component {
 
         <div>
           <UserBadge name = {players[2]} user_clr = {colours[2]}/>
-          <ProgressBar>
-            <ProgressBar  variant={colours[2]} now={plyr_score[2]} key={1} />
-          </ProgressBar>
+
+          <Score  score = {plyr_score[2]} user_clr = {colours[2]}/>   
         </div>
 
         <div>
         <UserBadge name = {players[3]} user_clr = {colours[3]}/>
-          <ProgressBar>
-            <ProgressBar  variant={colours[3]} now={plyr_score[3]} key={1} />
-          </ProgressBar>
+        <Score  score = {plyr_score[3]} user_clr = {colours[3]}/>   
+        </div>
+
+        <br>
+        
+        </br>
+
+        <div>
+        <Jumbotron className="jumbotron-2" style={{backgroundColor: this.state.colour}}>
+          <div> 
+            <count />
+            <Spinner animation="border" role="status">
+                <span className="sr-only">Loading...</span>
+            </Spinner>
+            </div>
+
+            <div>
+
+          <TimeLeft  />
+           </div>
+     
+          </Jumbotron>
+
         </div>
       </Container>
     );
