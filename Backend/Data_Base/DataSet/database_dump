@@ -1,3 +1,24 @@
+
+
+CREATE TABLE quiz(
+quizId SERIAL PRIMARY KEY, 
+question TEXT NOT NULL, 
+answer TEXT NOT NULL, 
+option1 TEXT NOT NULL, 
+option2 TEXT NOT NULL,
+option3 TEXT NOT NULL,
+option4 TEXT NOT NULL,
+category TEXT NOT NULL
+
+);
+
+
+
+
+
+
+
+
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
 VALUES ('Three of these animals hibernate. Which one does not?', 'Sloth', 'Mouse', 'Sloth', 'Frog', 'Snake','animals');
 
