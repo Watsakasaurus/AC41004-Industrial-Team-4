@@ -3,6 +3,7 @@ import Menu from './components/Menu';
 import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
+import ResultsPage from './Components/Results';
 
 class App extends Component {
 
@@ -72,6 +73,11 @@ class App extends Component {
                                 ["Which of these is not a calr","Saab", "Volvo", "BMW4","Dogcx4"],]}
       >
       </QuestionPage>
+      
+      
+      <ResultsPage>
+        
+      </ResultsPage> 
                                 
       </div>
          

@@ -167,6 +167,11 @@ code {
     padding-left: 5px;
 }
 
+.jumbotron{
+  background-color:#28A745;
+  text-align:center;
+}
+
 .Splash-low-container{
     padding-bottom: 5rem;
 }
@@ -196,6 +201,7 @@ code {
     background-position: right;
     background-repeat: no-repeat;
 }
+
 
 .Menu-blue-circles{
     background-image: url("./assets/blueCircles.png");
