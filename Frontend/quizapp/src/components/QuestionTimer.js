@@ -14,10 +14,9 @@ class QuestionTimer extends Component {
     
 
     render () {
-        const now = 60;
         const {count} = this.state;
         // label={`${count}s`}
-        const progressInstance = <ProgressBar className="Question-timerbar" max={10} min={0} now={count} />;
+        const progressInstance = <ProgressBar className="Question-timerbar" max={this.props.startCount} min={0} now={count}/>;
         var showtimer = 1;
        
         return (
