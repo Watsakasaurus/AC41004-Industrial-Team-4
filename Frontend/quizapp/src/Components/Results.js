@@ -22,13 +22,16 @@ function Points(props) {
 function Score(props) {
   return (
     <ProgressBar>
-      <ProgressBar animated variant="success" now={props.score} label={`${props.score} points`} key={1} />
+      <ProgressBar  variant="success" now={props.score} label={`${props.score} points`} key={1} />
+      <ProgressBar  variant="info" now={props.score} label={`${props.score} points`} key={2} />
+      <ProgressBar  variant="danger" now={props.score} label={`${props.score} points`} key={1} />
+
     </ProgressBar>
   );
 }
 function UserBadge(props) {
   return (
-    <Badge className="user_badge" pill variant="primary">
+    <Badge className="user_badge" pill variant = {props.user_clr}>
       {" "}
       {props.name}{" "}
     </Badge>
@@ -56,9 +59,11 @@ class ResultsPage extends Component {
       incorrect: "Incorrect",
       colour: "green"
     };
-    
+   // const { playerNickname } = props;
+
   }
 
+  
   setclr = () => {
     if (Result === this.state.correct) {
       this.setState({ colour: "green" });
@@ -68,6 +73,13 @@ class ResultsPage extends Component {
 
   };
   render() {
+
+
+    let players = ["Andrew", "Alfie", "Sophie", "Callum"];
+    let colours = ["primary", "success", "danger" , "warning"]
+    let plyr_score = ["100", "85" , "45" , "20"]
+     
+
     return (
       <Container className="p-3">
         <Jumbotron>
@@ -81,35 +93,28 @@ class ResultsPage extends Component {
         </Jumbotron>
 
         <div>
-          <UserBadge name = "Andrew" />
+          <UserBadge name = {players[0]} user_clr = {colours[0]} />
 
-          <Score  score="10" />
+          <Score  score = {plyr_score[0]} />
         </div>
 
         <div>
-          <Badge pill variant="secondary">
-            Alfie{" "}
-          </Badge>{" "}
+        <UserBadge name = {players[1]} user_clr = {colours[1]} />
+
+        <Score  score = {plyr_score[1]} />   
+        </div>
+
+        <div>
+          <UserBadge name = {players[2]} user_clr = {colours[2]}/>
           <ProgressBar>
-            <ProgressBar animated variant="success" now={80} key={1} />
+            <ProgressBar  variant="success" now={plyr_score[2]} key={1} />
           </ProgressBar>
         </div>
 
         <div>
-          <Badge pill variant="secondary">
-            Callum{" "}
-          </Badge>{" "}
+        <UserBadge name = {players[3]} user_clr = {colours[3]}/>
           <ProgressBar>
-            <ProgressBar animated variant="success" now={50} key={1} />
-          </ProgressBar>
-        </div>
-
-        <div>
-          <Badge pill variant="secondary">
-            Sophie{" "}
-          </Badge>{" "}
-          <ProgressBar>
-            <ProgressBar animated variant="success" now={30} key={1} />
+            <ProgressBar  variant="success" now={plyr_score[3]} key={1} />
           </ProgressBar>
         </div>
       </Container>

@@ -1,3 +1,7 @@
+body {
+    background-color: lightblue;
+  }
+
 .Results {
     text-align: center;
 }
@@ -9,5 +13,5 @@
 }
 
 .user_badge{
-   background-color: rgb(255, 127, 148); 
+   
 }
