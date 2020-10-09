@@ -1,5 +1,5 @@
 var quiz = require('./quiz.js')
-
+var query = require('./querries')
 module.exports = class room {
     //quiz = require('./quiz.js')
 
@@ -31,6 +31,12 @@ module.exports = class room {
     closeRoom() {
         this.active = false;
         return this.active;
+    }
+
+    testDatabaseConnection()
+    {
+        var testQuery = new query();
+        testQuery.getTestData();
     }
 
     //module.exports = {

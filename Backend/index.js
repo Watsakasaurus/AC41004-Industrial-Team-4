@@ -108,8 +108,8 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     addNewRoom();
-    addNewRoom();
-    addNewRoom();
+    //addNewRoom();
+    //addNewRoom();
     /*addNewRoom();
     addNewRoom();
     addNewRoom();
@@ -124,9 +124,10 @@ app.get('/', (req, res) => {
     movePlayerToRoom("arran", 1);
     console.log("Room 1 players: " + rooms[1].players[0].name);
     console.log("Non Active Players: " + nonactivePlayers);*/
-    console.log(rooms);
+    //console.log(rooms);
     addNewQuiz(rooms[0].roomCode, "animals", 5, "easy");
-    console.log(rooms);
+    rooms[0].testDatabaseConnection();
+    //console.log(rooms);
 });
 
 //Start the server
