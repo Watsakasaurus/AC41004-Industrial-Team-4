@@ -1,0 +1,75 @@
+
+
+CREATE TABLE quiz(
+quizId SERIAL PRIMARY KEY, 
+question TEXT NOT NULL, 
+answer TEXT NOT NULL, 
+option1 TEXT NOT NULL, 
+option2 TEXT NOT NULL,
+option3 TEXT NOT NULL,
+option4 TEXT NOT NULL,
+category TEXT NOT NULL
+
+);
+
+
+
+
+
+
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('Three of these animals hibernate. Which one does not?', 'Sloth', 'Mouse', 'Sloth', 'Frog', 'Snake','animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('All of these animals are omnivorous except one.', 'Snail', 'Fox', 'Mouse', 'Opossum', 'Snail', 'animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('Three of these Latin names are names of bears. Which is the odd one?','Felis silvestris catus','Melursus ursinus','Helarctos malayanus','Ursus minimus','Felis silvestris catus', 'animals');
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('Representatives of three of these species produce venom of their own. Which is the odd species?', 'Mosquitos', 'Lizards', 'Scorpions','Frogs','Mosquitos','animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('Three of these species shed their skin. Which one does not?','Penguins', 'Penguins','Snakes','Insects', 'Crustaceans','animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('All of these animals have large ears (relative to their size) except one.','Polar bears', 'Foxes','Bats','Elephants' ,'animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('A specialist in snakes is called one of these.','Ophiologist', 'Pisciculturist', 'Ornithologist','Ophiologist', 'Herpetologist','animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('One of the following snakes does not belong to the Viperidae family.', 'Grass snake', 'Horned adder', 'Grass snake', 'Viper','Asp','animals'); 
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('What was the largest  eagle ever found on Earth?', 'Haasts Eagle', 'Golden Eagle','Harpy Eagle', 'Bald Eagle','animals');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('Which of these is true about the sleep of zebras?','They sleep standing up.','All of these','They sleep standing up.','They would fall asleep every 5 to 6 hours.','They need more than 12 hours of sleep a day.','brain teasers');
+
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('A farmer had 12 sheep and 3 cows. All of the animals except 9 sheep died. How many animals did he have left in his farm?','9 sheep','5 cows and 1 sheep','9 sheep','2 cows','none','brain teasers'); 
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('I dont speak, I cannot hear, but I always tell the truth.','The Mirror','The watch','Fish','The Mirror','Old granny','brain teasers');
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('How does this proverb continue: The squeaking wheel gets ...','The grease','The rust','Removed','The broken','The grease','brain teasers'); 
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('A contestant on a TV show had to answer 26 questions. For each correct answer he received 8 points, while a wrong answer penalized him 5 points. How many answers did the man answer correctly, bearing in mind that he eventually had 0 points?','10', '12', '8', '16','10','brain teasers');
+
+INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
+VALUES ('You have a square and a circle and the perimeter of the square is equal to the circumference of the circle. Which of the two figures covers a bigger area?','The circle','The square','The circl','No conclusions can be drawn from the given information', 'Both cover the same area','brain teasers'); 
+

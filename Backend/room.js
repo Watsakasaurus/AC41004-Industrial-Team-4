@@ -1,58 +1,47 @@
-module.exports = class room{
+var quiz = require('./quiz.js')
+var query = require('./querries')
+module.exports = class room {
+    //quiz = require('./quiz.js')
 
-constructor(id, passcode/*, players*/)
-{
-    this.roomID = id;
-    this.roomCode = passcode;
-    this.players = [];
-    //this.currentQuiz = newQuiz();
-    this.active = true;
-    console.log("Room created");
-    console.log("roomID: " + this.roomID + " passcode: " + this.roomCode + " status: " + this.active);
-}
+    constructor(id, passcode/*, players, category, numOfQuestions, difficulty*/) {
+        this.roomID = id;
+        this.roomCode = passcode;
+        this.players = [];
+        //this.currentQuiz = newQuiz(category, numOfQuestions, difficulty);
+        this.currentQuiz = null;
+        this.active = true;
+        //console.log("Room created");
+        //console.log("roomID: " + this.roomID + " passcode: " + this.roomCode + " status: " + this.active);
+    }
 
-    getRoomId()
-    {
+    getRoomId() {
         return this.roomID
     }
 
+    showWelcomeMsg() {
+        return "Welcome to the quiz room"
+    }
 
+    newQuiz(category, numOfQuestions, difficulty) {
+        var newQuiz = new quiz(category, numOfQuestions, difficulty);
+        //return quiz;
+        this.currentQuiz = newQuiz;
+    }
 
-    Room(id, code)
-{
-    /*
-    var active = true;
-    var roomID = id;
-    var roomCode = code;
-    //var players = players;
-    //var currentQuiz = newQuiz();
-    console.log("Room created");
-    console.log("roomID: " + this.roomID + " passcode: " + this.roomCode);
-    */
-}
+    closeRoom() {
+        this.active = false;
+        return this.active;
+    }
 
- showWelcomeMsg()
-{
-    return "Welcome to the quiz room"
-}
+    testDatabaseConnection()
+    {
+        var testQuery = new query();
+        testQuery.getTestData();
+    }
 
- newQuiz()
-{
-    /*
-    var quiz = new quiz();
-    return quiz;
-    */
-}
-
- closeRoom()
-{
-    this.active = false;
-    return this.active;
-}
-
-//module.exports = {
- //Room: Room
- //closeRoom(): closeRoom()
-//}
+    //module.exports = {
+    //Room: Room
+    //closeRoom(): closeRoom()
+    //}
 }
 
