@@ -116,5 +116,98 @@ body{
   /* background-color: crimson; */
   float: none;
   margin: 0 auto;
+body {
+  margin: 0;
+  font-family: 'Lexend Deca', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    
+  background-image: url("./assets/banner.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}   
+
+.Generic-center-title{
+    text-align: center;
+    font-size: 3.5rem;
+    color: rgb(21, 22, 66);
+}
+
+.Generic-center{
+    text-align: center;
+    justify-content: center;
+}
+
+.Disclaimer{
+    padding-top: 5rem;
+}
+
+.Nickname-inputbox{
+    background-color: lightgray !important;
+}
+
+.Splash-logo{
+    height: 5rem;
+}
+
+.Splash-logo-container{
+    padding-left: 5px !important;
+    min-width: 100px;
+}
+
+.Splash-logo-row{
+    padding-left: 5px;
+}
+
+.Splash-low-container{
+    padding-bottom: 5rem;
+}
+
+.Menu-container{
+    margin-top: 7.5rem;
+}
+
+.Menu-row{
+    padding-top: 1rem;
+    max-height: inherit;
+}
+
+.Menu-title{
+    color: rgb(21, 22, 66);
+    font-size: 3rem;
+}
+
+.Menu-button{
+    height: 7.5rem;
+    border-radius: 25px !important;
+}
+
+.Menu-green-circles{
+    background-image: url("./assets/greenCircles.png");
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.Menu-blue-circles{
+    background-image: url("./assets/blueCircles.png");
+    background-size: 10rem;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.Menu-button-text{
+    font-size: 2rem;
+    text-align: left;
+}
+
+.Menu-cancel{
+    font-size: 4.5rem;
+    color: white;
+    padding-bottom: 5rem;
 }
