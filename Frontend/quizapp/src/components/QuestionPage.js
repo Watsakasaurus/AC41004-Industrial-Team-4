@@ -65,7 +65,7 @@ class QuestionPage extends Component {
     }
 
     buttonLayout(){
-    var timmyTheTimer = (<QuestionTimer startCount={3} timeFinished={this.timeOut} parent = {this}/>);
+    var timmyTheTimer = (<QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/>);
     
         return(
         <Container>
@@ -99,7 +99,10 @@ class QuestionPage extends Component {
             return (
                 <Container className="Question-container">
                     <Container>
-                        <h1>{this.state.questions[this.state.questionsIterator][0]}</h1>
+                        <h1 className="Question-indicator">Question {this.state.questionsIterator+1}/{this.state.maxQuestions}</h1>
+                        <hr/>
+                        <h3 className="Question-indicator">{this.state.questions[this.state.questionsIterator][0]}</h3>
+                        
                     </Container>
                     {/* <QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/> */}
                     {(this.state.layout && this.buttonLayout()) || this.answerLayout()}

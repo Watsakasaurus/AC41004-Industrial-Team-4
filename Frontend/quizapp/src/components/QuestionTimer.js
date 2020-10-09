@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 var _isMounted;
 class QuestionTimer extends Component {
@@ -7,12 +8,18 @@ class QuestionTimer extends Component {
         this.state = {count: props.startCount}
     }
 
+    
+
     render () {
+        const now = 60;
         const {count} = this.state;
+        const progressInstance = <ProgressBar className="Question-timerbar" max={10} min={0} now={count} label={`${count}s`}/>;
         var showtimer = 1;
        
         return (
+            
         <div>
+            {progressInstance}
             <h1>{showtimer && count}</h1>
         </div>
         )

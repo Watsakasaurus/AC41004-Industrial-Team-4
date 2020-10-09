@@ -47,6 +47,16 @@ body{
   /* height: 100%; */
 }
 
+.Question-indicator{
+  text-align: left;
+}
+
+.Question-timerbar{
+  background-color: blue;
+  border-color: blueviolet;
+  border-radius: 1;
+}
+
 .Question-row-container{
   margin-left: 10%;
   margin-right: 10%;
