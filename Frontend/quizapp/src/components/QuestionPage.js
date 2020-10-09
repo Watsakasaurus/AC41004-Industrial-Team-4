@@ -50,7 +50,7 @@ class QuestionPage extends Component {
         this.setState({layout: 0})
         setTimeout(function() { //Start the timer
             this.setState({layout: 1}) //After 1 second, set render to true
-        }.bind(this), 1000);
+        }.bind(this), 2000);
 
         console.log(identifier);
         if(this.state.questionsIterator+1<this.state.maxQuestions){
