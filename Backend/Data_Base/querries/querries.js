@@ -8,6 +8,7 @@ const cat = "animals";
 //const connect_link = 'posgressql://aylin:aylin@161.35.170.36:5432/Uni_db'
 
 
+
 const client = new Client();
 client.connect().then(() => {
 
