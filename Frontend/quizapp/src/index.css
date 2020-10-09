@@ -57,9 +57,10 @@ body{
 }
 
 .Question-timerbar{
-  background-color: blue;
+  /* background-color: blue; */
   border-color: blueviolet;
-  border-radius: 1;
+  height: 1.5rem;
+  border-radius: 5;
   border-width: 1; 
 
 }
@@ -99,8 +100,16 @@ body{
   width: 90%;
   min-width: 10rem;
   margin-bottom: 2rem;
+  background: #05b25e;
+  /* background: #ff3e58; */
+  color: white;
+  /* border-color:  #97dfbc; */
+  border-color:  #068346;
+  border-radius: 15px !important;
+}
 
-  border-radius: 25px !important;
+.Question-button-red{
+   background: #ff3e58;
 }
 
 .Question-div{

@@ -17,8 +17,7 @@ import Container from 'react-bootstrap/Container';
 class QuestionPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {bog: "bog",
-                    questions: props.questions,
+        this.state = {questions: props.questions,
                     currentQuestion: props.questions[0],
                     questionsIterator: 0,
                     maxQuestions: props.questions.length,
@@ -27,13 +26,22 @@ class QuestionPage extends Component {
                     
       }
 
-    makeButton(text, onClick){
-        return(
-            <Button className="Question-button"
-             onClick={() => this.onButtonClick(onClick)}>
-                {text}
-            </Button>
-        );
+    makeButton(text, onClick, colour){
+        if(colour){
+            return(
+                <Button className="Question-button"
+                onClick={() => this.onButtonClick(onClick)}>
+                    {text}
+                </Button>
+            );
+        }else{
+            return(
+                <Button className="Question-button Question-button-red"
+                onClick={() => this.onButtonClick(onClick)}>
+                    {text}
+                </Button>
+            );
+        }
     }
 
     onButtonClick(identifier){
@@ -65,25 +73,25 @@ class QuestionPage extends Component {
     }
 
     buttonLayout(){
-    var timmyTheTimer = (<QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/>);
+    var timmyTheTimer = (<QuestionTimer startCount={5} timeFinished={this.timeOut} parent = {this}/>);
     
         return(
         <Container>
             {timmyTheTimer}
             <Row className="Question-row" mx-auto>
                 <Col>
-                    {this.makeButton(this.state.currentQuestion[1],1)}
+                    {this.makeButton(this.state.currentQuestion[1],1,1)}
                 </Col>
                 <Col>
-                    {this.makeButton(this.state.currentQuestion[2],2)}
+                    {this.makeButton(this.state.currentQuestion[2],2,1)}
                 </Col>
             </Row> 
             <Row className="Question-row">
                 <Col>
-                    {this.makeButton(this.state.currentQuestion[3],3)}
+                    {this.makeButton(this.state.currentQuestion[3],3,1)}
                 </Col>
                 <Col>
-                    {this.makeButton(this.state.currentQuestion[4],4)}
+                    {this.makeButton(this.state.currentQuestion[4],4,1)}
                 </Col>
             </Row>
             
