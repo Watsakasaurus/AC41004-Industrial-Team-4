@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Menu from './components/Menu';
 import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
+import QuestionPage from './components/QuestionPage';
 
 class App extends Component {
 
