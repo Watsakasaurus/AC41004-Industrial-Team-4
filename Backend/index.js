@@ -2,9 +2,9 @@
 
 const express = require('express')
 let room = require('./room.js')
-let Room = room.Room;
-const quiz = require('./quiz.js')
+let quiz = require('./quiz.js')
 let player = require('./player.js')
+let crypto = require('crypto')
 const app = express()
 const PORT = 5000
 
@@ -13,7 +13,8 @@ var rooms = [];
 
 function addNewRoom() 
 {
-    let code = Math.floor(Math.random() * 100);
+    //let code = Math.floor(Math.random() * 10000);
+    let code = crypto.randomBytes(10).toString('hex');
     var newRoom = new room(rooms.length, code);
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
