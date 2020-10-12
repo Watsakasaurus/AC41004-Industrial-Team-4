@@ -43,8 +43,6 @@ function UserBadge(props) {
 function TimeLeft(props){
 
     return <h2 className="time_left">   Loading Next Question!</h2>;
- 
-           
 
 }
 
@@ -63,6 +61,17 @@ function count(){
     return
 }
 
+//function SetClr (props)  {
+ // if (props.result == this.state.correct) {
+ //   this.setState({ colour: "green" });
+ // }
+ // else if (props.Resultresult == this.state.incorrect) {
+  //  this.setState({ colour: "red"});
+ // 
+//}
+    
+//};
+
 class ResultsPage extends Component {
   constructor(props) {
     super(props);
@@ -76,16 +85,7 @@ class ResultsPage extends Component {
   }
 
   
-  setclr = () => {
-    if (Result === this.state.correct) {
-      this.setState({ colour: "green" });
-    }
-    else if (Result === this.state.incorrect) {
-      this.setState({ colour: "red"});
-    
-  }
-      
-  };
+  
 
    
 
@@ -104,11 +104,13 @@ class ResultsPage extends Component {
         <div> 
           <Jumbotron className="jumbotron" style={{backgroundColor: this.state.colour}}>
             <div>
+              
               <Result result={this.state.correct} />
+           
             </div>
 
             <div>
-              <Points points="100" />
+              <Points points= {plyr_score[0]} />
             </div>
           </Jumbotron>
         </div>
