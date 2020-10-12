@@ -9,7 +9,8 @@ import Results from '../components/Results';
 
 
 
-
+// time between questions in ms
+const timeBetweenQs = 10000;
 
 
 //function that simply creates and returns a button with text and onclick funciton
@@ -48,6 +49,11 @@ class QuestionPage extends Component {
     onButtonClick(identifier){
         // Send answer to backend
         this.setState({layout: 0})
+        if(identifier==this.state.currentQuestion[5]){
+            console.log("Correct");
+        }else{
+            console.log("Incorrect");
+        }
         setTimeout(function() { //Start the timer
             this.setState({layout: 1}) //After 1 second, set render to true
             if(this.state.questionsIterator+1<this.state.maxQuestions){
@@ -59,7 +65,7 @@ class QuestionPage extends Component {
                 //round over
                 console.log(this.state.answers);
             }
-        }.bind(this), 2000);
+        }.bind(this), timeBetweenQs);
 
         console.log(identifier);
     }
@@ -103,7 +109,7 @@ class QuestionPage extends Component {
     answerLayout(){
         return(
             // <h1>Answered</h1>
-            <Results></Results>
+            <Results result="Incorrect" points={50} score={100}></Results>
 
         );
     }

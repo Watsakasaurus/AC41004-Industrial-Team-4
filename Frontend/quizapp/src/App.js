@@ -50,16 +50,16 @@ class App extends Component {
         break;
       case 3:
         return(
-          <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer"],
-          ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!"],
-          ["If a TV program is rated G then this is true.","A It contains moderate violence.","B It contains mild sexual situations.","C It is suitable for all audiences.","D It is suitable for young children."],
-          ["The theory of relativity was introduced in physics by this man.","A Galileo Galilei","B Albert Einstein","C Archimedes","D Isaac Newton"],
-          ["The symbol for the chemical element iron is this.","A I","B Fe","C Zn","D Br"],
-          ["he author of the novel A Portrait of the Artist as a Young Man is this writer.","A T. S. Eliot","B Samuel Beckett","C William Faulkner","D James Joyce"],
-          ["#Q The capital of Mongolia is this city.","A Davao","B Islamabad","C Quezon","D Ulaanbaatar"],
-          ["#Q The US bought Alaska in this year.","A 1942","B 1882","C 1854","D 1867"],
-          ["#Q The 23rd US President was in office during this period.","A 1909 - 1913","B 1889 - 1893","C 1837 - 1841","D 1877 - 1881"],
-          ["#Q Mitochondrias function in cells is to perform this.","A To control chemical reactions within the cytoplasm","B To store information needed for cellular division","C To convert organic materials into energy","D To process proteins targeted to the plasma membrane"]]}
+          <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
+          ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!",1],
+          ["If a TV program is rated G then this is true.","A It contains moderate violence.","B It contains mild sexual situations.","C It is suitable for all audiences.","D It is suitable for young children.",3],
+          ["The theory of relativity was introduced in physics by this man.","A Galileo Galilei","B Albert Einstein","C Archimedes","D Isaac Newton",2],
+          ["The symbol for the chemical element iron is this.","A I","B Fe","C Zn","D Br",2],
+          ["He author of the novel A Portrait of the Artist as a Young Man is this writer.","A T. S. Eliot","B Samuel Beckett","C William Faulkner","D James Joyce",4],
+          ["The capital of Mongolia is this city.","A Davao","B Islamabad","C Quezon","D Ulaanbaatar",4],
+          ["The US bought Alaska in this year.","A 1942","B 1882","C 1854","D 1867",4],
+          ["The 23rd US President was in office during this period.","A 1909 - 1913","B 1889 - 1893","C 1837 - 1841","D 1877 - 1881",2],
+          ["Mitochondrias function in cells is to perform this.","A To control chemical reactions within the cytoplasm","B To store information needed for cellular division","C To convert organic materials into energy","D To process proteins targeted to the plasma membrane",3]]}
           
             
             // [["Which of thghese is not a car","Saab", "Volvo", "BMW","Dog"],
