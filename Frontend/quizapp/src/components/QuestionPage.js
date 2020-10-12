@@ -10,7 +10,7 @@ import Results from '../components/Results';
 
 
 // time between questions in ms
-const timeBetweenQs = 10000;
+const timeBetweenQs = 3000;
 
 
 //function that simply creates and returns a button with text and onclick funciton
