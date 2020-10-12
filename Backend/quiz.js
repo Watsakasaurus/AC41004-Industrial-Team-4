@@ -1,9 +1,9 @@
 module.exports = class quiz
 {
-    constructor(category, numOfQuestions, difficulty){
+    constructor(category, numOfQuestions){
         this.category = category;
         this.numOfQuestions = numOfQuestions;
-        this.difficulty = difficulty;
+        //this.difficulty = difficulty;
         //this.currentQuestion = "";
         //this.currentAnswer = "";
         //this.currentOptions = [];
