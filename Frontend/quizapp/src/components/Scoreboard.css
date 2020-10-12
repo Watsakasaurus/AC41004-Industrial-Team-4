@@ -6,9 +6,6 @@ body{
     background-repeat: no-repeat;
 }
 
-.Scoreboard-container{
-    margin-top: 7.5rem;
-}
 
 .Scoreboard-greencontainer{
     margin-top: 2.5rem;
@@ -17,8 +14,8 @@ body{
     background-size: 10rem;
     background-position: right;
     background-repeat: no-repeat;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 20%;
+    margin-right: 20%;
     box-shadow:2px 2px whitesmoke;
     border-radius: 25px
 }
@@ -30,8 +27,8 @@ body{
     background-size: 10rem;
     background-position: right;
     background-repeat: no-repeat;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 20%;
+    margin-right: 20%;
     box-shadow:2px 2px whitesmoke;
     border-radius: 25px
 }
@@ -97,7 +94,7 @@ hr {
     height: 5rem;
     border-radius: 25px !important;
     background-color: green;
-    margin-left: 30%;
+    margin-left: 50%;
 }
 
 .Scoreboard-buttontext{

@@ -1,23 +1,25 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
 import './Scoreboard.css';
 
-class Scoreboard extends React.Component {
-
-    
-  render() {
-
     let winnerName = "Bob";
-    let playerName = "Bobby";
-    let players = ["player1", "player2", "player3", "player4"];
+    let players = ["Andrew", "Alfie", "Sophie", "Callum"];
+    let playersScore = ["100", "85" , "45" , "20"]
+    /* let players = []; */
     let noOfQuestions = "20"
-    let winnerCorrectAnswers = "14"
+    let winnerCorrectAnswers = "15"
     let winnerScore = "65";
     let playerCorrectAnswers = "6"
     let playerScore = "23";
     let position = "3rd";
+
+/* function buttonClick(){
+        Scoreboard.winnerName = "Billy";
+    } */
+
+function Scoreboard(){
+    
 
     return (
         <div>
@@ -42,7 +44,6 @@ class Scoreboard extends React.Component {
             <Card>
                 <Card.Body>
                     <Card.Title className="Scoreboard-med">You came {position} </Card.Title>
-                    <Card.Subtitle className="Scoreboard-big">{playerName}</Card.Subtitle>
                     <Card.Text className="Scoreboard-small">Score:{playerScore} <br/>
                         Question: {playerCorrectAnswers}/{noOfQuestions}
                     </Card.Text>
@@ -58,19 +59,19 @@ class Scoreboard extends React.Component {
                         </tr>
                         <tr>
                             <td>{players[0]}</td>
-                            <th>12</th>
+                            <th>{playersScore[0]}</th>
                         </tr>
                         <tr>
                             <td>{players[1]}</td>
-                            <th>8</th>
+                            <th>{playersScore[1]}</th>
                         </tr>
                         <tr>
                             <td>{players[2]}</td>
-                            <th>3</th>
+                            <th>{playersScore[2]}</th>
                         </tr>
                         <tr>
                             <td>{players[3]}</td>
-                            <th>1</th>
+                            <th>{playersScore[3]}</th>
                         </tr>
                     </table>
                   </Card.Text>
@@ -79,7 +80,7 @@ class Scoreboard extends React.Component {
         </Card>
         </Card>
         <div>
-            <Button className="Scoreboard-button">
+            <Button className="Scoreboard-button" onclick="buttonClick">
                 <h1 className="Scoreboard-buttontext">
                   Next
                 </h1>
@@ -90,7 +91,7 @@ class Scoreboard extends React.Component {
    
     );
   }
-}
+
 
 export default Scoreboard;
 
