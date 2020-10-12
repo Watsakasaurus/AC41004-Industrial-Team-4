@@ -15,8 +15,7 @@ function addNewRoom() {
     //let code = Math.floor(Math.random() * 10000);
     let code = crypto.randomBytes(10).toString('hex');
     var check = findRoomByCode(code);
-    while(check >= 0)
-    {
+    while (check >= 0) {
         code = crypto.randomBytes(10).toString('hex');
         check = findRoomByCode(code);
     }
@@ -27,8 +26,7 @@ function addNewRoom() {
     return newRoom.roomCode;
 }
 
-function addNewPlayer(newPlayerName)
-{
+function addNewPlayer(newPlayerName) {
     var newPlayer = new player(newPlayerName);
     nonactivePlayers.push(newPlayer);
     console.log("new player: " + nonactivePlayers[0].name);
@@ -37,6 +35,26 @@ function addNewPlayer(newPlayerName)
 function findRoomByCode(code) {
     var found = rooms.findIndex(r => r.roomCode == code);
     return found;
+}
+
+function findNonactivePlayerByNickname(nickname) {
+    var found = nonactivePlayers.findIndex(p => p.name == nickname);
+    if (found >= 0) {
+        return found;
+    }
+    console.log("Player with nickname '" + nickname + "' doesn't exist in nonactive players array.");
+    return found;
+}
+
+function findPlayerByNickname(nickname, roomCode) {
+    var i = findRoomByCode(roomCode);
+    if (i >= 0) {
+        var found = rooms[i].players.findIndex(p => p.name == nickname);
+        console.log("players index: " + found);
+        return found;
+    }
+    console.log("Room with passcode '" + roomCode + "' doesn't exist.");
+    return i;
 }
 
 function addNewQuiz(roomCode, category, numOfQuestions, difficulty) {
@@ -68,8 +86,9 @@ function removeNonactiveRooms() {
 
 //moves a player from the nonactivePlayers array into the players array of the desired room
 //inputs are the nickname of the player to be moved, and the id of the room the player should be added to
-function movePlayerToRoom(nickname, roomNumber)
-{
+function movePlayerToRoom(nickname, roomNumber) {
+    var playerIndex;
+
     //create new player with the same information as the one to be moved, and add it to the player array in the correct room
     var playerToBeAdded = new player(nickname);
     rooms[roomNumber].players.push(playerToBeAdded);
@@ -78,6 +97,18 @@ function movePlayerToRoom(nickname, roomNumber)
     nonactivePlayers = nonactivePlayers.filter((item) => item.name !== nickname);
 
     console.log("Player " + nickname + " moved to room " + roomNumber);
+
+    //find the index(in nonactivePlayers array) of the player that has been moved
+    // for(i = 0; i < nonactivePlayers.length; i++)
+    // {
+    //     // if(nonactivePlayers[i].name === nickname)
+    //     // {
+    //     //     playerIndex = i;
+    //     // }
+
+
+    // }
+
 }
 
 //Server start up message
@@ -93,7 +124,6 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    addNewRoom();
     //addNewRoom();
     //addNewRoom();
     /*addNewRoom();
@@ -106,16 +136,19 @@ app.get('/', (req, res) => {
     removeNonactiveRooms();
     console.log(rooms);
     addNewPlayer("arran");
-    addNewPlayer("nicole");
-    addNewPlayer("ross");
     console.log("Non Active Players: " + nonactivePlayers);
     movePlayerToRoom("arran", 1);
     console.log("Room 1 players: " + rooms[1].players[0].name);
     console.log("Non Active Players: " + nonactivePlayers);*/
     //console.log(rooms);
-    addNewQuiz(rooms[0].roomCode, "animals", 5, "easy");
-    rooms[0].testDatabaseConnection();
+    //addNewQuiz(rooms[0].roomCode, "animals", 5, "easy");
+    //rooms[0].testDatabaseConnection();
     //console.log(rooms);
+    addNewRoom();
+    addNewPlayer("arran");
+    console.log("Non Active Players: " + nonactivePlayers);
+    movePlayerToRoom("arran", 0);
+    findPlayerByNickname("arran", rooms[0].roomCode);
 });
 
 //Start the server
