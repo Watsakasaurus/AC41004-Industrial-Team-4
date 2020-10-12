@@ -90,11 +90,11 @@ class QuestionPage extends Component {
     }
 
     buttonLayout(){
-    var timmyTheTimer = (<QuestionTimer startCount={5} timeFinished={this.timeOut} parent = {this}/>);
+    var questionTimer = (<QuestionTimer startCount={5} timeFinished={this.timeOut} parent = {this}/>);
     
         return(
         <Container>
-            {timmyTheTimer}
+            {questionTimer}
             <Row className="Question-row" mx-auto>
                 <Col>
                     {this.makeButton(this.state.currentQuestion[1],1,1)}
