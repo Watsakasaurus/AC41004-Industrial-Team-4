@@ -85,30 +85,26 @@ function removeNonactiveRooms() {
 }
 
 //moves a player from the nonactivePlayers array into the players array of the desired room
-//inputs are the nickname of the player to be moved, and the id of the room the player should be added to
-function movePlayerToRoom(nickname, roomNumber) {
-    var playerIndex;
-
+//inputs are the nickname of the player to be moved, and the passcode of the room the player should be added to
+//returns false if the player isn't moved due to no room with the given passcode existing and returns true if the player is successfully moved
+function movePlayerToRoom(nickname, roomCode) {
+    var index = findRoomByCode(roomCode);
+    if(index < 0){
+        console.log("Room with passcode '" + roomCode + "' doesn't exist.");
+        return false;
+    }
+ 
     //create new player with the same information as the one to be moved, and add it to the player array in the correct room
     var playerToBeAdded = new player(nickname);
-    rooms[roomNumber].players.push(playerToBeAdded);
-
+    rooms[index].players.push(playerToBeAdded);
+ 
     //remove player (that has just been moved into room) from nonActivePlayers array
-    nonactivePlayers = nonactivePlayers.filter((item) => item.name !== nickname);
-
-    console.log("Player " + nickname + " moved to room " + roomNumber);
-
-    //find the index(in nonactivePlayers array) of the player that has been moved
-    // for(i = 0; i < nonactivePlayers.length; i++)
-    // {
-    //     // if(nonactivePlayers[i].name === nickname)
-    //     // {
-    //     //     playerIndex = i;
-    //     // }
-
-
-    // }
-
+    var i = findNonactivePlayerByNickname(nickname);
+    nonactivePlayers.splice(i, 1);
+    //nonactivePlayers = nonactivePlayers.filter((item) => item.name !== nickname);
+ 
+    console.log("Player " + nickname + " moved to room " + roomCode);
+    return true;
 }
 
 //Server start up message
@@ -124,8 +120,6 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    //addNewRoom();
-    //addNewRoom();
     /*addNewRoom();
     addNewRoom();
     addNewRoom();
@@ -145,10 +139,14 @@ app.get('/', (req, res) => {
     //rooms[0].testDatabaseConnection();
     //console.log(rooms);
     addNewRoom();
+    addNewRoom();
+    addNewRoom();
     addNewPlayer("arran");
     console.log("Non Active Players: " + nonactivePlayers);
-    movePlayerToRoom("arran", 0);
-    findPlayerByNickname("arran", rooms[0].roomCode);
+    movePlayerToRoom("arran", rooms[1].roomCode);
+    console.log("Non Active Players: " + nonactivePlayers);
+    console.log(rooms);
+    findPlayerByNickname("arran", rooms[1].roomCode);
 });
 
 //Start the server
