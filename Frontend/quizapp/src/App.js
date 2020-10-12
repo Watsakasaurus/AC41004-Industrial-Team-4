@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Menu from './components/Menu';
-import Splash from './components/Splash';
+import Splash from './components/splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
-import ResultsPage from './Components/Results';
+import ResultsPage from './components/Results';
 
 class App extends Component {
 
