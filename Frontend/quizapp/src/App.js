@@ -42,12 +42,12 @@ class App extends Component {
           <Splash onClick={this.onClick.bind(this)}/>
         );
         // code block
-        break;
+        // break;
       case 2:
         return(
           <EnterNickname changeValue={this.setNickname.bind(this)}/>
         );
-        break;
+        // break;
       case 3:
         return(
           <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
@@ -81,24 +81,18 @@ class App extends Component {
             //                     ["Which of these is not a clar","Saab", "Volvo", "BMW4","Dog4fd"],
             //                     ["Which of these is not a calr","Saab", "Volvo", "BMW4","Dogcx4"],]}
         ></QuestionPage>
-        );
-
-
-
-
-        
-        break;
+        ); 
+        // break;
       case 4:
         return(
           <ResultsPage></ResultsPage>
         );
-            // code block
-        break;
+        // break;
       case 5:
         return(
           <Menu playerNickname ={this.state.nickname} onClick={this.onQClick.bind(this)} />
         );
-        break;
+        // break;
       default:
         return(
           <h1>You probably shouldnt be seeing this </h1>
