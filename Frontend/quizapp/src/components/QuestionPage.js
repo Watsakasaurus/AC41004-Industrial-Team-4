@@ -50,18 +50,18 @@ class QuestionPage extends Component {
         this.setState({layout: 0})
         setTimeout(function() { //Start the timer
             this.setState({layout: 1}) //After 1 second, set render to true
+            if(this.state.questionsIterator+1<this.state.maxQuestions){
+                this.setState( {currentQuestion: this.state.questions[this.state.questionsIterator+1],
+                                questionsIterator: this.state.questionsIterator+1,
+                                answers: this.state.answers.concat(identifier),
+                                });
+            }else{
+                //round over
+                console.log(this.state.answers);
+            }
         }.bind(this), 2000);
 
         console.log(identifier);
-        if(this.state.questionsIterator+1<this.state.maxQuestions){
-            this.setState( {currentQuestion: this.state.questions[this.state.questionsIterator+1],
-                            questionsIterator: this.state.questionsIterator+1,
-                            answers: this.state.answers.concat(identifier),
-                            });
-        }else{
-            //round over
-            console.log(this.state.answers);
-        }
     }
 
     timeOut(father){
