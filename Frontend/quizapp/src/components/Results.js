@@ -49,7 +49,7 @@ function count() {
 
   if (counter < 10)
     return <h1 className="counter"> 10 </h1>
-  else if (counter == 10)
+  else if (counter === 10)
     return
 }
 
