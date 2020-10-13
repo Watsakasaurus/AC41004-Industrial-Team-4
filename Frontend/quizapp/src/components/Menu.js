@@ -21,7 +21,7 @@ function Menu(props) {
         <Container fluid>
           <Row className="Menu-row">
             <Col>
-              <Button className="Menu-button Menu-green-circles" block variant="success" onClick = {() => props.onClick(true)}>
+              <Button className="Menu-button Menu-green-circles" block variant="success" onClick = {() => props.onClick(1)}>
                 <Row>
                   <Col sm={8}>
                     <div className="Menu-button-text">
@@ -36,7 +36,7 @@ function Menu(props) {
           </Row>
           <Row className="Menu-row">
             <Col>
-              <Button className="Menu-button Menu-blue-circles" block onClick = {() => props.onClick(false)}>
+              <Button className="Menu-button Menu-blue-circles" block onClick = {() => props.onClick(2)}>
                 <Row>
                   <Col sm={8}>  
                     <div className="Menu-button-text">
@@ -51,14 +51,14 @@ function Menu(props) {
           </Row>
           <Row className="Menu-row">
             <Col>
-              <Button className="Menu-button" block variant="warning">
+              <Button className="Menu-button" block variant="warning" onClick = {() => props.onClick(3)}>
                 <h1 className="Menu-cancel">
                   o
                 </h1>
               </Button>
             </Col>
             <Col>
-              <Button className="Menu-button" block variant="danger">
+              <Button className="Menu-button" block variant="danger" onClick = {() => props.onClick(4)}>
                 <h1 className="Menu-cancel">
                   x
                 </h1>

@@ -45,8 +45,30 @@ class App extends Component {
     this.setState({inApp: true})
   }
 
-  onQClick(){
-    this.setState({inQs: true})
+  onMenuClick(id){
+    switch(id) {
+      //Create room button
+      case 1:
+        //TODO ask for code from backend
+        console.log("Create Room")
+        this.setState({inQs: true})
+        break;
+      //Room code button
+      case 2:
+        console.log("Enter room code")
+        break;
+      // O button
+      case 3:
+        console.log("O Button")
+        break;
+      // X button
+      case 4:
+        console.log("X Button")
+        this.setState({nickname: false})
+        break;
+      default:
+
+    }
   }
 
   returnComponent(compID){
@@ -55,13 +77,10 @@ class App extends Component {
         return(
           <Splash onClick={this.onClick.bind(this)}/>
         );
-        // code block
-        // break;
       case 2:
         return(
           <EnterNickname changeValue={this.setNickname.bind(this)}/>
         );
-        // break;
       case 3:
         return(
           <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
@@ -74,39 +93,16 @@ class App extends Component {
           ["The US bought Alaska in this year.","A 1942","B 1882","C 1854","D 1867",4],
           ["The 23rd US President was in office during this period.","A 1909 - 1913","B 1889 - 1893","C 1837 - 1841","D 1877 - 1881",2],
           ["Mitochondrias function in cells is to perform this.","A To control chemical reactions within the cytoplasm","B To store information needed for cellular division","C To convert organic materials into energy","D To process proteins targeted to the plasma membrane",3]]}
-          
-            
-            // [["Which of thghese is not a car","Saab", "Volvo", "BMW","Dog"],
-            //                     ["Which of theghse is not a car","Saab", "Volvo", "BMW2","Dog2"],
-            //                     ["Which of these is not a car","Saab", "Volvo", "BMW3","Dog3"],
-            //                     ["Which of thesghjghe is not a car","Saab", "Volvo", "BMW4","Dog4"],
-            //                     ["Which of these idfs not a car","Saab", "Volvo", "BMW5","Dog5"],
-            //                     ["Which of these is not a car","Saab", "Volvo", "BMW4","Dog4"],
-            //                     ["Which of these isgh not a car","Saab", "Volvo", "BMW4","Dodg4"],
-            //                     ["Which of these ifs not a car","Saab", "Volvo", "BMW4","Dovdg4"],
-            //                     ["Which of these isg not a car","Saab", "Volvo", "BMW4","Dosdg4"],
-            //                     ["Which of these is hnot a car","Saab", "Volvo", "BMW4","Dovdg4"],
-            //                     ["Which of these is njot a car","Saab", "Volvo", "BMW4","Dovdg4"],
-            //                     ["Which of these is not a car","Saab", "Volvo", "BMW4","Doddg4"],
-            //                     ["Which of these is nokt a car","Saab", "Volvo", "BMW4","Dosdg4"],
-            //                     ["Which of these is notk a car","Saab", "Volvo", "BMW4","Dovgd4"],
-            //                     ["Which of these is not kla car","Saab", "Volvo", "BMW4","Ddog4"],
-            //                     ["Which of these is not a lcar","Saab", "Volvo", "BMW4","sDog4"],
-            //                     ["Which of these is not a clar","Saab", "Volvo", "BMW4","Dog4fd"],
-            //                     ["Which of these is not a calr","Saab", "Volvo", "BMW4","Dogcx4"],]}
         ></QuestionPage>
         ); 
-        // break;
       case 4:
         return(
           <ResultsPage></ResultsPage>
         );
-        // break;
       case 5:
         return(
-          <Menu playerNickname ={this.state.nickname} onClick={this.onQClick.bind(this)} />
+          <Menu playerNickname ={this.state.nickname} onClick={this.onMenuClick.bind(this)} />
         );
-        // break;
       default:
         return(
           <h1>You probably shouldnt be seeing this </h1>
