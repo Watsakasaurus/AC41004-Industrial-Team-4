@@ -5,11 +5,20 @@ let room = require('./room.js')
 let player = require('./player.js')
 let crypto = require('crypto')
 const app = express()
+const bodyParser = require('body-parser')
+
 const PORT = 5000
-const bodyParser = require('body-parser');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use('/test', (req, res)=>{
+    queries.getTestData().then((data)=>{
+        res.send(data);
+    }).catch((err)=>{
+        console.error(err);
+    });
+});
 var nonactivePlayers = [];
 var rooms = [];
 
@@ -165,5 +174,9 @@ app.post('/username', (req, res) =>{
 
 })
 
+
+
+
 //Start the server
 startServer();
+
