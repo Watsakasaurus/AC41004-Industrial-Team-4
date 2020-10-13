@@ -6,6 +6,16 @@ import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
 import {RoomConfigure} from './components/RoomConfigure'   
 
+const components = {
+  SPLASH: 1,
+  NICKNAME: 2,
+  QUESTION: 3,
+  RESULTS: 4,
+  MENU: 5,
+  ROOMCONF: 6
+}
+
+
 class App extends Component {
 
   constructor(props) {
@@ -15,6 +25,7 @@ class App extends Component {
       nickname: "",
       inApp: false,
       inQs: false,
+      currentComp: components.SPLASH,
       response: '',
       post: '',
     }
@@ -26,7 +37,7 @@ class App extends Component {
                       
   setNickname(newNickname) {
     console.log(newNickname);
-    this.setState({nickname: newNickname})
+    this.setState({nickname: newNickname, currentComp: components.MENU})
 
     //Pass username to server
     fetch('/username' , {
@@ -41,9 +52,13 @@ class App extends Component {
 
   }
 
+  roomConfigureSubmit(data){
+    this.setState({currentComp: components.QUESTION})
+  }
+
   // Using this for testing :)
   onClick(){
-    this.setState({inApp: true})
+    this.setState({currentComp: 2})
   }
 
   onMenuClick(id){
@@ -52,7 +67,7 @@ class App extends Component {
       case 1:
         //TODO ask for code from backend
         console.log("Create Room")
-        this.setState({inQs: true})
+        this.setState({currentComp: 6})
         break;
       //Room code button
       case 2:
@@ -65,7 +80,7 @@ class App extends Component {
       // X button
       case 4:
         console.log("X Button")
-        this.setState({nickname: false})
+        this.setState({nickname: false, currentComp: 2});
         break;
       default:
 
@@ -84,7 +99,17 @@ class App extends Component {
         );
       case 3:
         return(
-          <RoomConfigure/>
+          <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
+          ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!",1],
+          ["If a TV program is rated G then this is true.","A It contains moderate violence.","B It contains mild sexual situations.","C It is suitable for all audiences.","D It is suitable for young children.",3],
+          ["The theory of relativity was introduced in physics by this man.","A Galileo Galilei","B Albert Einstein","C Archimedes","D Isaac Newton",2],
+          ["The symbol for the chemical element iron is this.","A I","B Fe","C Zn","D Br",2],
+          ["He author of the novel A Portrait of the Artist as a Young Man is this writer.","A T. S. Eliot","B Samuel Beckett","C William Faulkner","D James Joyce",4],
+          ["The capital of Mongolia is this city.","A Davao","B Islamabad","C Quezon","D Ulaanbaatar",4],
+          ["The US bought Alaska in this year.","A 1942","B 1882","C 1854","D 1867",4],
+          ["The 23rd US President was in office during this period.","A 1909 - 1913","B 1889 - 1893","C 1837 - 1841","D 1877 - 1881",2],
+          ["Mitochondrias function in cells is to perform this.","A To control chemical reactions within the cytoplasm","B To store information needed for cellular division","C To convert organic materials into energy","D To process proteins targeted to the plasma membrane",3]]}
+        ></QuestionPage>
         ); 
       case 4:
         return(
@@ -93,6 +118,10 @@ class App extends Component {
       case 5:
         return(
           <Menu playerNickname ={this.state.nickname} onClick={this.onMenuClick.bind(this)} />
+        );
+      case 6:
+        return(
+          <RoomConfigure submit={this.roomConfigureSubmit.bind(this)}/>
         );
       default:
         return(
@@ -107,21 +136,21 @@ class App extends Component {
   // Yes the code below this is an utter mess, its for testing, dont panic ;)
   render() {
 
-    var compNo = -1;
-    if(!this.state.inApp){
-      compNo = 1;
-    }else if(this.state.inApp && !this.state.nickname){
-      compNo = 2;
-    }else if(this.state.nickname && !this.state.inQs){
-      compNo = 5; 
-    }else if(this.state.inQs){
-      compNo = 3;
-    }
+    // var compNo = -1;
+    // if(!this.state.inApp){
+    //   compNo = 1;
+    // }else if(this.state.inApp && !this.state.nickname){
+    //   compNo = 2;
+    // }else if(this.state.nickname && !this.state.inQs){
+    //   compNo = 5; 
+    // }else if(this.state.inQs){
+    //   compNo = 3;
+    // }
 
 
     return (
       <div>
-        {this.returnComponent(compNo)}                        
+        {this.returnComponent(this.state.currentComp)}                        
       </div>
          
          
