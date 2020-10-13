@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Menu from './components/Menu';
-import Splash from './components/Splash';
-import EnterNickname from './components/EnterNickname';
-import QuestionPage from './components/QuestionPage';
-import ResultsPage from './components/Results';
+import Menu from './Components/Menu';
+import Splash from './Components/splash';
+import EnterNickname from './Components/EnterNickname';
+import QuestionPage from './Components/QuestionPage';
+import ResultsPage from './Components/Results';
 
 class App extends Component {
 
@@ -14,6 +14,8 @@ class App extends Component {
       nickname: "",
       inApp: false,
       inQs: false,
+      response: '',
+      post: '',
     }
   }
 
@@ -24,6 +26,18 @@ class App extends Component {
   setNickname(newNickname) {
     console.log(newNickname);
     this.setState({nickname: newNickname})
+
+    //Pass username to server
+    fetch('/username' , {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({post: newNickname})
+    })
+    .then((result) => result.json())
+    .then((info) => { console.log(info); })
+
   }
 
   // Using this for testing :)
