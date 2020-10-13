@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 
 
+
 export class RoomConfigure extends Component {
 
     constructor(props) {
@@ -17,6 +18,7 @@ export class RoomConfigure extends Component {
         event.preventDefault()
         const data = this.state
         console.log(data)
+        this.props.submit();
     }
 
     handleInputChange = (event) => {
