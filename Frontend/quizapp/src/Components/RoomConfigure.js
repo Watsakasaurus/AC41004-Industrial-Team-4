@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { Button, Form, Dropdown } from 'react-bootstrap'
 
 
+
 export class RoomConfigure extends Component {
 
     constructor(props) {
@@ -20,6 +21,7 @@ export class RoomConfigure extends Component {
         event.preventDefault()
         const data = this.state
         console.log(data)
+        this.props.submit();
     }
 
     handleInputChange = (event) => {
