@@ -6,6 +6,9 @@ let player = require('./player.js')
 let crypto = require('crypto')
 const app = express()
 const PORT = 5000
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 var nonactivePlayers = [];
 var rooms = [];
@@ -156,6 +159,11 @@ app.get('/', (req, res) => {
     rooms[0].testDatabaseConnection();
     //addNewQuiz(rooms[0].roomCode, "", 1);
 });
+
+app.post('/username', (req, res) =>{
+    console.log('Post request recieved: ' + req.body.post)
+
+})
 
 //Start the server
 startServer();
