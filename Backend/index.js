@@ -162,7 +162,20 @@ app.get('/', (req, res) => {
 
 app.post('/username', (req, res) =>{
     console.log('Post request recieved: ' + req.body.post)
+    
+    //Make new player object
+    addNewPlayer(req.body.post);
+    //Place player in a new room
+    newRoomCode = addNewRoom();
+    //Move the player to new room
+    movePlayerToRoom(req.body.post, newRoomCode)
 
+    //For the response
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({
+        nickname: req.body.post,
+        roomCode: newRoomCode
+    }))
 })
 
 //Start the server
