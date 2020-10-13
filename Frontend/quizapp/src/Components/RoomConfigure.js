@@ -50,7 +50,7 @@ export class RoomConfigure extends Component {
                         </div>
                     </div>
                 
-                    <div class="Configure-row">
+                    <div class="row">
                         <div class="col-md-4">
                         </div>
                         <div class="col-md-4">
