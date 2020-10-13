@@ -46,7 +46,7 @@ class App extends Component {
   // Sets the nickname into app.js state           
   setNickname(newNickname) {
     console.log(newNickname);
-    this.setState({nickname: newNickname, currentComp: components.MENU})
+    this.setState({nickname: newNickname})
 
     //Pass username to server
     fetch('/username' , {
@@ -134,7 +134,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.returnComponent(this.state.currentComp)}                        
+        {this.returnComponent(compNo)}                        
       </div>
     )
   };
