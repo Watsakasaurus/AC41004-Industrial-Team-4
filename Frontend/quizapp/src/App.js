@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
+import {RoomConfigure} from './components/RoomConfigure'   
 
 class App extends Component {
 
@@ -83,6 +84,7 @@ class App extends Component {
         );
       case 3:
         return(
+          <RoomConfigure/>
           <QuestionPage questions={[["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
           ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!",1],
           ["If a TV program is rated G then this is true.","A It contains moderate violence.","B It contains mild sexual situations.","C It is suitable for all audiences.","D It is suitable for young children.",3],
@@ -141,3 +143,5 @@ class App extends Component {
 
 
 export default App;
+
+
