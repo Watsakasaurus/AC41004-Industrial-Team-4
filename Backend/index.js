@@ -10,12 +10,12 @@ const bodyParser = require('body-parser')
 const PORT = 5000
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/test', (req, res)=>{
-    queries.getTestData().then((data)=>{
+app.use('/test', (req, res) => {
+    queries.getTestData().then((data) => {
         res.send(data);
-    }).catch((err)=>{
+    }).catch((err) => {
         console.error(err);
     });
 });
@@ -42,10 +42,18 @@ function addNewRoom() {
 
 //creates and adds a new player to the nonactivePlayers array
 //input is the nickname of the player to be added
+//returns true if a new player is successfully added and false if not
 function addNewPlayer(newPlayerName) {
-    var newPlayer = new player(newPlayerName);
-    nonactivePlayers.push(newPlayer);
-    console.log("new player: " + nonactivePlayers[0].name);
+    //check if the nickname has already been taken by another player
+    var taken = findNonactivePlayerByNickname(newPlayerName); 
+    if (taken < 0) {
+        //create and add the new player
+        var newPlayer = new player(newPlayerName);
+        nonactivePlayers.push(newPlayer);
+        console.log("new player: " + nonactivePlayers[nonactivePlayers.length-1].name);
+        return true;
+    }
+    return false;
 }
 
 //finds the index of a room with a given passcode in the rooms array
@@ -64,7 +72,7 @@ function findNonactivePlayerByNickname(nickname) {
     if (found >= 0) {
         return found;
     }
-    console.log("Player with nickname '" + nickname + "' doesn't exist in nonactive players array.");
+    console.log("No player with nickname '" + nickname + "' in nonactive players array.");
     return found;
 }
 
@@ -121,7 +129,7 @@ function removeNonactiveRooms() {
 
 //moves a player from the nonactivePlayers array into the players array of the desired room
 //inputs are the nickname of the player to be moved, and the passcode of the room the player should be added to
-//returns false if the player isn't moved due to no room with the given passcode existing or no player with the given nickname existing and returns true if the player is successfully moved
+//returns true if the player is successfully moved or false if the player isn't moved
 function movePlayerToRoom(nickname, roomCode) {
     //check if a room with the given roomCode exists
     var index = findRoomByCode(roomCode);
@@ -134,6 +142,13 @@ function movePlayerToRoom(nickname, roomCode) {
     var i = findNonactivePlayerByNickname(nickname);
     if (i < 0) {
         return false; //if the player isn't in the nonActivePlayers array
+    }
+
+    //check if the player's chosen nickname has already been taken for this room
+    var taken = findPlayerByNickname(nickname, roomCode);
+    if (taken >= 0) {
+        console.log("nickname " + nickname + " already taken");
+        return false; //if a player with this nickname is found in the room
     }
 
     //create new player with the same information as the one to be moved, and add it to the player array in the correct room
@@ -161,17 +176,19 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     addNewRoom();
-    addNewPlayer("nicole");
     addNewPlayer("arran");
-    movePlayerToRoom("nicole", rooms[0].roomCode);
     movePlayerToRoom("arran", rooms[0].roomCode);
-    rooms[0].testDatabaseConnection();
+    addNewPlayer("nicole");
+    movePlayerToRoom("nicole", rooms[0].roomCode);
+    addNewPlayer("nicole");
+    movePlayerToRoom("nicole", rooms[0].roomCode);
+    //rooms[0].testDatabaseConnection();
     //addNewQuiz(rooms[0].roomCode, "", 1);
 });
 
-app.post('/username', (req, res) =>{
+app.post('/username', (req, res) => {
     console.log('Post request recieved: ' + req.body.post)
-    
+
     //Make new player object
     addNewPlayer(req.body.post);
     //Place player in a new room
@@ -186,9 +203,6 @@ app.post('/username', (req, res) =>{
         roomCode: newRoomCode
     }))
 })
-
-
-
 
 //Start the server
 startServer();
