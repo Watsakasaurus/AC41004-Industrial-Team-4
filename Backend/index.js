@@ -6,19 +6,20 @@ let player = require('./player.js')
 let crypto = require('crypto')
 const app = express()
 const bodyParser = require('body-parser')
-
+const { response } = require('express')
+const queries = require('./querries.js')
+var test1query = new queries();
 const PORT = 5000
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/test', (req, res) => {
-    queries.getTestData().then((data) => {
-        res.send(data);
-    }).catch((err) => {
-        console.error(err);
-    });
-});
+
+
+
+
+
+
 var nonactivePlayers = [];
 var rooms = [];
 
@@ -99,7 +100,7 @@ function addNewQuiz(roomCode, category, numOfQuestions) {
         console.log("Quiz category: " + rooms[index].currentQuiz.category + " num: " + rooms[index].currentQuiz.numOfQuestions);
         return true;
     }
-    return false; //if no room with the given passcode exists
+    return falstartServerse; //if no room with the given passcode exists
 }
 
 //finds the indexes of all nonactive rooms in the rooms array
@@ -154,7 +155,7 @@ function movePlayerToRoom(nickname, roomCode) {
     var playerToBeAdded = new player(nickname);
     rooms[index].players.push(playerToBeAdded);
 
-    //remove the player (that has just been moved into room) from nonActivePlayers array
+    //remove tstartServerhe player (that has just been moved into room) from nonActivePlayers array
     nonactivePlayers.splice(i, 1);
 
     console.log("Player " + nickname + " moved to room " + roomCode);
@@ -195,13 +196,24 @@ app.post('/username', (req, res) =>{
     //Move the player to new room
     movePlayerToRoom(req.body.post, newRoomCode)
 
-    //For the response
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({
-        nickname: req.body.post,
-        roomCode: newRoomCode
-    }))
-})
+});
+// Connection to the database to get number of questions 
+app.get('/num_of_questions', (req, res)=>{
+    test1query.getTestData().then((data)=>{
+        res.status(200).json(data.rows);
+    }).catch((err)=>{
+        console.error(err);
+    });
+});
+// Second connection to the database to get question based on the category
+app.get('/cat_of_questions' , (req, res) =>{
+    test1query.getTestData1().then((data)=>{
+        res.status(200).json(data.rows);
+    }).catch((err)=>{
+        console.error(err);
+    });
+});
+
 
 app.post('/roomadduser', (req, res) => {
     console.log('Post request recieved: New player in an existing room')
