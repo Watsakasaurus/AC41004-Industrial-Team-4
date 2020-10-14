@@ -31,5 +31,14 @@ POST http://localhost:5000/roomallplayers
 Content-Type: application/json
 
 {
-    "roomCode": "c183229f67c6abb43a14"
+    "roomCode": "912407b7d9a40cbb8892"
+}
+
+###
+
+POST http://localhost:5000/roomallnicknames
+Content-Type: application/json
+
+{
+    "roomCode": "912407b7d9a40cbb8892"
 }

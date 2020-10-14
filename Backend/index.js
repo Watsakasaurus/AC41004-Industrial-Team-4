@@ -195,6 +195,7 @@ app.post('/username', (req, res) =>{
     movePlayerToRoom(req.body.post, newRoomCode)
 
 });
+
 // Connection to the database to get number of questions 
 app.get('/num_of_questions', (req, res)=>{
     test1query.getTestData().then((data)=>{
@@ -269,6 +270,45 @@ app.post('/roomallplayers', (req, res) =>{
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             players: rooms[index].players,
+            status: true
+        }))
+    }
+
+});
+
+app.post('/roomallnicknames', (req, res) =>{
+    console.log("Post request recieved: All players' nicknames in an existing room");
+    
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if(index < 0)
+    {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: false
+        }))
+    }
+    else
+    {
+        //create an array of the players' nicknames
+        let nicknames = [];
+        let nickname = "";
+        let l = rooms[index].players.length;
+        for(i = 0; i<l; i++)
+        {
+            nickname = rooms[index].players[i].name;
+            nicknames.push(nickname);
+        }
+        
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            nicknames: nicknames,
             status: true
         }))
     }
