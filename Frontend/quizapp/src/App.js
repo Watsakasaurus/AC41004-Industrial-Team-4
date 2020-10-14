@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
+import Lobby from './components/Lobby';
 
 class App extends Component {
 
@@ -39,7 +40,7 @@ class App extends Component {
     switch(compID) {
       case 1:
         return(
-          <Splash onClick={this.onClick.bind(this)}/>
+          <Lobby />
         );
         // code block
         break;
