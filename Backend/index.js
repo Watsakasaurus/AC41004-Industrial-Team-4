@@ -220,7 +220,7 @@ app.post('/roomadduser', (req, res) => {
     {
         //Send failure message back
         res.send(JSON.stringify({
-            nickname: req.body.post,
+            nickname: req.body.nickName,
             roomCode: newRoomCode,
             status: success
         }))
@@ -229,7 +229,7 @@ app.post('/roomadduser', (req, res) => {
     {
         //Send success message
         res.send(JSON.stringify({
-            nickname: req.body.post,
+            nickname: req.body.nickName,
             roomCode: newRoomCode,
             status: success
         }))
