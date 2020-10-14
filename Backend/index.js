@@ -180,8 +180,6 @@ app.get('/', (req, res) => {
     movePlayerToRoom("arran", rooms[0].roomCode);
     addNewPlayer("nicole");
     movePlayerToRoom("nicole", rooms[0].roomCode);
-    addNewPlayer("nicole");
-    movePlayerToRoom("nicole", rooms[0].roomCode);
     //rooms[0].testDatabaseConnection();
     //addNewQuiz(rooms[0].roomCode, "", 1);
 });
@@ -248,6 +246,34 @@ app.post('/roomadduser', (req, res) => {
     }
 })
 
+app.post('/roomallplayers', (req, res) =>{
+    console.log('Post request recieved: All players in an existing room (nicknames & scores)');
+    
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if(index < 0)
+    {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: false
+        }))
+    }
+    else
+    {
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            players: rooms[index].players,
+            status: true
+        }))
+    }
+
+});
 
 //Start the server
 startServer();
