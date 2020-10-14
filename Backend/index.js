@@ -84,7 +84,6 @@ function findPlayerByNickname(nickname, roomCode) {
     var i = findRoomByCode(roomCode);
     if (i >= 0) {
         var found = rooms[i].players.findIndex(p => p.name == nickname);
-        console.log("players index: " + found);
         return found;
     }
     console.log("Room with passcode '" + roomCode + "' doesn't exist.");
@@ -187,9 +186,9 @@ app.get('/', (req, res) => {
     //addNewQuiz(rooms[0].roomCode, "", 1);
 });
 
-app.post('/username', (req, res) => {
-    console.log('Post request recieved: ' + req.body.post)
-
+app.post('/username', (req, res) =>{
+    console.log('Post request recieved: New player in a new room')
+    
     //Make new player object
     addNewPlayer(req.body.post);
     //Place player in a new room
@@ -214,6 +213,40 @@ app.get('/cat_of_questions' , (req, res) =>{
         console.error(err);
     });
 });
+
+
+app.post('/roomadduser', (req, res) => {
+    console.log('Post request recieved: New player in an existing room')
+
+    //Pick up nickname and room code from JSON in the request
+    let nickName = req.body.nickName;
+    let roomCode = req.body.roomCode;
+    
+    //Make new player object
+    addNewPlayer(nickName);
+
+    let success = movePlayerToRoom(nickName, roomCode);
+
+    //Failed to add the player into the room
+    if(success === false)
+    {
+        //Send failure message back
+        res.send(JSON.stringify({
+            nickname: req.body.post,
+            roomCode: newRoomCode,
+            status: success
+        }))
+    }
+    else
+    {
+        //Send success message
+        res.send(JSON.stringify({
+            nickname: req.body.post,
+            roomCode: newRoomCode,
+            status: success
+        }))
+    }
+})
 
 
 //Start the server
