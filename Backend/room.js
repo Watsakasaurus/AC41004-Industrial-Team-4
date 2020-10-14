@@ -40,7 +40,7 @@ module.exports = class room {
     testDatabaseConnection()
     {
         var testQuery = new query();
-        testQuery.getTestData();
+        //testQuery.getTestData();
     }
 
 }

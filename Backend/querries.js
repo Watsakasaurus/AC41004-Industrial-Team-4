@@ -1,8 +1,8 @@
 const { Pool, Client } = require("pg")
 const dotenv = require("dotenv")
+const { response } = require("express")
 dotenv.config()
-const express1 = require('express')
-const app1 = express1()
+
 
 
 
@@ -10,31 +10,55 @@ const app1 = express1()
 
 module.exports = class queries {
 
-    
+
 
     constructor() {
         this.pool = new Pool()
         this.getTestData()
     }
 
-    initConn(){
+    initConn() {
         this.client = new Client();
-        
+
     }
+    // Making querries from the database
+    getTestData() {
+        var num = 3;
 
-    getTestData(){
-        console.log("Begining of getsTestData()")
-        var num = 2;
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
             const client = new Client();
-            client.query('SELECT * FROM quiz limit ' + num, (err, rws) => {
-                console.log(rws);
-                console.log("got to promise");
-                if (err) reject(err);
-                resolve(rws);
+            client.connect().then(() => {
+                client.query('SELECT * FROM quiz limit ' + num, (err, rws) => {
+           
 
+                    if (err) reject(err);
+                    resolve(rws);
+                });
+            
             });
         });
+    }
+
+
+
+    // Retrieves data based on the desired category by the user
+    getTestData1(){
+
+        var cat = "'animals'";
+
+        return new Promise((resolve, reject) => {
+            const client = new Client();
+            client.connect().then(() => {
+            client.query("SELECT * FROM quiz WHERE category = " + cat,(err, rws)=>{
+                    if (err) reject(err);
+                    resolve(rws);
+                });
+            });
+        });
+
+
+
+
     }
 
 }
