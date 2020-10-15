@@ -11,6 +11,7 @@ class Lobby extends Component {
 
         // This obviously will need to be passed down from app.js in the real thing
         this.state = {
+            room_name: 'TestRoom',
             players: ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin'],
         }
     }
@@ -20,8 +21,8 @@ class Lobby extends Component {
             <div className="Menu">
                 <Container className="Menu-container">
                     <Container>
-                        <h1 className="Menu-title">In Room - Waiting For Players</h1>
-                        <h4>Use the room code '1234' to join!</h4>
+                        <h1 className="Menu-title">Waiting For Players</h1>
+                        <h4>You are currently waiting in the room - {this.state.room_name}</h4>
                     </Container>
 
                     <Container fluid>
