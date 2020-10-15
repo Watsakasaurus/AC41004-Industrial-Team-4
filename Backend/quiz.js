@@ -9,6 +9,8 @@ module.exports = class quiz
         //this.currentQuestion = "";
         //this.currentAnswer = "";
         //this.currentOptions = [];
+        //
+        
         this.allQuestions = {};
         this.allAnswers = [];
         this.allOptions = [];
@@ -24,13 +26,13 @@ module.exports = class quiz
         let query = new queries();
         //let questionSet = query.getQuestions(this.category)
 
-        query.getQuestions(this.category).then((data)=>{
+        query.getQuestions("'animals'").then((data)=>{
             this.allQuestions = data.rows;
         }).catch((err)=>{
             console.error(err);
         });
         
-        console.dir("Questions: " + JSON.stringify(this.allQuestions))
+        console.log("Questions: " + this.allQuestions)
     }
 
     getOptions()

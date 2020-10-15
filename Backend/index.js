@@ -202,6 +202,34 @@ app.get('/cat_of_questions' , (req, res) =>{
     });
 });
 
+app.get('/questions', (req, res)=>{
+    console.log('Post request recieved: send questions for')
+
+    //Pick up roomcode in the request
+    let roomCode = req.body.roomCode;
+
+    //Find the room index in the array
+    let roomIndex = findRoomByCode(roomCode)
+
+    
+    if(roomIndex < 0) //No room with that code exists
+    {
+        //Send status 3 not found
+        console.log("Could not find room")
+        res.send(JSON.stringify(
+            {
+                roomCode: roomCode,
+                status: 3
+            }
+        ))
+    }
+    else //Otherwise send questions
+    {
+        let roomFound = rooms[roomIndex]
+        res.send(JSON.stringify(rooms[roomIndex].currentQuiz.allQuestions))
+    }
+})
+
 
 app.post('/roomadduser', (req, res) => {
     console.log('Post request recieved: New player in an existing room')
@@ -222,7 +250,7 @@ app.post('/roomadduser', (req, res) => {
         res.send(JSON.stringify({
             nickname: nickName,
             roomCode: newRoomCode,
-            status: success
+            status: 3
         }))
     }
     else
@@ -231,7 +259,7 @@ app.post('/roomadduser', (req, res) => {
         res.send(JSON.stringify({
             nickname: nickName,
             roomCode: newRoomCode,
-            status: success
+            status: 1
         }))
     }
 })

@@ -7,7 +7,7 @@ module.exports = class room {
         this.roomCode = passcode;
         this.roomName = roomName
         this.players = [];
-        this.currentQuiz = null;
+        this.currentQuiz = this.newQuiz("'animals'", 10);
         this.active = true;
         this.status = 0;
     }
@@ -26,7 +26,8 @@ module.exports = class room {
     //inputs are the category and number of questions for the quiz
     newQuiz(category, numOfQuestions) {
         var newQuiz = new quiz(category, numOfQuestions);
-        this.currentQuiz = newQuiz;
+        
+        return newQuiz
     }
 
     //closes a room by setting active to false
