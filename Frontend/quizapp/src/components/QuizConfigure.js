@@ -1,105 +1,80 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import React, { Component } from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+import Select from 'react-select';
+import { Button, Form, Dropdown } from 'react-bootstrap'
 
-class QuizConfigure extends React.Component {
 
+
+export class QuizConfigure extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            selectedCategorys: [],
-            questionCount: 10,
+            selectedChoice: [],
+            questionCount: 1,
+            questionTime: 10
         };
 
-        this.addCategory = this.addCategory.bind(this);
-        this.removeCategory = this.removeCategory.bind(this);
+        this.updateQuestionCount = this.updateQuestionCount.bind(this);
+        this.updateQuestionTime = this.updateQuestionTime.bind(this);
     }
 
-    // This will update the room name state
+    handleCategoryChange = selectedChoice => {
+        this.setState({ selectedChoice });
+    };
 
-    addCategory = (item) => {
-        // Does the selected category already exist?
-        const selectedCategorys = this.state.selectedCategorys.find(selectedCategorys => selectedCategorys === item);
+    updateQuestionCount(event) {
+        this.setState({ questionCount: event.target.value });
+    };
 
-        // If yes, break
-        if (selectedCategorys){
-            alert("This category has already been added to the list");
-            return;
-        }
+    updateQuestionTime(event) {
+        this.setState({ questionTime: event.target.value });
+    };
 
-        // If not, continue concat to array
-        this.setState(state => {
-            const selectedCategorys = [...state.selectedCategorys, item];
 
-            return {
-                selectedCategorys
-            };
+    displaySelectedCategory(selectedChoice) {
+        return selectedChoice.map(choice => {
+            return choice.value + ", ";
         });
-    }
-
-    removeCategory = (index) => {
-        this.setState(state => {
-          const selectedCategorys = state.selectedCategorys.filter((item, j) => index !== j);
-     
-          return {
-            selectedCategorys,
-          };
-        });
-      };
-
+    };
 
     render() {
+
+        const choices = [
+            { value: "History", label: "History" },
+            { value: "Movies", label: "Movies" },
+            { value: "Sports", label: "Sports" }
+        ];
+
         return (
-            <div className="Menu">
+            <form onSubmit={this.handleSubmit}>
+                <div class="container-fluid">
 
-                <Container className="Menu-container">
+                    <Container className="Menu-container">
+                        <Container>
+                            <h1 className="Menu-title">Configure Quiz</h1>
+                        </Container>
 
-                    <Container>
-                        <h1 className="Menu-title">Configure Quiz</h1>
-                    </Container>
-
-                    <form id="nickname-form" onSubmit={this.handleSubmit}>
-                        <Container className="Room-code-input-con">
-                            <div className="Room-prop">
-                                <h2>Select Category's!</h2>
-                                <DropdownButton block id="dropdown-basic-button" title="Category">
-                                    {this.props.testCategorys.map(item => (
-                                        <Dropdown.Item href="#/action-1" onClick={() => this.addCategory(item)} key={item}>{item}</Dropdown.Item>
-                                    ))}
-                                </DropdownButton>
+                        <Container>
+                        <div className="Room-prop">
+                                <h4>Select Catagories :</h4>
+                                <Select
+                                    className="Nickname-inputbox"
+                                    options={this.props.testCategorys}
+                                    isMulti
+                                    value={this.state.selectedChoice}
+                                    onChange={this.handleCategoryChange} />
                             </div>
                             <div className="Room-prop">
-                                <h4>Question Count</h4>
-                                <Form.Control size="lg" type="password" placeholder="5" className="Nickname-inputbox" maxLength="24" value={this.state.roomPass} onChange={this.updateRoomPass} />
+                                <h4>Question Count :{this.state.questionCount}</h4>
+                                <input type="range" className="custom-range" min="1" max="100" id="Qcount" value={this.state.questionCount} onChange={this.updateQuestionCount} />
                             </div>
                             <div className="Room-prop">
-                                <h4>Category's</h4>
-                                <Row className="Menu-row Lobby-list">
-                                    <Col>
-                                        {this.state.selectedCategorys.map((item, index) => (
-                                            <Container className="Lobby-player-container">
-                                                <h1 className="Lobby-player-text" key={item}>
-                                                    <Row>
-                                                        <Col>
-                                                            {item}
-                                                        </Col>
-                                                        <Col className ="Quiz-config-remove">
-                                                            <Button variant="danger" onClick={() => this.removeCategory(index)}>Remove Category</Button>
-                                                        </Col>
-                                                    </Row>
-                                                    </h1>
-                                            </Container>
-                                        ))}
-                                    </Col>
-                                </Row>
+                                <h4>Question Time :{this.state.questionTime}</h4>
+                                <input type="range" className="custom-range" min="5" max="60" id="Qcount" value={this.state.questionTime} onChange={this.updateQuestionTime} />
                             </div>
-
                         </Container>
 
                         <Container className="Menu-container">
@@ -120,12 +95,11 @@ class QuizConfigure extends React.Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </form>
-                </Container>
-            </div>
-        );
-
+                    </Container>
+                </div>
+            </form>
+        )
     }
 }
 
-export default QuizConfigure;
+export default QuizConfigure

@@ -23,7 +23,13 @@ const testQuestions =
 
 const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin']
 
-const testCategorys = ['Aviation', 'Geography', 'Computing', 'Life', 'Movies']
+const testCategorys =  [{value: "History", label: "History" },
+{ value: "Callum Darling", label: "Callum Darling" },
+{ value: "Movies", label: "Movies" },
+{ value: "Sports", label: "Sports" },
+{ value: "Aviation", label: "Aviation" },
+{ value: "Computing", label: "Computing" },
+{ value: "Dogs", label: "Dogs" }]
 
 const components = {
   SPLASH: 1,
@@ -139,6 +145,24 @@ class App extends Component {
     }
   }
 
+  onQuizConfigClick(id){
+    // switch statement depending on which button was pressed
+    switch (id) {
+
+      // Create next button
+      case 1:
+        return (
+          this.setState({ currentComp: components.LOBBY })
+        );
+
+      // Exit button
+      case 2:
+        return (
+          this.setState({ currentComp: components.MENU })
+        )
+    }
+  }
+
   // called by Menu component user pressed a button
   onMenuClick(id) {
 
@@ -203,7 +227,7 @@ class App extends Component {
         )
       case components.QUIZCONFIG:
         return (
-          <QuizConfigure />
+          <QuizConfigure testCategorys = {testCategorys} onClick={this.onQuizConfigClick.bind(this)}/>
         )
       default:
         return (
@@ -214,11 +238,9 @@ class App extends Component {
   // Render a component based on the state variable currentComp
   render() {
     return (
-      //<div>
-      //   {this.returnComponent(this.state.currentComp)}
-      //</div>
-
-      <QuizConfigure testCategorys = {testCategorys}/>
+      <div>
+         {this.returnComponent(this.state.currentComp)}
+      </div>
     )
   };
 }
