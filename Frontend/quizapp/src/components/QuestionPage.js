@@ -54,7 +54,7 @@ class QuestionPage extends Component {
     onButtonClick(identifier) {
         //TODO  Send answer to backend
 
-        var text = { "roomcode" : this.props.roomcode,
+        var text = { "roomCode" : this.props.roomcode,
                      "nickname" : this.props.nickname,
                      "response" : identifier,
                      "individualtime" : this.state.currentTime.toFixed(1),
@@ -68,12 +68,8 @@ class QuestionPage extends Component {
             body: JSON.stringify(text),
         }).then((result) => result.json()).then((info) => { console.log(info); })
 
-        
-
         //set the state to display the results page until the timeout is complete
         this.setState({ layout: 0 });
-
-
 
         setTimeout(
             function () {
