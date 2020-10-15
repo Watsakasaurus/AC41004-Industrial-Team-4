@@ -9,10 +9,7 @@ class Lobby extends Component {
     constructor(props) {
         super(props);
 
-        // This obviously will need to be passed down from app.js in the real thing
         this.state = {
-            room_code: 1234,
-            players: ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin'],
         }
     }
 
@@ -22,7 +19,7 @@ class Lobby extends Component {
                 <Container className="Menu-container">
                     <Container>
                         <h1 className="Menu-title">Waiting For Players</h1>
-                        <h4>Friend's can use code '{this.state.room_code}' to join this room!</h4>
+                        <h4>Friend's can use code '{this.props.roomCode}' to join this room!</h4>
                     </Container>
 
                     <Container fluid>
@@ -33,7 +30,7 @@ class Lobby extends Component {
                         </Row>
                         <Row className="Menu-row Lobby-list">
                             <Col>
-                                {this.state.players.map(item => (
+                                {this.props.players.map(item => (
                                     <Container className="Lobby-player-container">
                                         <h1 className="Lobby-player-text" key={item}>{item}</h1>
                                     </Container>

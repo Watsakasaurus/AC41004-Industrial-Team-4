@@ -20,6 +20,7 @@ const testQuestions =
 ["The 23rd US President was in office during this period.", "A 1909 - 1913", "B 1889 - 1893", "C 1837 - 1841", "D 1877 - 1881", 2],
 ["Mitochondrias function in cells is to perform this.", "A To control chemical reactions within the cytoplasm", "B To store information needed for cellular division", "C To convert organic materials into energy", "D To process proteins targeted to the plasma membrane", 3]]
 
+const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin']
 
 const components = {
   SPLASH: 1,
@@ -42,6 +43,7 @@ class App extends Component {
       currentComp: components.SPLASH,
       response: '',
       post: '',
+      roomCode: '12345678910'
     }
   }
 
@@ -175,7 +177,7 @@ class App extends Component {
         )
       case components.LOBBY:
         return (
-          <Lobby onClick={this.onLobbyClick.bind(this)} />
+          <Lobby onClick={this.onLobbyClick.bind(this)} players = {testPlayers} roomCode = {this.state.roomCode}/>
         )
       default:
         return (
