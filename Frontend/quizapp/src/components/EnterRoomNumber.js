@@ -32,11 +32,11 @@ class EnterRoomNumber extends React.Component {
 
                     <Container>
                         <h1 className="Menu-title">Enter Room Code</h1>
-                        <h4>To join a room please enter the four digit room code below!</h4>
                     </Container>
 
-                    <Container className="Menu-container">
-                        <h4>Room Code</h4>
+                    <Container className="Room-code-input-con">
+                        
+                        <h4>To join a room please enter the four digit room code below!</h4>
                         <form id="nickname-form" onSubmit={this.handleSubmit}>
                             <Form.Control size="lg" type="number" placeholder="1234" className="Nickname-inputbox" maxlength="4" value={this.state.value} onChange={this.handleChange} />
                         </form>
