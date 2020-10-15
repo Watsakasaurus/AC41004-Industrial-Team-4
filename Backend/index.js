@@ -250,7 +250,7 @@ app.post('/roomadduser', (req, res) => {
         res.send(JSON.stringify({
             nickname: nickName,
             roomCode: newRoomCode,
-            status: 3
+            status: 4
         }))
     }
     else
