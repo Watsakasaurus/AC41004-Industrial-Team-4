@@ -7,6 +7,7 @@ import ResultsPage from './components/Results';
 import RoomConfigure from './components/RoomConfigure';
 import EnterRoomNumber from './components/EnterRoomNumber';
 import Lobby from './components/Lobby';
+import QuizConfigure from './components/QuizConfigure';
 
 const testQuestions = 
 [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
@@ -125,7 +126,7 @@ class App extends Component {
       // Create next button
       case 1:
         return (
-          this.setState({ currentComp: components.LOBBY })
+          this.setState({ currentComp: components.QUIZCONFIG })
         );
 
       // Exit button
@@ -197,6 +198,10 @@ class App extends Component {
       case components.LOBBY:
         return (
           <Lobby onClick={this.onLobbyClick.bind(this)} players = {testPlayers} roomCode = {this.state.roomCode}/>
+        )
+      case components.QUIZCONFIG:
+        return (
+          <QuizConfigure />
         )
       default:
         return (
