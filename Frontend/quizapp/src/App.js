@@ -4,7 +4,8 @@ import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
-import {RoomConfigure} from './components/RoomConfigure'   
+import RoomConfigure from './components/RoomConfigure';
+import EnterRoomNumber from './components/EnterRoomNumber';
 
 const testQuestions = [["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
                       ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!",1],
@@ -133,9 +134,11 @@ class App extends Component {
   // Render a component based on the state variable currentComp
   render() {
     return (
-      <div>
-        {this.returnComponent(this.state.currentComp)}                        
-      </div>
+      //<div>
+      //  {this.returnComponent(this.state.currentComp)}                        
+      //</div>
+
+      <EnterRoomNumber />
     )
   };
 }
