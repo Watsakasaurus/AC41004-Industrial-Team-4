@@ -336,6 +336,41 @@ app.post('/startroom', (req, res) => {
 
 });
 
+app.post('/questionresponse', (req, res) =>{
+    console.log('Post request recieved: Responses from the players');
+
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 404,
+            successful: false
+        }))
+    }
+    else {
+        //compare user answers with correct one
+
+        //find scores to be added
+
+        //add scores to the players
+
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            players: rooms[index].players,
+            status: rooms[index].status,
+            successful: true
+        }))
+    }
+
+});
+
 //Start the server
 startServer();
 
