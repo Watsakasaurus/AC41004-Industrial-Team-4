@@ -28,7 +28,6 @@ const components = {
   ROOMCONF: 6
 }
 
-
 class App extends Component {
 
   constructor(props) {
@@ -78,6 +77,10 @@ class App extends Component {
     switch(id) {
       //Create room button
       case 1:
+        return(
+          <Lobby />
+        );
+        // code block
         //TODO ask for code from backend
         console.log("Create Room")
         this.setState({currentComp: components.ROOMCONF})
