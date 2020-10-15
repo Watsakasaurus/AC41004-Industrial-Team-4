@@ -60,7 +60,7 @@ class QuestionPage extends Component {
                      "individualtime" : this.state.currentTime.toFixed(1),
                      "questionnumber" : this.state.currentQuestion};
 
-        fetch('/username', {
+        fetch('/questionresponse', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
