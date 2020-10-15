@@ -7,6 +7,17 @@ body{
     background-repeat: no-repeat;
 }
 
+body {
+  margin: 0;
+  font-family: 'Lexend Deca', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    
+  background-image: url("./assets/banner.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
 .Menu-container{
     margin-top: 7.5rem;
 }
@@ -123,17 +134,6 @@ body{
 
 }
 
-body {
-  margin: 0;
-  font-family: 'Lexend Deca', sans-serif !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-    
-  background-image: url("./assets/banner.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -225,6 +225,24 @@ code {
     color: white;
     padding-bottom: 5rem;
 }
+
+
+.Lobby-player-container{
+  background-color: rgb(21, 22, 66);
+  border-radius: 10px;
+}
+
+.Lobby-player-text{
+  color: white;
+}
+
+.Lobby-list{
+  max-height: 300px;
+  overflow: auto;
+  border-color: rgb(21, 22, 66);
+  border-width: 3px;
+  border-radius: 10px;
+  border-style: solid;
 
 .badge {
   font-size: 1.5rem !important;

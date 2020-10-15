@@ -4,6 +4,7 @@ import Splash from './components/Splash';
 import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
+import Lobby from './components/Lobby';
 import {RoomConfigure} from './components/RoomConfigure'   
 
 const testQuestions = [["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
@@ -26,7 +27,6 @@ const components = {
   MENU: 5,
   ROOMCONF: 6
 }
-
 
 class App extends Component {
 
@@ -77,6 +77,10 @@ class App extends Component {
     switch(id) {
       //Create room button
       case 1:
+        return(
+          <Lobby />
+        );
+        // code block
         //TODO ask for code from backend
         console.log("Create Room")
         this.setState({currentComp: components.ROOMCONF})
