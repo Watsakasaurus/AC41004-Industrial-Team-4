@@ -186,15 +186,25 @@ app.post('/username', (req, res) => {
     //Place player in a new room
     newRoomCode = addNewRoom();
     //Move the player to new room
-    movePlayerToRoom(req.body.post, newRoomCode)
+    let success = movePlayerToRoom(req.body.post, newRoomCode)
 
-    res.send(JSON.stringify(
-        {
-            roomCode: newRoomCode,
-            status: 0,   
-        }
-    ))
-
+    if(success === true)
+    {
+        res.send(JSON.stringify(
+            {
+                roomCode: newRoomCode,
+                status: 0,   
+            }
+        ))
+    }
+    else
+    {
+        res.send(JSON.stringify(
+            {
+                status: 8
+            }
+        ))
+    }
 });
 
 // Connection to the database to get number of questions 
