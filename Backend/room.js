@@ -2,14 +2,14 @@ var quiz = require('./quiz.js')
 var query = require('./querries')
 module.exports = class room {
 
-    constructor(id, passcode) {
+    constructor(id, passcode, roomName) {
         this.roomID = id;
         this.roomCode = passcode;
+        this.roomName = roomName
         this.players = [];
         this.currentQuiz = null;
         this.active = true;
-        //console.log("Room created");
-        //console.log("roomID: " + this.roomID + " passcode: " + this.roomCode + " status: " + this.active);
+        this.status = 0;
     }
 
     //returns the ID of the room

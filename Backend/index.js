@@ -14,12 +14,6 @@ const PORT = 5000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
-
-
-
 var nonactivePlayers = [];
 var rooms = [];
 
@@ -175,13 +169,8 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    addNewRoom();
-    addNewPlayer("arran");
-    movePlayerToRoom("arran", rooms[0].roomCode);
-    addNewPlayer("nicole");
-    movePlayerToRoom("nicole", rooms[0].roomCode);
-    //rooms[0].testDatabaseConnection();
-    //addNewQuiz(rooms[0].roomCode, "", 1);
+    let newRoomCode = addNewRoom();
+    addNewQuiz(newRoomCode, "'animals'", 10)
 });
 
 app.post('/username', (req, res) =>{
@@ -206,7 +195,7 @@ app.get('/num_of_questions', (req, res)=>{
 });
 // Second connection to the database to get question based on the category
 app.get('/cat_of_questions' , (req, res) =>{
-    test1query.getTestData1().then((data)=>{
+    test1query.getQuestions().then((data)=>{
         res.status(200).json(data.rows);
     }).catch((err)=>{
         console.error(err);

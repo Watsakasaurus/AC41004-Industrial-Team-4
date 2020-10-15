@@ -61,4 +61,19 @@ module.exports = class queries {
 
     }
 
+    getQuestions(category)
+    {
+        
+        return new Promise((resolve, reject) => {
+            const client = new Client();
+            client.connect().then(() => {
+            client.query("SELECT * FROM quiz WHERE category = " + category,(err, rws)=>{
+                    if (err) reject(err);
+                    resolve(rws);
+                });
+            });
+        });
+        
+    }
+
 }
