@@ -30,7 +30,8 @@ const components = {
   MENU: 5,
   ROOMCONF: 6,
   LOBBY: 7,
-  ROOMCODE: 8
+  ROOMCODE: 8,
+  QUIZCONFIG: 9
 }
 
 class App extends Component {
@@ -103,13 +104,31 @@ class App extends Component {
     // switch statement depending on which button was pressed
     switch (id) {
 
-      // Create start game button
+      // Green button
       case 1:
         return (
           this.setState({ currentComp: components.LOBBY })
         );
 
-      // Exit lobby button
+      // Exit button
+      case 2:
+        return (
+          this.setState({ currentComp: components.MENU })
+        )
+    }
+  }
+
+  onRoomConfClick(id){
+    // switch statement depending on which button was pressed
+    switch (id) {
+
+      // Create next button
+      case 1:
+        return (
+          this.setState({ currentComp: components.LOBBY })
+        );
+
+      // Exit button
       case 2:
         return (
           this.setState({ currentComp: components.MENU })
@@ -170,7 +189,7 @@ class App extends Component {
           <Menu playerNickname={this.state.nickname} onClick={this.onMenuClick.bind(this)} />);
       case components.ROOMCONF:
         return (
-          <RoomConfigure submit={this.roomConfigureSubmit.bind(this)} />);
+          <RoomConfigure onClick={this.onRoomConfClick.bind(this)} />);
       case components.ROOMCODE:
         return (
           <EnterRoomNumber onClick={this.onRoomClick.bind(this)}/>

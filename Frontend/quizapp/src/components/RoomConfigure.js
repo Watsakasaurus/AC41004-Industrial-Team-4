@@ -1,103 +1,96 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
 
-export class RoomConfigure extends Component {
+class RoomConfigure extends React.Component {
+
+    
     constructor(props) {
         super(props);
         this.state = {
-            roomName: "",
-            roomPass: "",
-            playerCount: "",
+            roomName: '',
+            roomPass: '',
+            playerCount: '8'
         };
+
+        this.updateRoomName = this.updateRoomName.bind(this);
+        this.updateRoomPass = this.updateRoomPass.bind(this);
+        this.updatePlayerCount = this.updatePlayerCount.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        const data = this.state;
-        console.log(data);
-        this.props.submit();
-    };
+    // This will update the room name state
+    updateRoomName(event) {
+        this.setState({ roomName: event.target.value });
+    }
 
-    handleInputChange = (event) => {
-        event.preventDefault();
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+    // This will update the room name state
+    updateRoomPass(event) {
+        this.setState({ roomPass: event.target.value });
+    }
+
+    // This will update the room name state
+    updatePlayerCount(event) {
+        this.setState({ playerCount: event.target.value });
+    }
+
+    // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
+    handleSubmit(event) {
+        event.preventDefault() // Prevent default prevents the page refreshing
     }
 
     render() {
-
-        const { roomName } = this.state
-
         return (
-            <Container className="Menu-container">
-            <form onSubmit={this.handleSubmit}>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-4">
-                        </div>
+            <div className="Menu">
 
-                        <div className="col-md-4">
-                            <h1 className="Menu-title">
-                                Configure Room
-                            </h1>
-                        </div>
+                <Container className="Menu-container">
 
-                        <div className="col-md-4">
-                        </div>
-                    </div>
-                
-                    <div className="row">
-                        <div className="col-md-4">
-                        </div>
-                        <div className="col-md-4">
-                            <div className="form-group">
-                                <label for="Room">
-                                    Room Name
-                                </label>
-
-                                <input type="text" name="roomName" className="form-control"
-                                    placeholder="Room 1" onChange={this.handleInputChange} />
+                    <Container>
+                        <h1 className="Menu-title">Configure Room</h1>
+                    </Container>
+                    <form id="nickname-form" onSubmit={this.handleSubmit}>
+                        <Container className="Room-code-input-con">
+                            <div className="Room-prop">
+                                <h4>Room Name</h4>
+                                <Form.Control size="lg" type="text" placeholder="TheBestRoom" className="Nickname-inputbox" maxLength="24" value={this.state.roomName} onChange={this.updateRoomName} />
                             </div>
-
-                            <div className="form-group">
-                                <label for="RoomPass">
-                                    Room Password
-                                </label>
-
-                                <input type="text" name="roomPass" className="form-control"
-                                    placeholder="Qwerty" onChange={this.handleInputChange} />
+                            <div className="Room-prop">
+                                <h4>Room Password</h4>
+                                <Form.Control size="lg" type="password" placeholder="qwerty(dont use this example)" className="Nickname-inputbox" maxLength="24" value={this.state.roomPass} onChange={this.updateRoomPass} />
                             </div>
-
-                            <div className="form-group">
-                                <label for="Player Count">
-                                    Player Count
-                                </label>
-
-                                <input type="range" name="playerCount" className="custom-range"
-                                min="0" max="5" id="customRange2" onChange={this.handleInputChange} />
+                            <div className="Room-prop">
+                                <h4>Player Count</h4>
+                                <Form.Control size="lg" type="number" placeholder="Max Nine Players" className="Nickname-inputbox" maxLength="24" value={this.state.playerCount} onChange={this.updatePlayerCount} />
                             </div>
+                            
+                        </Container>
 
-                            <div className="row">
-                                <div className="col-md-3">
-                                </div>
-                                <div className="col-md-6">
-                                </div>
-                                <div className="col-md-3">
+                        <Container className="Menu-container">
+                            <Row className="Menu-row">
+                                <Col>
+                                    <Button className="Menu-button" block variant="danger" onClick={() => this.props.onClick(2)}>
+                                        <h1 className="Menu-cancel">
+                                            x
+                                    </h1>
+                                    </Button>
+                                </Col>
+                                <Col>
+                                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick={() => this.props.onClick(1)}>
+                                        <h1 className="Splash-button">
+                                            Next
+                                        </h1>
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Container>
+                    </form>
+                </Container>
+            </div>
+        );
 
-                                    <button type="submit" className="btn btn-success">
-                                        Next
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </Container>
-        )
     }
 }
 
