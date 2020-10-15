@@ -408,7 +408,7 @@ app.post('/questionresponse', (req, res) =>{
         //Send success message
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
-            playerscore: rooms[index].players.totalScore,
+            playerscore: rooms[index].players[findPlayerByNickname(req.body.nickname, req.body.roomCode)].totalScore,
             status: rooms[index].status,
             successful: true
         }))
