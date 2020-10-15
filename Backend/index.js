@@ -341,6 +341,7 @@ app.post('/startroom', (req, res) => {
     let roomCode = req.body.roomCode;
     let category = req.body.category;
     let numOfQuestions = req.body.numOfQuestions;
+    let maxTime = req.body.maxTime;
 
     let index = findRoomByCode(roomCode);
 
@@ -356,6 +357,9 @@ app.post('/startroom', (req, res) => {
     else {
         //create new quiz and add to the room
         addNewQuiz(roomCode, category, numOfQuestions);
+
+        //update the room's max time
+        rooms[index].maxtime = maxTime;
 
         //update the room's status
         rooms[index].status = 6;
