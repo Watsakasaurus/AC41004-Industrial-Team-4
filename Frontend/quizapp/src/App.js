@@ -161,7 +161,7 @@ class App extends Component {
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage questions={testQuestions} />);
+          <QuestionPage questions={testQuestions} nickname={this.state.nickname} roomcode={12345678912345678920}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);
