@@ -38,7 +38,7 @@ export class RoomConfigure extends Component {
                         </div>
 
                         <div className="col-md-4">
-                            <h1>
+                            <h1 className="Menu-title">
                                 Configure Room
                             </h1>
                         </div>

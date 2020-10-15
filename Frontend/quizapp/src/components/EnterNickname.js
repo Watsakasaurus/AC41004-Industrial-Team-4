@@ -28,43 +28,37 @@ class EnterNickname extends React.Component {
 
     render() {
         return (
-            <div className="Splash">
+            <div className="Menu">
 
-                <Container className="Menu-container">
-                    <h1 className="Generic-center-title">Welcome!</h1>
-                </Container>
+                <Container className="Menu-container">  
 
-                <Container className="Menu-container">
-                    <Row className="justify-content-center">
-                        <Col xl={8} xs={10}>
-                            <Row className="justify-content-center">
+                    <Container>
+                        <h1 >Welcome!</h1>
+                    </Container>
+
+                    <Container className="Room-code-input-con">
                                 <h4>Please choose a Nickname</h4>
-                            </Row>
-                            <Row className="justify-content-center">
+
                                 <form id="nickname-form" onSubmit={this.handleSubmit}>
                                     <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" pattern="^\S+$" maxLength="15" value={this.state.value} onChange={this.handleChange} />
                                 </form>
-                            </Row>
-                            <Row className="justify-content-center">
                                 
-                                <p>No Spaces, 15 Characters Max</p>
-                                <p className="Disclaimer Generic-center">Please do not choose a Nickname that could reveal personal infomation about yourself.</p>
-                                <p>eg AnnoyingSeagull69</p>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
+                                <p>No Spaces, 15 Characters Max, No Personal Infomation</p>
+                    </Container>
 
-                <Container className="Menu-container">
-                    <Row className="justify-content-center">
-                        <Button className="Menu-green-circles" form="nickname-form" type="submit" variant="success">
-                            <div className="Menu-button-text">
-                                Next
-                        </div>
-                        </Button>
-                    </Row>
-                </Container>
+                    <Container className="Menu-container">
+                        <Row className="Menu-row">
+                            <Col>
+                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success">
+                                    <h1 className="Splash-button">
+                                        Next
+                                    </h1>
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Container>
 
+                </Container>
             </div>
         );
 

@@ -9,6 +9,7 @@ body{
 
 body {
   margin: 0;
+  margin-bottom: 10rem !important;
   font-family: 'Lexend Deca', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -177,10 +178,6 @@ code {
   text-align:center;
 }
 
-.Splash-low-container{
-    padding-bottom: 5rem;
-}
-
 .Menu-container{
     margin-top: 7.5rem;
 }
@@ -268,4 +265,26 @@ code {
 
 .Room-code-input-con{
   padding-top: 1rem;
+}
+
+.Footer{
+  background-color: rgb(46, 46, 46);
+  color: white;
+  position: relative;
+  bottom: 0;
+  min-height: 15rem;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.Splash-low-container{
+  padding-bottom: 5rem;
+}
+
+.Footer-title{
+  margin-top: 2.5rem;
+}
+
+.Room-prop{
+  padding-top: 2rem;
 }
