@@ -51,3 +51,14 @@ Content-Type: application/json
 {
     "roomCode": "912407b7d9a40cbb8892"
 }
+
+###
+
+POST http://localhost:5000/startroom
+Content-Type: application/json
+
+{
+    "roomCode": "92547178ac535cbe8026",
+    "category": "'animals'",
+    "numOfQuestions": 2
+}
