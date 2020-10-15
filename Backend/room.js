@@ -11,6 +11,7 @@ module.exports = class room {
         this.currentQuiz = this.newQuiz(this.defaultQuiz, 10);
         this.active = true;
         this.status = 0;
+        this.maxtime = 5;
     }
     
 
