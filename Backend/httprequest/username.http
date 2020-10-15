@@ -62,3 +62,12 @@ Content-Type: application/json
     "category": "'animals'",
     "numOfQuestions": 2
 }
+
+###
+
+POST http://localhost:5000/history
+Content-Type: application/json
+
+{
+    "roomCode": "3dea75618630b277f2c7"
+}
