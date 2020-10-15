@@ -23,6 +23,8 @@ const testQuestions =
 
 const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin']
 
+const testCategorys = ['Aviation', 'Geography', 'Computing', 'Life', 'Movies']
+
 const components = {
   SPLASH: 1,
   NICKNAME: 2,
@@ -212,9 +214,11 @@ class App extends Component {
   // Render a component based on the state variable currentComp
   render() {
     return (
-      <div>
-        {this.returnComponent(this.state.currentComp)}
-      </div>
+      //<div>
+      //   {this.returnComponent(this.state.currentComp)}
+      //</div>
+
+      <QuizConfigure testCategorys = {testCategorys}/>
     )
   };
 }

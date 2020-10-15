@@ -226,6 +226,8 @@ code {
 
 .Lobby-player-container{
   background-color: darkgray;
+  min-height: 55px;
+  margin-bottom: 10px;
   border-radius: 10px;
 }
 
@@ -233,8 +235,12 @@ code {
   color: white;
 }
 
+.Quiz-config-remove{
+  text-align: right !important;
+}
+
 .Lobby-list{
-  max-height: 300px;
+  max-height: 325px;
   overflow: auto;
   border-color:darkgray;
   border-width: 3px;

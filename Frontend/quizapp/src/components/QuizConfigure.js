@@ -13,36 +13,46 @@ class QuizConfigure extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            roomName: '',
-            roomPass: '',
-            playerCount: '8'
+            selectedCategorys: [],
+            questionCount: 10,
         };
 
-        this.updateRoomName = this.updateRoomName.bind(this);
-        this.updateRoomPass = this.updateRoomPass.bind(this);
-        this.updatePlayerCount = this.updatePlayerCount.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.addCategory = this.addCategory.bind(this);
+        this.removeCategory = this.removeCategory.bind(this);
     }
 
     // This will update the room name state
-    updateRoomName(event) {
-        this.setState({ roomName: event.target.value });
+
+    addCategory = (item) => {
+        // Does the selected category already exist?
+        const selectedCategorys = this.state.selectedCategorys.find(selectedCategorys => selectedCategorys === item);
+
+        // If yes, break
+        if (selectedCategorys){
+            alert("This category has already been added to the list");
+            return;
+        }
+
+        // If not, continue concat to array
+        this.setState(state => {
+            const selectedCategorys = [...state.selectedCategorys, item];
+
+            return {
+                selectedCategorys
+            };
+        });
     }
 
-    // This will update the room name state
-    updateRoomPass(event) {
-        this.setState({ roomPass: event.target.value });
-    }
+    removeCategory = (index) => {
+        this.setState(state => {
+          const selectedCategorys = state.selectedCategorys.filter((item, j) => index !== j);
+     
+          return {
+            selectedCategorys,
+          };
+        });
+      };
 
-    // This will update the room name state
-    updatePlayerCount(event) {
-        this.setState({ playerCount: event.target.value });
-    }
-
-    // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
-    handleSubmit(event) {
-        event.preventDefault() // Prevent default prevents the page refreshing
-    }
 
     render() {
         return (
@@ -53,14 +63,15 @@ class QuizConfigure extends React.Component {
                     <Container>
                         <h1 className="Menu-title">Configure Quiz</h1>
                     </Container>
+
                     <form id="nickname-form" onSubmit={this.handleSubmit}>
                         <Container className="Room-code-input-con">
                             <div className="Room-prop">
                                 <h2>Select Category's!</h2>
                                 <DropdownButton block id="dropdown-basic-button" title="Category">
-                                    <Dropdown.Item href="#/action-1">Aviation</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Food</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">History</Dropdown.Item>
+                                    {this.props.testCategorys.map(item => (
+                                        <Dropdown.Item href="#/action-1" onClick={() => this.addCategory(item)} key={item}>{item}</Dropdown.Item>
+                                    ))}
                                 </DropdownButton>
                             </div>
                             <div className="Room-prop">
@@ -69,6 +80,24 @@ class QuizConfigure extends React.Component {
                             </div>
                             <div className="Room-prop">
                                 <h4>Category's</h4>
+                                <Row className="Menu-row Lobby-list">
+                                    <Col>
+                                        {this.state.selectedCategorys.map((item, index) => (
+                                            <Container className="Lobby-player-container">
+                                                <h1 className="Lobby-player-text" key={item}>
+                                                    <Row>
+                                                        <Col>
+                                                            {item}
+                                                        </Col>
+                                                        <Col className ="Quiz-config-remove">
+                                                            <Button variant="danger" onClick={() => this.removeCategory(index)}>Remove Category</Button>
+                                                        </Col>
+                                                    </Row>
+                                                    </h1>
+                                            </Container>
+                                        ))}
+                                    </Col>
+                                </Row>
                             </div>
 
                         </Container>
