@@ -188,6 +188,13 @@ app.post('/username', (req, res) => {
     //Move the player to new room
     movePlayerToRoom(req.body.post, newRoomCode)
 
+    res.send(JSON.stringify(
+        {
+            roomCode: newRoomCode,
+            status: 0,   
+        }
+    ))
+
 });
 
 // Connection to the database to get number of questions 
