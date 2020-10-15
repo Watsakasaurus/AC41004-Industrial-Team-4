@@ -7,10 +7,12 @@ module.exports = class room {
         this.roomCode = passcode;
         this.roomName = roomName
         this.players = [];
-        this.currentQuiz = this.newQuiz("'animals'", 10);
+        this.defaultQuiz = "animals"
+        this.currentQuiz = this.newQuiz(this.defaultQuiz, 10);
         this.active = true;
         this.status = 0;
     }
+    
 
     //returns the ID of the room
     getRoomId() {

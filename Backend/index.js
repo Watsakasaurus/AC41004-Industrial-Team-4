@@ -19,7 +19,7 @@ var rooms = [];
 
 //creates and adds a new room to the rooms array
 //returns the new room's generated passcode
-function addNewRoom() {
+function addNewRoom(category) {
     let code = crypto.randomBytes(10).toString('hex');
     var check = findRoomByCode(code);
     //while a room with the generated code already exists, generate a new random code
@@ -29,7 +29,7 @@ function addNewRoom() {
     }
 
     //create and add a new room to the rooms array
-    var newRoom = new room(rooms.length, code);
+    var newRoom = new room(rooms.length, code, category);
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
     return newRoom.roomCode;
@@ -204,7 +204,7 @@ app.get('/cat_of_questions' , (req, res) =>{
 });
 
 app.get('/questions', (req, res)=>{
-    console.log('Post request recieved: send questions for')
+    console.log('Post request recieved: send questions to quiz')
 
     //Pick up roomcode in the request
     let roomCode = req.body.roomCode;

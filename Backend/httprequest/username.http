@@ -31,7 +31,7 @@ GET  http://localhost:5000/questions
 Content-Type: application/json
 
 {
-    "roomCode": "f11d3c03cadf986590f"
+    "roomCode": "5200d9c15f41f7020009"
 }
 
 ###

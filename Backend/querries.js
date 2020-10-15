@@ -66,8 +66,9 @@ module.exports = class queries {
         
         return new Promise((resolve, reject) => {
             const client = new Client();
+            console.log(category)
             client.connect().then(() => {
-            client.query("SELECT * FROM quiz WHERE category = " + category,(err, rws)=>{
+            client.query("SELECT * FROM quiz WHERE category = " + `'${category}'`,(err, rws)=>{
                     if (err) reject(err);
                     resolve(rws);
                 });
