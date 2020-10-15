@@ -5,6 +5,28 @@ import EnterNickname from './components/EnterNickname';
 import QuestionPage from './components/QuestionPage';
 import ResultsPage from './components/Results';
 import Lobby from './components/Lobby';
+import {RoomConfigure} from './components/RoomConfigure'   
+
+const testQuestions = [["This drink contains caffeine.","A Mineral water","B Orange juice","C Coffee","D Beer",3],
+                      ["Finish the proverb:","Poets are born, ________.","A ...not made.","B ...but can also be made.","C ...but thats not for sure.","D ..., long live the poets!",1],
+                      ["If a TV program is rated G then this is true.","A It contains moderate violence.","B It contains mild sexual situations.","C It is suitable for all audiences.","D It is suitable for young children.",3],
+                      ["The theory of relativity was introduced in physics by this man.","A Galileo Galilei","B Albert Einstein","C Archimedes","D Isaac Newton",2],
+                      ["The symbol for the chemical element iron is this.","A I","B Fe","C Zn","D Br",2],
+                      ["He author of the novel A Portrait of the Artist as a Young Man is this writer.","A T. S. Eliot","B Samuel Beckett","C William Faulkner","D James Joyce",4],
+                      ["The capital of Mongolia is this city.","A Davao","B Islamabad","C Quezon","D Ulaanbaatar",4],
+                      ["The US bought Alaska in this year.","A 1942","B 1882","C 1854","D 1867",4],
+                      ["The 23rd US President was in office during this period.","A 1909 - 1913","B 1889 - 1893","C 1837 - 1841","D 1877 - 1881",2],
+                      ["Mitochondrias function in cells is to perform this.","A To control chemical reactions within the cytoplasm","B To store information needed for cellular division","C To convert organic materials into energy","D To process proteins targeted to the plasma membrane",3]]
+
+
+const components = {
+  SPLASH: 1,
+  NICKNAME: 2,
+  QUESTION: 3,
+  RESULTS: 4,
+  MENU: 5,
+  ROOMCONF: 6
+}
 
 class App extends Component {
 
@@ -13,131 +35,116 @@ class App extends Component {
 
     this.state = {
       nickname: "",
-      inApp: false,
-      inQs: false,
+      currentComp: components.SPLASH,
+      response: '',
+      post: '',
     }
   }
 
   // setNickname - Function Purpose : 
   // Passed down as a prop to the EnterNickname component to allow that component to pass the nickname up.
-  // Sets the nickname into app.js state
-                      
+  // Sets the nickname into app.js state           
   setNickname(newNickname) {
     console.log(newNickname);
-    this.setState({nickname: newNickname})
+    this.setState({nickname: newNickname, currentComp: components.MENU})
+
+    //Pass username to server
+    fetch('/username' , {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({post: newNickname})
+    })
+    .then((result) => result.json())
+    .then((info) => { console.log(info); })
+
   }
 
-  // Using this for testing :)
+  // called by roomConfigure component when the user presses the submit button
+  roomConfigureSubmit(data){
+    this.setState({currentComp: components.QUESTION})
+  }
+
+  // called by Splash component when user presses begin button
   onClick(){
-    this.setState({inApp: true})
+    this.setState({currentComp: components.NICKNAME})
   }
 
-  onQClick(){
-    this.setState({inQs: true})
-  }
-
-  returnComponent(compID){
-    switch(compID) {
+  // called by Menu component user pressed a button
+  onMenuClick(id){
+    // switch statement depending on which button was pressed
+    switch(id) {
+      //Create room button
       case 1:
         return(
           <Lobby />
         );
         // code block
+        //TODO ask for code from backend
+        console.log("Create Room")
+        this.setState({currentComp: components.ROOMCONF})
         break;
+      //Room code button
       case 2:
-        return(
-          <EnterNickname changeValue={this.setNickname.bind(this)}/>
-        );
+        console.log("Enter room code")
         break;
+      // O button
       case 3:
-        return(
-          <QuestionPage questions={[["Which of thghese is not a car","Saab", "Volvo", "BMW","Dog"],
-                                ["Which of theghse is not a car","Saab", "Volvo", "BMW2","Dog2"],
-                                ["Which of these is not a car","Saab", "Volvo", "BMW3","Dog3"],
-                                ["Which of thesghjghe is not a car","Saab", "Volvo", "BMW4","Dog4"],
-                                ["Which of these idfs not a car","Saab", "Volvo", "BMW5","Dog5"],
-                                ["Which of these is not a car","Saab", "Volvo", "BMW4","Dog4"],
-                                ["Which of these isgh not a car","Saab", "Volvo", "BMW4","Dodg4"],
-                                ["Which of these ifs not a car","Saab", "Volvo", "BMW4","Dovdg4"],
-                                ["Which of these isg not a car","Saab", "Volvo", "BMW4","Dosdg4"],
-                                ["Which of these is hnot a car","Saab", "Volvo", "BMW4","Dovdg4"],
-                                ["Which of these is njot a car","Saab", "Volvo", "BMW4","Dovdg4"],
-                                ["Which of these is not a car","Saab", "Volvo", "BMW4","Doddg4"],
-                                ["Which of these is nokt a car","Saab", "Volvo", "BMW4","Dosdg4"],
-                                ["Which of these is notk a car","Saab", "Volvo", "BMW4","Dovgd4"],
-                                ["Which of these is not kla car","Saab", "Volvo", "BMW4","Ddog4"],
-                                ["Which of these is not a lcar","Saab", "Volvo", "BMW4","sDog4"],
-                                ["Which of these is not a clar","Saab", "Volvo", "BMW4","Dog4fd"],
-                                ["Which of these is not a calr","Saab", "Volvo", "BMW4","Dogcx4"],]}
-        ></QuestionPage>
-        );
+        console.log("O Button")
         break;
+      // X button, returns user to nickname screen
       case 4:
-        return(
-          <ResultsPage></ResultsPage>
-        );
-            // code block
-        break;
-      case 5:
-        return(
-          <Menu playerNickname ={this.state.nickname} onClick={this.onQClick.bind(this)} />
-        );
+        console.log("X Button")
+        this.setState({nickname: false, currentComp: components.NICKNAME});
         break;
       default:
+
+    }
+  }
+
+  // returns the JSX of a component depending on compID value passed in
+  returnComponent(compID){
+    switch(compID) {
+      case components.SPLASH:
         return(
-          <h1>You probably shouldnt be seeing this </h1>
-        );
+          <Splash onClick={this.onClick.bind(this)}/>);
+      case components.NICKNAME:
+        return(
+          <EnterNickname changeValue={this.setNickname.bind(this)}/>);
+      case components.QUESTION:
+        return(
+          <QuestionPage questions={testQuestions}
+        ></QuestionPage>); 
+      case components.RESULTS:
+        return(
+          <ResultsPage></ResultsPage>);
+      case components.MENU:
+        return(
+          <Menu playerNickname ={this.state.nickname} onClick={this.onMenuClick.bind(this)} />);
+      case components.ROOMCONF:
+        return(
+          <RoomConfigure submit={this.roomConfigureSubmit.bind(this)}/>);
+      default:
+        return(
+          <h1>An Error has occured, please refresh your page.</h1>);
     }
     
   }
 
   
 
-  // Yes the code below this is an utter mess, its for testing, dont panic ;)
+  // Render a component based on the state variable currentComp
   render() {
-
-
-// <div>
-//         {!this.state.inApp ?
-//           <Splash onClick={this.onClick.bind(this)} />
-//           :
-//           <div></div>}
-        
-//         {this.state.inApp && !this.state.nickname ?
-//           <EnterNickname changeValue={this.setNickname.bind(this)}/>
-//           :
-//           <div></div>}
-
-//         {this.state.nickname ?
-
-//           // When calling the menu, pass the player nick name as a prop
-//           <Menu playerNickname ={this.state.nickname} onClick={this.onClick.bind(this)} />
-//           :
-//           <div></div>}
-
-
-    var compNo = -1;
-    if(!this.state.inApp){
-      compNo = 1;
-    }else if(this.state.inApp && !this.state.nickname){
-      compNo = 2;
-    }else if(this.state.nickname && !this.state.inQs){
-      compNo = 5; 
-    }else if(this.state.inQs){
-      compNo = 3;
-    }
-
-
     return (
       <div>
-        {this.returnComponent(compNo)}                        
+        {this.returnComponent(this.state.currentComp)}                        
       </div>
-         
-         
     )
-
   };
 }
 
 
 export default App;
+
+

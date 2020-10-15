@@ -2,14 +2,15 @@ import React, {Component} from "react";
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import QuestionTimer from '../components/QuestionTimer';
+import QuestionTimer from './QuestionTimer';
 import Container from 'react-bootstrap/Container';
-import Results from '../components/Results';
+import Results from './Results';
 
 
 
 
-
+// time between questions in ms
+const timeBetweenQs = 500;
 
 
 //function that simply creates and returns a button with text and onclick funciton
@@ -27,6 +28,7 @@ class QuestionPage extends Component {
                     
       }
 
+    //Createes a question button, currently contains code to make the button red if needed
     makeButton(text, onClick, colour){
         if(colour){
             return(
@@ -37,6 +39,7 @@ class QuestionPage extends Component {
             );
         }else{
             return(
+                //adds different css class so colour can be changed independently of other buttons
                 <Button className="Question-button Question-button-red"
                 onClick={() => this.onButtonClick(onClick)}>
                     {text}
@@ -45,40 +48,53 @@ class QuestionPage extends Component {
         }
     }
 
+    //indicates that one of the answer buttons has been pressed. Identifier tells which button has been pressed 1-4
     onButtonClick(identifier){
-        // Send answer to backend
+        //TODO  Send answer to backend
+
+        //checks to see if the answer is correct, this will proably change post-backend integrations
+        if(identifier === this.state.currentQuestion[5]){
+            console.log("Correct");
+        }else{
+            console.log("Incorrect");
+        }
+        //set the state to display the results page until the timeout is complete
         this.setState({layout: 0})
+
         setTimeout(function() { //Start the timer
-            this.setState({layout: 1}) //After 1 second, set render to true
-        }.bind(this), 2000);
+            //After timeout, change back to questionpage for next question
+            this.setState({layout: 1});
+
+            //checks if all questions have been disaplayed, if not moves current question on
+            if(this.state.questionsIterator+1<this.state.maxQuestions){
+                this.setState( {currentQuestion: this.state.questions[this.state.questionsIterator+1],
+                                questionsIterator: this.state.questionsIterator+1,
+                                answers: this.state.answers.concat(identifier),
+                                });
+
+            }else{
+                //round over
+                this.setState({layout: 0});
+                console.log(this.state.answers);
+            }
+        }.bind(this), timeBetweenQs);
 
         console.log(identifier);
-        if(this.state.questionsIterator+1<this.state.maxQuestions){
-            this.setState( {currentQuestion: this.state.questions[this.state.questionsIterator+1],
-                            questionsIterator: this.state.questionsIterator+1,
-                            answers: this.state.answers.concat(identifier),
-                            });
-        }else{
-            //round over
-            console.log(this.state.answers);
-        }
     }
 
     timeOut(father){
+        // When question timer reaches 0, act as through a button was pressed 
+        //(will always register incorrect as 5 is passed)
         console.log("Timer reached 0");
-        // console.log(this);
-        father.onButtonClick(5)        // QuestionPage.onButtonClick(5);
-        // father.setState({timerKey: father.state.timerKey+1})
-        // this.setState({questionsIterator: this.state.questionsIterator+1,
-        //                answers: this.state.answers.concat(5)});
+        father.onButtonClick(5)
     }
 
     buttonLayout(){
-    var timmyTheTimer = (<QuestionTimer startCount={5} timeFinished={this.timeOut} parent = {this}/>);
+    var questionTimer = (<QuestionTimer startCount={5} timeFinished={this.timeOut} parent = {this}/>);
     
         return(
         <Container>
-            {timmyTheTimer}
+            {questionTimer}
             <Row className="Question-row" mx-auto>
                 <Col>
                     {this.makeButton(this.state.currentQuestion[1],1,1)}
@@ -103,14 +119,14 @@ class QuestionPage extends Component {
     answerLayout(){
         return(
             // <h1>Answered</h1>
-            <Results></Results>
+            <Results result="Incorrect" points={50} score={100}></Results>
 
         );
     }
 
     render() {
-        // const element = this.makeButton("1")
-        // var layout = 1;
+            // Displays the question number and question. Either displays the answer buttons or the results page
+            //depending on layout
             return (
                 <Container className="Question-container">
                     <Container>

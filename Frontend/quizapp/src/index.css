@@ -49,10 +49,14 @@ body {
     padding-bottom: 5rem;
 }
 
+.Results {
+  text-align: center;
+}
+
 .Question-container{
   /* margin-left: 20%;
   margin-right: 20%; */
-  /* margin-top: 7.5rem; */
+  margin-top: 7.5rem;
   /* background-color: aqua; */
   text-align:center;
   /* height: 100%; */
@@ -86,7 +90,7 @@ body {
 }
 
 .Question-row{
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   /* float: none; */
   min-width: 11rem;
   align-items: center;
@@ -169,6 +173,7 @@ code {
 
 .jumbotron{
   background-color:#28A745;
+  color: white;
   text-align:center;
 }
 
@@ -238,4 +243,24 @@ code {
   border-width: 3px;
   border-radius: 10px;
   border-style: solid;
+
+.badge {
+  font-size: 1.5rem !important;
+}
+
+.Result-div{
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+
+.Result-div2{
+  margin-bottom: 1.5rem;
+}
+
+.Results-loading{
+  margin-top: 2rem;
+}
+
+.Configure-row{
+  margin-top: 5rem;
 }
