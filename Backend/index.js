@@ -364,6 +364,7 @@ app.post('/startroom', (req, res) => {
 
 });
 
+//front end sending roomcode, nicknames, responses, maxtime, individualtimes and questionnumber
 app.post('/questionresponse', (req, res) =>{
     console.log('Post request recieved: Responses from the players');
 
@@ -382,12 +383,30 @@ app.post('/questionresponse', (req, res) =>{
         }))
     }
     else {
-        //compare user answers with correct one
+        //loop for checking each players answer
+        for(i = 0; i < req.body.nickname.length; i++)
+        {
+            //compare user answer with correct one
+            //allAnswers needs to be created
+            if(req.body.response[i] === rooms[index].currentQuiz.allAnswers[req.body.questionnumber-1])
+            {
+                //if correct, update score of player
+                //search for the player in the room with the name matching the one who gave this answer
+                for(j = 0; j < rooms[index].players.length; j++)
+                {
+                    //if player nickname given in req.body equals the nickname of the player in the room
+                    if(req.body.nickname[i] === rooms[index].players[j].name)
+                    {
+                        //update the score of the player
+                        rooms[index].players[j].score = (req.body.maxtime - req.body.individualtime[i]) * 10;
+                        rooms[index].players[j].updateTotalScore();
+                    }
+                }
+            }
+        }
 
-        //find scores to be added
-
-        //add scores to the players
-
+        //do i change status? i dont think so
+        
         //Send success message
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
