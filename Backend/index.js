@@ -40,12 +40,12 @@ function addNewRoom() {
 //returns true if a new player is successfully added and false if not
 function addNewPlayer(newPlayerName) {
     //check if the nickname has already been taken by another player
-    var taken = findNonactivePlayerByNickname(newPlayerName); 
+    var taken = findNonactivePlayerByNickname(newPlayerName);
     if (taken < 0) {
         //create and add the new player
         var newPlayer = new player(newPlayerName);
         nonactivePlayers.push(newPlayer);
-        console.log("new player: " + nonactivePlayers[nonactivePlayers.length-1].name);
+        console.log("new player: " + nonactivePlayers[nonactivePlayers.length - 1].name);
         return true;
     }
     return false;
@@ -170,12 +170,13 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
+    console.log(newRoomCode);
     addNewQuiz(newRoomCode, "'animals'", 10)
 });
 
-app.post('/username', (req, res) =>{
+app.post('/username', (req, res) => {
     console.log('Post request recieved: New player in a new room')
-    
+
     //Make new player object
     addNewPlayer(req.body.post);
     //Place player in a new room
@@ -186,10 +187,10 @@ app.post('/username', (req, res) =>{
 });
 
 // Connection to the database to get number of questions 
-app.get('/num_of_questions', (req, res)=>{
-    test1query.getTestData().then((data)=>{
+app.get('/num_of_questions', (req, res) => {
+    test1query.getTestData().then((data) => {
         res.status(200).json(data.rows);
-    }).catch((err)=>{
+    }).catch((err) => {
         console.error(err);
     });
 });
@@ -197,7 +198,7 @@ app.get('/num_of_questions', (req, res)=>{
 app.get('/cat_of_questions' , (req, res) =>{
     test1query.getQuestions().then((data)=>{
         res.status(200).json(data.rows);
-    }).catch((err)=>{
+    }).catch((err) => {
         console.error(err);
     });
 });
@@ -209,15 +210,14 @@ app.post('/roomadduser', (req, res) => {
     //Pick up nickname and room code from JSON in the request
     let nickName = req.body.nickName;
     let roomCode = req.body.roomCode;
-    
+
     //Make new player object
     addNewPlayer(nickName);
 
     let success = movePlayerToRoom(nickName, roomCode);
 
     //Failed to add the player into the room
-    if(success === false)
-    {
+    if (success === false) {
         //Send failure message back
         res.send(JSON.stringify({
             nickname: nickName,
@@ -225,8 +225,7 @@ app.post('/roomadduser', (req, res) => {
             status: success
         }))
     }
-    else
-    {
+    else {
         //Send success message
         res.send(JSON.stringify({
             nickname: nickName,
@@ -236,25 +235,23 @@ app.post('/roomadduser', (req, res) => {
     }
 })
 
-app.post('/roomallplayers', (req, res) =>{
+app.post('/roomallplayers', (req, res) => {
     console.log('Post request recieved: All players in an existing room (nicknames & scores)');
-    
+
     //Pick up room code from JSON in the request
     let roomCode = req.body.roomCode;
 
     let index = findRoomByCode(roomCode);
 
     //if failed to find a room with the given passcode
-    if(index < 0)
-    {
+    if (index < 0) {
         //Send failure message back
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             status: false
         }))
     }
-    else
-    {
+    else {
         //Send success message
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
@@ -265,40 +262,75 @@ app.post('/roomallplayers', (req, res) =>{
 
 });
 
-app.post('/roomallnicknames', (req, res) =>{
+app.post('/roomallnicknames', (req, res) => {
     console.log("Post request recieved: All players' nicknames in an existing room");
-    
+
     //Pick up room code from JSON in the request
     let roomCode = req.body.roomCode;
 
     let index = findRoomByCode(roomCode);
 
     //if failed to find a room with the given passcode
-    if(index < 0)
-    {
+    if (index < 0) {
         //Send failure message back
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
-            status: false
+            status: "",
+            successful: false
         }))
     }
-    else
-    {
+    else {
         //create an array of the players' nicknames
         let nicknames = [];
         let nickname = "";
         let l = rooms[index].players.length;
-        for(i = 0; i<l; i++)
-        {
+        for (i = 0; i < l; i++) {
             nickname = rooms[index].players[i].name;
             nicknames.push(nickname);
         }
-        
+
         //Send success message
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             nicknames: nicknames,
-            status: true
+            status: rooms[index].status,
+            successful: true
+        }))
+    }
+
+});
+
+app.post('/startroom', (req, res) => {
+    console.log('Post request recieved: Host wants to start the quiz');
+
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+    let category = req.body.category;
+    let numOfQuestions = req.body.numOfQuestions;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 404,
+            successful: false
+        }))
+    }
+    else {
+        //create new quiz add to the room
+        rooms[index].newQuiz(category, numOfQuestions);
+
+        //update the room's status
+        rooms[index].status = 123;
+
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: rooms[index].status,
+            successful: true
         }))
     }
 
