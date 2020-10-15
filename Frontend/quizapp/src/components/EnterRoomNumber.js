@@ -23,47 +23,44 @@ class EnterRoomNumber extends React.Component {
     // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
     handleSubmit(event) {
         event.preventDefault() // Prevent default prevents the page refreshing
-        this.props.changeValue(this.state.value);
     }
 
     render() {
         return (
             <div className="Menu">
                 <Container className="Menu-container">
-                    <h1 className="Generic-center-title">Welcome!</h1>
-                </Container>
 
-                <Container className="Menu-container">
-                    <Row className="justify-content-center">
-                        <Col xl={8} xs={10}>
-                            <Row className="justify-content-center">
-                                <h4>Please choose a Nickname</h4>
-                            </Row>
-                            <Row className="justify-content-center">
-                                <form id="nickname-form" onSubmit={this.handleSubmit}>
-                                    <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" pattern="^\S+$" maxlength="15" value={this.state.value} onChange={this.handleChange} />
-                                </form>
-                            </Row>
-                            <Row className="justify-content-center">
-                                
-                                <p>No Spaces, 15 Characters Max</p>
-                                <p className="Disclaimer Generic-center">Please do not choose a Nickname that could reveal personal infomation about yourself.</p>
-                                <p>eg AnnoyingSeagull69</p>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
+                    <Container>
+                        <h1 className="Menu-title">Enter Room Code</h1>
+                        <h4>To join a room please enter the four digit room code below!</h4>
+                    </Container>
 
-                <Container className="Menu-container">
-                    <Row className="justify-content-center">
-                        <Button className="Menu-green-circles" form="nickname-form" type="submit" variant="success">
-                            <div className="Menu-button-text">
-                                Next
-                        </div>
-                        </Button>
-                    </Row>
-                </Container>
+                    <Container className="Menu-container">
+                        <h4>Room Code</h4>
+                        <form id="nickname-form" onSubmit={this.handleSubmit}>
+                            <Form.Control size="lg" type="number" placeholder="1234" className="Nickname-inputbox" maxlength="4" value={this.state.value} onChange={this.handleChange} />
+                        </form>
+                    </Container>
 
+                    <Container className="Menu-container">
+                        <Row className="Menu-row">
+                            <Col>
+                                <Button className="Menu-button" block variant="danger">
+                                    <h1 className="Menu-cancel">
+                                        x
+                                    </h1>
+                                </Button>
+                            </Col>
+                            <Col>
+                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success">
+                                    <h1 className="Splash-button">
+                                        Join!
+                                    </h1>
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Container>
             </div>
         );
 
