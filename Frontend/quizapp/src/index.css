@@ -228,7 +228,7 @@ code {
 
 
 .Lobby-player-container{
-  background-color: rgb(21, 22, 66);
+  background-color: darkgray;
   border-radius: 10px;
 }
 
@@ -239,7 +239,7 @@ code {
 .Lobby-list{
   max-height: 300px;
   overflow: auto;
-  border-color: rgb(21, 22, 66);
+  border-color:darkgray;
   border-width: 3px;
   border-radius: 10px;
   border-style: solid;

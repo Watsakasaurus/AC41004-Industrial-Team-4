@@ -32,66 +32,66 @@ export class RoomConfigure extends Component {
         return (
             <Container className="Menu-container">
             <form onSubmit={this.handleSubmit}>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-4">
                         </div>
 
-                        <div class="col-md-4">
+                        <div className="col-md-4">
                             <h1>
                                 Configure Room
                             </h1>
                         </div>
 
-                        <div class="col-md-4">
+                        <div className="col-md-4">
                         </div>
                     </div>
                 
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div className="row">
+                        <div className="col-md-4">
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div className="col-md-4">
+                            <div className="form-group">
                                 <label for="Room">
                                     Room Name
                                 </label>
 
-                                <input type="text" name="roomName" class="form-control"
+                                <input type="text" name="roomName" className="form-control"
                                     placeholder="Room 1" onChange={this.handleInputChange} />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="RoomPass">
                                     Room Password
                                 </label>
 
-                                <input type="text" name="roomPass" class="form-control"
+                                <input type="text" name="roomPass" className="form-control"
                                     placeholder="Qwerty" onChange={this.handleInputChange} />
                             </div>
 
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="Player Count">
                                     Player Count
                                 </label>
 
-                                <input type="range" name="playerCount" class="custom-range"
+                                <input type="range" name="playerCount" className="custom-range"
                                 min="0" max="5" id="customRange2" onChange={this.handleInputChange} />
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-3">
+                            <div className="row">
+                                <div className="col-md-3">
                                 </div>
-                                <div class="col-md-6">
+                                <div className="col-md-6">
                                 </div>
-                                <div class="col-md-3">
+                                <div className="col-md-3">
 
-                                    <button type="submit" class="btn btn-success">
+                                    <button type="submit" className="btn btn-success">
                                         Next
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div className="col-md-4">
                         </div>
                     </div>
                 </div>

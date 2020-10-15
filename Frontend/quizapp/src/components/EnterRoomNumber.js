@@ -38,21 +38,21 @@ class EnterRoomNumber extends React.Component {
                         
                         <h4>To join a room please enter the 16 digit room code below!</h4>
                         <form id="nickname-form" onSubmit={this.handleSubmit}>
-                            <Form.Control size="lg" type="number" placeholder="12345678910" className="Nickname-inputbox" maxlength="16" value={this.state.value} onChange={this.handleChange} />
+                            <Form.Control size="lg" type="number" placeholder="12345678910" className="Nickname-inputbox" maxLength="16" value={this.state.value} onChange={this.handleChange} />
                         </form>
                     </Container>
 
                     <Container className="Menu-container">
                         <Row className="Menu-row">
                             <Col>
-                                <Button className="Menu-button" block variant="danger">
+                                <Button className="Menu-button" block variant="danger" onClick = {()=> this.props.onClick(2)}>
                                     <h1 className="Menu-cancel">
                                         x
                                     </h1>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success">
+                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick = {()=> this.props.onClick(1)}>
                                     <h1 className="Splash-button">
                                         Join!
                                     </h1>
