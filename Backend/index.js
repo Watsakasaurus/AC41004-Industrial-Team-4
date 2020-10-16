@@ -178,6 +178,8 @@ app.get('/', (req, res) => {
     //addNewQuiz(newRoomCode, "animals", 10);
 });
 
+//function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
+//takes in post (nickname), roomName and playerCount. returns roomCode and status
 app.post('/username', (req, res) => {
     console.log('Post request recieved: New player in a new room')
 
@@ -224,6 +226,8 @@ app.get('/cat_of_questions', (req, res) => {
     });
 });
 
+//function to send all questions to the front end
+//takes in roomCode. returns questions[]
 app.get('/questions', (req, res) => {
     console.log('Post request recieved: send questions to quiz')
 
@@ -252,7 +256,8 @@ app.get('/questions', (req, res) => {
     }
 })
 
-
+//function to add a new player to an existing room
+//takes in nickName and roomCode. returns nickName, roomCode and status
 app.post('/roomadduser', (req, res) => {
     console.log('Post request recieved: New player in an existing room')
 
@@ -284,6 +289,8 @@ app.post('/roomadduser', (req, res) => {
     }
 })
 
+//function to return to client array of player objects (containing nicknames, scores etc)
+//takes in roomCode. returns roomCode, players[] and status
 app.post('/roomallplayers', (req, res) => {
     console.log('Post request recieved: All players in an existing room (nicknames & scores)');
 
@@ -313,6 +320,8 @@ app.post('/roomallplayers', (req, res) => {
 
 });
 
+//function to return to client all nicknames of the players in the room
+//takes in roomCode. Returns roomCode, nicknames[], status and successful
 app.post('/roomallnicknames', (req, res) => {
     console.log("Post request recieved: All players' nicknames in an existing room");
 
@@ -351,6 +360,8 @@ app.post('/roomallnicknames', (req, res) => {
 
 });
 
+//function to change state of the room to show the quiz has started
+//takes in roomCode. returns roomCode, status, successful
 app.post('/startroom', (req, res) => {
     console.log('Post request recieved: Host wants to start the quiz');
 
@@ -383,6 +394,8 @@ app.post('/startroom', (req, res) => {
 
 });
 
+//function to take in the quiz settings from front end
+//takes in roomCode, categories[], numOfQuestions and maxTime. Returns roomCode, status, successful
 app.post('/configurequiz', (req, res) => {
     console.log('Post request recieved: Host wants to configure the quiz');
 
@@ -423,7 +436,8 @@ app.post('/configurequiz', (req, res) => {
 
 });
 
-//front end sending roomcode, nickname, response, individualtime and questionnumber
+//function to take the users answer and update their score if correct
+//front end sending roomcode, nickname, response, individualtime and questionnumber. Back end returns roomCode, playerscore, status and successful
 app.post('/questionresponse', (req, res) => {
     console.log('Post request recieved: Responses from the players');
 
@@ -486,6 +500,8 @@ app.post('/questionresponse', (req, res) => {
 
 });
 
+//function to send to client quiz summary info to be displayed to client
+//takes in roomCode from client and returns roomCode, array of players (containing names, scores, total scores, all responses and booleans for each response indicating if they were correct), and status
 app.post('/history', (req, res) => {
     console.log('Post request recieved: Quiz history');
 
