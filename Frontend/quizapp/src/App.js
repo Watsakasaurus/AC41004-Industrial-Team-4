@@ -80,6 +80,16 @@ class App extends Component {
   // Called by roomConfigure component when the user presses the submit button
   roomConfigureSubmit(data) {
     this.setState({ currentComp: components.LOBBY })
+    let post = "post"
+    fetch('/username', {
+      method: "POST",
+      headers: {
+          'Content-type': 'application/json'
+      },
+      body: JSON.stringify(
+        {post: this.state.nickname}        
+      ),
+    }).then((result) => result.json()).then((info) => { console.log(info); })
   }
 
   // Called by Splash component when user presses begin button
