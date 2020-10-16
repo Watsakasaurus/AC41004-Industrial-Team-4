@@ -61,6 +61,7 @@ class QuestionPage extends Component {
                      "response" : identifier,
                      "individualtime" : this.state.currentTime.toFixed(1),
                      "questionnumber" : this.state.currentQuestion};
+                     console.log("Question Page Send:", text);
 
         fetch('/questionresponse', {
             method: "POST",
@@ -68,7 +69,7 @@ class QuestionPage extends Component {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(text),
-        }).then((result) => result.json()).then((info) => { console.log(info); })
+        }).then((result) => result.json()).then((info) => { console.log("Question Page Return", info); })
 
         //set the state to display the results page until the timeout is complete
         this.setState({ layout: 0 });
