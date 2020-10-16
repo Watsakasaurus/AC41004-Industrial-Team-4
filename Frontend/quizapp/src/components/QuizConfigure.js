@@ -60,7 +60,7 @@ export class QuizConfigure extends Component {
         return (
             // onSubmit={this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime)}
             <form onSubmit={() => this.handleSubmit()}>
-                <div class="container-fluid">
+                <div className="container-fluid">
 
                     <Container className="Menu-container">
                         <Container>

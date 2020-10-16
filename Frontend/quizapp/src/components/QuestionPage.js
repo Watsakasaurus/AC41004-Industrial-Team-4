@@ -123,7 +123,7 @@ class QuestionPage extends Component {
         return (
             <Container>
                 {questionTimer}
-                <Row className="Question-row" mx-auto>
+                <Row className="Question-row">
                     <Col>
                         {this.makeButton(this.state.currentQuestion[1], 1, 1)}
                     </Col>

@@ -31,7 +31,7 @@ class Lobby extends Component {
                         <Row className="Menu-row Lobby-list">
                             <Col>
                                 {this.props.players.map(item => (
-                                    <Container className="Lobby-player-container">
+                                    <Container className="Lobby-player-container" key={item+"Con"}>
                                         <h1 className="Lobby-player-text" key={item}>{item}</h1>
                                     </Container>
                                 ))}
