@@ -144,19 +144,22 @@ class App extends Component {
   }
 
   saveResToState(data){
-    console.log("Save");
-    console.log(data);
+    console.log("Room Config Return:", data);
+    // console.log(data);
     this.setState({roomCode: data.roomCode});
 }
 
-  onRoomConfClick(id){
+  onRoomConfClick(id, roomName, playerCount){
     // switch statement depending on which button was pressed
     // var stuff;
     switch (id) {
       
       // Create next button
       case 1:
-        var text = {  "post": this.state.nickname};
+        var text = {  "post": this.state.nickname,
+                      "roomName": roomName,
+                      "playerCount": playerCount};
+        console.log("Room Config Send:", text);
         //Pass username to server
         fetch('/username', {
           method: "POST",
@@ -186,16 +189,13 @@ class App extends Component {
 
   onQuizConfigClick(categorys, qCount, qTime, nickname, roomcode){
     // switch statement depending on which button was pressed
-        console.log(this.props);
             var text = {
               roomCode: roomcode,
               categorys: categorys,
               numOfQuestions: qCount,
               maxTime: qTime
           };
-
-          console.log("Sending")
-          console.log(text)
+          console.log("Quiz Config Send:", text);
 
           fetch("/configurequiz", {
               method: "POST",
@@ -206,7 +206,7 @@ class App extends Component {
           })
               .then((result) => result.json())
               .then((info) => {
-                  console.log(info);
+                  console.log("Quiz Config Return: ",info);
           });
 
   this.setState({ currentComp: components.LOBBY })
