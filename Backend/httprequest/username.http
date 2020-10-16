@@ -31,7 +31,7 @@ GET  http://localhost:5000/questions
 Content-Type: application/json
 
 {
-    "roomCode": "1ff35967b78ea2dd4872"
+    "roomCode": "b4565de46292faa0a6bb"
 }
 
 ###
@@ -89,8 +89,8 @@ POST http://localhost:5000/configurequiz
 Content-Type: application/json
 
 {
-    "roomCode": "1ff35967b78ea2dd4872",
-    "category": ["animals", "test"],
+    "roomCode": "b4565de46292faa0a6bb",
+    "category": ["animals", "brain teasers"],
     "numOfQuestions": 2,
     "maxTime": 10
 }

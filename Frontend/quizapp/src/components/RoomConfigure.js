@@ -38,24 +38,25 @@ class RoomConfigure extends React.Component {
     // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
     handleSubmit(event) {
         event.preventDefault(); // Prevent default prevents the page refreshing
-        var text = {
-            roomCode: this.props.roomcode,
-            nickname: this.props.nickname,
-            roomName: this.state.roomName,
-            playerCount: this.state.playerCount
-        };
+        this.props.onClick(1, this.state.roomName, this.state.playerCount);
+        // var text = {
+        //     roomCode: this.props.roomcode,
+        //     nickname: this.props.nickname,
+        //     roomName: this.state.roomName,
+        //     playerCount: this.state.playerCount
+        // };
 
-        fetch("/username", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(text),
-        })
-            .then((result) => result.json())
-            .then((info) => {
-                console.log(info);
-            });
+        // fetch("/username", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-type": "application/json",
+        //     },
+        //     body: JSON.stringify(text),
+        // })
+        //     .then((result) => result.json())
+        //     .then((info) => {
+        //         console.log(info);
+        //     });
     }
 
     render() {
@@ -123,7 +124,7 @@ class RoomConfigure extends React.Component {
                                         type="submit"
                                         block
                                         variant="success"
-                                        onClick={() => this.props.onClick(1)}
+                                        onClick={() => this.props.onClick(1, this.state.roomName, this.state.playerCount)}
                                     >
                                         <h1 className="Splash-button">Next</h1>
                                     </Button>

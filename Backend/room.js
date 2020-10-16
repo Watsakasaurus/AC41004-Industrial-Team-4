@@ -30,7 +30,7 @@ module.exports = class room {
     //inputs are the category and number of questions for the quiz
     newQuiz(category, numOfQuestions) {
         var newQuiz = new quiz(category, numOfQuestions);
-        
+        this.currentQuiz = newQuiz;
         return newQuiz
     }
 

@@ -63,12 +63,12 @@ module.exports = class queries {
 
     getQuestions(category)
     {
-        
+        let categories = "{" + category.join() +"}";
         return new Promise((resolve, reject) => {
             const client = new Client();
-            console.log(category[0])
+            console.log(categories);
             client.connect().then(() => {
-            client.query("SELECT * FROM quiz WHERE category = " + `'${category[0]}'`,(err, rws)=>{
+            client.query("SELECT * FROM quiz WHERE category = ANY(" + `'${categories}')`,(err, rws)=>{
                     if (err) reject(err);
                     resolve(rws);
                 });
