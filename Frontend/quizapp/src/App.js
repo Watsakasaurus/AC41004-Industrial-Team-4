@@ -250,7 +250,7 @@ saveResToState(data){
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage questions={testQuestions} nickname={this.state.nickname} roomcode={12345678912345678920}/>);
+          <QuestionPage questions={testQuestions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);
