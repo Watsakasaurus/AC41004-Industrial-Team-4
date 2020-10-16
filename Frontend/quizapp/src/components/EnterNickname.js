@@ -24,6 +24,7 @@ class EnterNickname extends React.Component {
     handleSubmit(event) {
         event.preventDefault() // Prevent default prevents the page refreshing
         this.props.changeValue(this.state.value);
+        
     }
 
     render() {

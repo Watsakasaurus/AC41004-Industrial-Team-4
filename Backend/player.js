@@ -4,7 +4,7 @@ module.exports = class player
         this.name = nickname;
         this.score = 0;
         this.totalScore = 0;
-        this.reponses = []; //store the player's reponse to each question
+        this.responses = []; //store the player's response to each question
         this.correct = []; //store whether or not the player got each question correct
     }
 
