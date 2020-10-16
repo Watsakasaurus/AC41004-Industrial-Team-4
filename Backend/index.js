@@ -145,6 +145,14 @@ function movePlayerToRoom(nickname, roomCode) {
         return false; //if a player with this nickname is found in the room
     }
 
+    //check if room is full
+    var maxRoomCapacity = rooms[index].maxPlayers;
+    if(rooms[index].players.length >= maxRoomCapacity)
+    {
+        console.log("max room capacity reached " + maxRoomCapacity + " " + rooms[index].players.length)
+        return false; //returns false if the room is full
+    }
+
     //create new player with the same information as the one to be moved, and add it to the player array in the correct room
     var playerToBeAdded = new player(nickname);
     rooms[index].players.push(playerToBeAdded);
@@ -169,12 +177,18 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    let newRoomCode = addNewRoom();
-    console.log(newRoomCode);
+    //let newRoomCode = addNewRoom();
+    //console.log(newRoomCode);
     addNewPlayer("nicole");
     addNewPlayer("arran");
+    addNewPlayer("ross");
+    addNewPlayer("aylin");
+    addNewRoom("animals", "room1", 3)
     movePlayerToRoom("nicole", rooms[0].roomCode);
     movePlayerToRoom("arran", rooms[0].roomCode);
+    movePlayerToRoom("ross", rooms[0].roomCode);
+    movePlayerToRoom("aylin", rooms[0].roomCode);
+    console.log(rooms[0]);
     //addNewQuiz(newRoomCode, "animals", 10);
 });
 
