@@ -177,16 +177,15 @@ class App extends Component {
         console.log(this.props);
             var text = {
               roomCode: roomcode,
-              nickname: nickname,
               categorys: categorys,
-              questionCount: qCount,
-              questionTime: qTime
+              numOfQuestions: qCount,
+              maxTime: qTime
           };
 
           console.log("Sending")
           console.log(text)
 
-          fetch("/username", {
+          fetch("/configurequiz", {
               method: "POST",
               headers: {
                   "Content-type": "application/json",
