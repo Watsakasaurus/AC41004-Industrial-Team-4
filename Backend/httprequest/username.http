@@ -1,0 +1,74 @@
+POST http://localhost:5000/username
+Content-Type: application/json
+
+{
+    "post": "rossmaider"
+}
+
+###
+
+POST http://localhost:5000/roomadduser
+Content-Type: application/json
+
+{
+    "nickName": "rossmaider",
+    "roomCode": "e56fb39f6d5e740acab5"
+}
+
+###
+
+POST http://localhost:5000/roomadduser
+Content-Type: application/json
+
+{
+    "nickName": "JohnSmith",
+    "roomCode": "e56fb39f6d5e740acab5"
+}
+
+###
+
+GET  http://localhost:5000/questions
+Content-Type: application/json
+
+{
+    "roomCode": "d136a01f27d9bece8e67"
+}
+
+###
+
+POST http://localhost:5000/roomallplayers
+Content-Type: application/json
+
+{
+    "roomCode": "912407b7d9a40cbb8892"
+}
+
+###
+
+POST http://localhost:5000/roomallnicknames
+Content-Type: application/json
+
+{
+    "roomCode": "912407b7d9a40cbb8892"
+}
+
+###
+
+POST http://localhost:5000/startroom
+Content-Type: application/json
+
+{
+    "roomCode": "75482006c349d55e86d5",
+    "category": "'animals'",
+    "numOfQuestions": 2,
+    "maxTime": 10
+}
+
+###
+
+POST http://localhost:5000/history
+Content-Type: application/json
+
+{
+    "roomCode": "3dea75618630b277f2c7"
+}
