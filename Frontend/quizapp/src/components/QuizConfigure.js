@@ -40,13 +40,22 @@ export class QuizConfigure extends Component {
         });
     };
 
+    // handleSubmit(event){
+    //     event.preventDefault();
+    //     console.log("QuizConfig Submitting")
+    //     this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime);
+    // }
+
+    handleSubmit = (event) => {
+        //do your onsubmit work
+        event.preventDefault();
+        console.log("QuizConfig Submitting")
+        this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime);
+        // do your button click work
+    }
+
     render() {
 
-        const choices = [
-            { value: "History", label: "History" },
-            { value: "Movies", label: "Movies" },
-            { value: "Sports", label: "Sports" }
-        ];
 
         return (
             <form onSubmit={this.handleSubmit}>

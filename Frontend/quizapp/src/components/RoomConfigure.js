@@ -1,19 +1,17 @@
-import React from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 
 class RoomConfigure extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
-            roomName: '',
-            roomPass: '',
-            playerCount: '8'
+            roomName: "",
+            roomPass: "",
+            playerCount: "8",
         };
 
         this.updateRoomName = this.updateRoomName.bind(this);
@@ -39,15 +37,31 @@ class RoomConfigure extends React.Component {
 
     // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
     handleSubmit(event) {
-        event.preventDefault() // Prevent default prevents the page refreshing
+        event.preventDefault(); // Prevent default prevents the page refreshing
+        var text = {
+            roomCode: this.props.roomcode,
+            nickname: this.props.nickname,
+            roomName: this.state.roomName,
+            playerCount: this.state.playerCount
+        };
+
+        fetch("/username", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(text),
+        })
+            .then((result) => result.json())
+            .then((info) => {
+                console.log(info);
+            });
     }
 
     render() {
         return (
             <div className="Menu">
-
                 <Container className="Menu-container">
-
                     <Container>
                         <h1 className="Menu-title">Configure Room</h1>
                     </Container>
@@ -55,33 +69,63 @@ class RoomConfigure extends React.Component {
                         <Container className="Room-code-input-con">
                             <div className="Room-prop">
                                 <h4>Room Name</h4>
-                                <Form.Control size="lg" type="text" placeholder="TheBestRoom" className="Nickname-inputbox" maxLength="24" value={this.state.roomName} onChange={this.updateRoomName} />
+                                <Form.Control
+                                    size="lg"
+                                    type="text"
+                                    placeholder="TheBestRoom"
+                                    className="Nickname-inputbox"
+                                    maxLength="24"
+                                    value={this.state.roomName}
+                                    onChange={this.updateRoomName}
+                                />
                             </div>
                             <div className="Room-prop">
                                 <h4>Room Password</h4>
-                                <Form.Control size="lg" type="password" placeholder="qwerty(dont use this example)" className="Nickname-inputbox" maxLength="24" value={this.state.roomPass} onChange={this.updateRoomPass} />
+                                <Form.Control
+                                    size="lg"
+                                    type="password"
+                                    placeholder="qwerty(dont use this example)"
+                                    className="Nickname-inputbox"
+                                    maxLength="24"
+                                    value={this.state.roomPass}
+                                    onChange={this.updateRoomPass}
+                                />
                             </div>
                             <div className="Room-prop">
                                 <h4>Player Count : {this.state.playerCount}</h4>
-                                <input type="range" className="custom-range" min="2" max="32" value={this.state.playerCount} onChange={this.updatePlayerCount} />
+                                <input
+                                    type="range"
+                                    className="custom-range"
+                                    min="2"
+                                    max="32"
+                                    value={this.state.playerCount}
+                                    onChange={this.updatePlayerCount}
+                                />
                             </div>
-
                         </Container>
 
                         <Container className="Menu-container">
                             <Row className="Menu-row">
                                 <Col>
-                                    <Button className="Menu-button" block variant="danger" onClick={() => this.props.onClick(2)}>
-                                        <h1 className="Menu-cancel">
-                                            x
-                                    </h1>
+                                    <Button
+                                        className="Menu-button"
+                                        block
+                                        variant="danger"
+                                        onClick={() => this.props.onClick(2)}
+                                    >
+                                        <h1 className="Menu-cancel">x</h1>
                                     </Button>
                                 </Col>
                                 <Col>
-                                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick={() => this.props.onClick(1)}>
-                                        <h1 className="Splash-button">
-                                            Next
-                                        </h1>
+                                    <Button
+                                        className="Menu-button Menu-green-circles"
+                                        form="nickname-form"
+                                        type="submit"
+                                        block
+                                        variant="success"
+                                        onClick={() => this.props.onClick(1)}
+                                    >
+                                        <h1 className="Splash-button">Next</h1>
                                     </Button>
                                 </Col>
                             </Row>
@@ -90,7 +134,6 @@ class RoomConfigure extends React.Component {
                 </Container>
             </div>
         );
-
     }
 }
 
