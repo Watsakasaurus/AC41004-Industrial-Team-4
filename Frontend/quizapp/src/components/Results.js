@@ -139,7 +139,7 @@ class ResultsPage extends Component {
         <div>
           <Container className="Results-loading">
             <div>
-              <count />
+              {count}
               <Spinner animation="border" role="status">
                 <span className="sr-only">Loading...</span>
               </Spinner>
