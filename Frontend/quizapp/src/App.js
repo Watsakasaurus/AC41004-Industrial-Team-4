@@ -58,6 +58,9 @@ class App extends Component {
     }
   }
 
+  handleSubmit(){
+    console.log("what are you doing")
+  }
   // setNickname - Function Purpose : 
   // Passed down as a prop to the EnterNickname component to allow that component to pass the nickname up.
   // Sets the nickname into app.js state           
@@ -118,7 +121,13 @@ class App extends Component {
     }
   }
 
-  onRoomConfClick(id){
+  saveResToState(data){
+    console.log("Save");
+    console.log(data);
+    this.setState({roomCode: data.roomCode});
+}
+
+  async onRoomConfClick(id){
     // switch statement depending on which button was pressed
     // var stuff;
     switch (id) {
@@ -133,7 +142,7 @@ class App extends Component {
             'Content-type': 'application/json'
           },
           body: JSON.stringify(text)
-        }).then((result) => this.setState({currentInfo: result.json()}))
+        }).then((result) => result.json()).then((info) => this.saveResToState(info))
         // ).then((info) => { this.setState({currentInfo: info})})
 
         // response.text();
@@ -153,24 +162,33 @@ class App extends Component {
     }
   }
 
-  onQuizConfigClick(id){
+  onQuizConfigClick(categorys, qCount, qTime){
     // switch statement depending on which button was pressed
-    switch (id) {
+            var text = {
+              roomCode: this.props.roomcode,
+              nickname: this.props.nickname,
+              categorys: categorys,
+              questionCount: qCount,
+              questionTime: qTime
+          };
 
-      // Create next button
-      case 1:
+          console.log("Sending")
+          console.log(text)
 
-        return (
-          this.setState({ currentComp: components.LOBBY })
-        );
+          fetch("/username", {
+              method: "POST",
+              headers: {
+                  "Content-type": "application/json",
+              },
+              body: JSON.stringify(text),
+          })
+              .then((result) => result.json())
+              .then((info) => {
+                  console.log(info);
+          });
 
+  this.setState({ currentComp: components.LOBBY })
 
-      // Exit button
-      case 2:
-        return (
-          this.setState({ currentComp: components.MENU })
-        )
-    }
   }
 
   // called by Menu component user pressed a button
