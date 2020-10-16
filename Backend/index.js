@@ -171,11 +171,7 @@ app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
     console.log(newRoomCode);
-    /*addNewPlayer("nicole");
-    addNewPlayer("arran");
-    movePlayerToRoom("nicole", rooms[0].roomCode);
-    movePlayerToRoom("arran", rooms[0].roomCode);*/
-    //addNewQuiz(newRoomCode, "'animals'", 10);
+    addNewQuiz(newRoomCode, "animals", 10)
 });
 
 app.post('/username', (req, res) => {
