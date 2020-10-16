@@ -178,10 +178,15 @@ saveResToState(data){
 
   onQuizConfigClick(categorys, qCount, qTime, nickname, roomcode){
     // switch statement depending on which button was pressed
-        console.log(this.props);
+        // console.log(this.props);
+        // console.log(categorys);
+        var catVals = [];
+        for (var x in categorys){
+          catVals.push(categorys[x].value)
+        }
             var text = {
               roomCode: roomcode,
-              categorys: categorys,
+              categorys: catVals,
               numOfQuestions: qCount,
               maxTime: qTime
           };
