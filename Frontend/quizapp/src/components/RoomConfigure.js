@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 
 class RoomConfigure extends React.Component {
 
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -62,10 +62,10 @@ class RoomConfigure extends React.Component {
                                 <Form.Control size="lg" type="password" placeholder="qwerty(dont use this example)" className="Nickname-inputbox" maxLength="24" value={this.state.roomPass} onChange={this.updateRoomPass} />
                             </div>
                             <div className="Room-prop">
-                                <h4>Player Count</h4>
-                                <Form.Control size="lg" type="number" placeholder="Max Nine Players" className="Nickname-inputbox" maxLength="24" value={this.state.playerCount} onChange={this.updatePlayerCount} />
+                                <h4>Player Count : {this.state.playerCount}</h4>
+                                <input type="range" className="custom-range" min="2" max="32" value={this.state.playerCount} onChange={this.updatePlayerCount} />
                             </div>
-                            
+
                         </Container>
 
                         <Container className="Menu-container">

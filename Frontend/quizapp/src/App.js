@@ -7,6 +7,7 @@ import ResultsPage from './components/Results';
 import RoomConfigure from './components/RoomConfigure';
 import EnterRoomNumber from './components/EnterRoomNumber';
 import Lobby from './components/Lobby';
+import QuizConfigure from './components/QuizConfigure';
 
 const testQuestions = 
 [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
@@ -21,6 +22,14 @@ const testQuestions =
 ["Mitochondrias function in cells is to perform this.", "A To control chemical reactions within the cytoplasm", "B To store information needed for cellular division", "C To convert organic materials into energy", "D To process proteins targeted to the plasma membrane", 3]]
 
 const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin']
+
+const testCategorys =  [{value: "History", label: "History" },
+{ value: "Callum Darling", label: "Callum Darling" },
+{ value: "Movies", label: "Movies" },
+{ value: "Sports", label: "Sports" },
+{ value: "Aviation", label: "Aviation" },
+{ value: "Computing", label: "Computing" },
+{ value: "Dogs", label: "Dogs" }]
 
 const components = {
   SPLASH: 1,
@@ -125,6 +134,24 @@ class App extends Component {
       // Create next button
       case 1:
         return (
+          this.setState({ currentComp: components.QUIZCONFIG })
+        );
+
+      // Exit button
+      case 2:
+        return (
+          this.setState({ currentComp: components.MENU })
+        )
+    }
+  }
+
+  onQuizConfigClick(id){
+    // switch statement depending on which button was pressed
+    switch (id) {
+
+      // Create next button
+      case 1:
+        return (
           this.setState({ currentComp: components.LOBBY })
         );
 
@@ -198,6 +225,10 @@ class App extends Component {
         return (
           <Lobby onClick={this.onLobbyClick.bind(this)} players = {testPlayers} roomCode = {this.state.roomCode}/>
         )
+      case components.QUIZCONFIG:
+        return (
+          <QuizConfigure testCategorys = {testCategorys} onClick={this.onQuizConfigClick.bind(this)}/>
+        )
       default:
         return (
           <h1>An Error has occured, please refresh your page.</h1>);
@@ -208,7 +239,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.returnComponent(this.state.currentComp)}
+         {this.returnComponent(this.state.currentComp)}
       </div>
     )
   };
