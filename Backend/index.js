@@ -171,7 +171,11 @@ app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
     console.log(newRoomCode);
-    addNewQuiz(newRoomCode, "animals", 10)
+    /*addNewPlayer("nicole");
+    addNewPlayer("arran");
+    movePlayerToRoom("nicole", rooms[0].roomCode);
+    movePlayerToRoom("arran", rooms[0].roomCode);*/
+    //addNewQuiz(newRoomCode, "animals", 10);
 });
 
 app.post('/username', (req, res) => {
@@ -220,7 +224,7 @@ app.get('/cat_of_questions', (req, res) => {
     });
 });
 
-app.get('/questions', (req, res)=>{
+app.get('/questions', (req, res) => {
     console.log('Post request recieved: send questions to quiz')
 
     //Pick up roomcode in the request
@@ -388,7 +392,7 @@ app.post('/startroom', (req, res) => {
 });
 
 //front end sending roomcode, nickname, response, individualtime and questionnumber
-app.post('/questionresponse', (req, res) =>{
+app.post('/questionresponse', (req, res) => {
     console.log('Post request recieved: Responses from the players');
 
     //Pick up room code from JSON in the request
@@ -406,25 +410,46 @@ app.post('/questionresponse', (req, res) =>{
         }))
     }
     else {
-        
-        //compare user answer with correct one
-        //allAnswers needs to be created
-        if(req.body.response === rooms[index].currentQuiz.allAnswers[req.body.questionnumber-1])
-        {
-            //if correct, update score of player
-            //if player nickname given in req.body equals the nickname of the player in the room
-            //update the score of the player
-            rooms[index].players[findPlayerByNickname(req.body.nickname, req.body.roomCode)].score = (rooms[index].maxtime - req.body.individualtime) * 10;
-            rooms[index].players[findPlayerByNickname(req.body.nickname, req.body.roomCode)].updateTotalScore();
+        var i = findPlayerByNickname(req.body.nickname, req.body.roomCode);
+
+        //if failed to find a player with the given nickname
+        if (i < 0) {
+            //Send failure message back
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                status: 2,
+                successful: false
+            }))
         }
-        
-        //Send success message
-        res.send(JSON.stringify({
-            roomCode: req.body.roomCode,
-            playerscore: rooms[index].players[findPlayerByNickname(req.body.nickname, req.body.roomCode)].totalScore,
-            status: rooms[index].status,
-            successful: true
-        }))
+        else {
+            //store user's answer
+            rooms[index].players[i].responses[req.body.questionnumber - 1] = req.body.response;
+
+            //compare user answer with correct one
+            //allAnswers needs to be created
+            if (req.body.response === rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]) {
+                //if correct, update score of player
+                //if player nickname given in req.body equals the nickname of the player in the room
+                //update the score of the player
+                rooms[index].players[i].score = (rooms[index].maxtime - req.body.individualtime) * 10;
+                rooms[index].players[i].updateTotalScore();
+
+                //store that user's answer was correct
+                rooms[index].players[i].correct[req.body.questionnumber - 1] = true;
+            }
+            else {
+                //store that user's answer was incorrect
+                rooms[index].players[i].correct[req.body.questionnumber - 1] = false;
+            }
+
+            //Send success message
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                playerscore: rooms[index].players[i].totalScore,
+                status: rooms[index].status,
+                successful: true
+            }))
+        }
     }
 
 });

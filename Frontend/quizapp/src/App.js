@@ -53,7 +53,8 @@ class App extends Component {
       currentComp: components.SPLASH,
       response: '',
       post: '',
-      roomCode: '12345678910'
+      roomCode: '12345678910',
+      currentInfo: []
     }
   }
 
@@ -64,16 +65,6 @@ class App extends Component {
     console.log(newNickname);
     this.setState({ nickname: newNickname, currentComp: components.MENU })
 
-    //Pass username to server
-    fetch('/username', {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify({ post: newNickname })
-    })
-      .then((result) => result.json())
-      .then((info) => { console.log(info); })
 
   }
 
@@ -139,10 +130,27 @@ class App extends Component {
 
   onRoomConfClick(id){
     // switch statement depending on which button was pressed
+    // var stuff;
     switch (id) {
-
+      
       // Create next button
       case 1:
+        var text = {  "post": this.state.nickname};
+        //Pass username to server
+        fetch('/username', {
+          method: "POST",
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(text)
+        }).then((result) => this.setState({currentInfo: result.json()}))
+        // ).then((info) => { this.setState({currentInfo: info})})
+
+        // response.text();
+        // console.log(stuff);
+        console.log("Info:" + this.state.currentInfo);
+
+
         return (
           this.setState({ currentComp: components.QUIZCONFIG })
         );
@@ -161,9 +169,11 @@ class App extends Component {
 
       // Create next button
       case 1:
+
         return (
           this.setState({ currentComp: components.LOBBY })
         );
+
 
       // Exit button
       case 2:
