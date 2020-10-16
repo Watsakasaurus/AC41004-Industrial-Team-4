@@ -3,7 +3,14 @@ const dotenv = require("dotenv")
 const { response } = require("express")
 dotenv.config()
 
+
+
+
+
+
 module.exports = class queries {
+
+
 
     constructor() {
         this.pool = new Pool()
@@ -14,7 +21,6 @@ module.exports = class queries {
         this.client = new Client();
 
     }
-
     // Making querries from the database
     getTestData() {
     
@@ -32,6 +38,8 @@ module.exports = class queries {
         });
     }
 
+
+
     // Retrieves data based on the desired category by the user
     getTestData1(){
 
@@ -46,19 +54,22 @@ module.exports = class queries {
                 });
             });
         });
+
+
+
+
     }
 
-    //retrieves a given number of questions from the given categories
-    //input is an array of categories to select questions from and the number of questions to select
-    getQuestions(category, num)
+    getQuestions(category)
     {
-        var ofset = Math.floor(Math.random()* 20 ) +1;
+       
         let categories = "{" + category.join() +"}";
         return new Promise((resolve, reject) => {
             const client = new Client();
             console.log(categories);
             client.connect().then(() => {
-            client.query("SELECT * FROM quiz WHERE category = ANY(" + `'${categories}') limit ` + num,(err, rws)=>{
+                client.query("SELECT * FROM quiz WHERE category = ANY(" + `'${categories}') limit ` + num,(err, rws)=>{
+                client.end();
                     if (err) reject(err);
                     resolve(rws);
                 });
