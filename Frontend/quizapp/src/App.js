@@ -137,7 +137,7 @@ class App extends Component {
     this.setState({roomCode: data.roomCode});
 }
 
-  async onRoomConfClick(id){
+  onRoomConfClick(id){
     // switch statement depending on which button was pressed
     // var stuff;
     switch (id) {
@@ -172,11 +172,12 @@ class App extends Component {
     }
   }
 
-  onQuizConfigClick(categorys, qCount, qTime){
+  onQuizConfigClick(categorys, qCount, qTime, nickname, roomcode){
     // switch statement depending on which button was pressed
+        console.log(this.props);
             var text = {
-              roomCode: this.props.roomcode,
-              nickname: this.props.nickname,
+              roomCode: roomcode,
+              nickname: nickname,
               categorys: categorys,
               questionCount: qCount,
               questionTime: qTime
@@ -265,7 +266,7 @@ class App extends Component {
         )
       case components.QUIZCONFIG:
         return (
-          <QuizConfigure testCategorys = {testCategorys} onClick={this.onQuizConfigClick.bind(this)}/>
+          <QuizConfigure testCategorys = {testCategorys} onClick={this.onQuizConfigClick.bind(this)} playerNickname={this.state.nickname} roomcode = {this.state.roomCode}/>
         )
       default:
         return (

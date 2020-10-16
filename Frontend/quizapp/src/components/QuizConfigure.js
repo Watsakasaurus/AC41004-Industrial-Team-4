@@ -40,25 +40,26 @@ export class QuizConfigure extends Component {
         });
     };
 
-    // handleSubmit(event){
+    handleSubmit(){
+        
+        console.log("QuizConfig Submitting")
+        this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime, this.props.playerNickname, this.props.roomcode);
+    }
+
+    // handleSubmit = (event) => {
+    //     //do your onsubmit work
     //     event.preventDefault();
     //     console.log("QuizConfig Submitting")
     //     this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime);
+    //     // do your button click work
     // }
-
-    handleSubmit = (event) => {
-        //do your onsubmit work
-        event.preventDefault();
-        console.log("QuizConfig Submitting")
-        this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime);
-        // do your button click work
-    }
 
     render() {
 
 
         return (
-            <form onSubmit={this.handleSubmit}>
+            // onSubmit={this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime)}
+            <form onSubmit={() => this.handleSubmit()}>
                 <div class="container-fluid">
 
                     <Container className="Menu-container">
@@ -96,7 +97,7 @@ export class QuizConfigure extends Component {
                                     </Button>
                                 </Col>
                                 <Col>
-                                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick={() => this.props.onClick(1)}>
+                                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick={() => this.handleSubmit()}>
                                         <h1 className="Splash-button">
                                             Next
                                         </h1>

@@ -50,6 +50,8 @@ class QuestionPage extends Component {
         }
     }
 
+
+
     //indicates that one of the answer buttons has been pressed. Identifier tells which button has been pressed 1-4
     onButtonClick(identifier) {
         //TODO  Send answer to backend
