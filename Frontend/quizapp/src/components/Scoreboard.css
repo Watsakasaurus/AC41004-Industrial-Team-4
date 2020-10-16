@@ -95,6 +95,9 @@ hr {
     border-radius: 25px !important;
     background-color: green;
     margin-left: 50%;
+    font-size: 2rem;
+    text-align: center;
+    color: white;
 }
 
 .Scoreboard-buttontext{
