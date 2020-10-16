@@ -21,7 +21,7 @@ const testQuestions =
 ["The 23rd US President was in office during this period.", "A 1909 - 1913", "B 1889 - 1893", "C 1837 - 1841", "D 1877 - 1881", 2],
 ["Mitochondrias function in cells is to perform this.", "A To control chemical reactions within the cytoplasm", "B To store information needed for cellular division", "C To convert organic materials into energy", "D To process proteins targeted to the plasma membrane", 3]]
 
-const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum', 'Ross', 'Aylin']
+const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum2', 'Ross', 'Aylin']
 
 const testCategorys =  [{value: "History", label: "History" },
 { value: "Callum Darling", label: "Callum Darling" },
@@ -99,18 +99,6 @@ class App extends Component {
 
       // Create start game button
       case 1:
-        var text = {  "post": this.state.roomCode};
-        //Pass startroom to server
-        fetch('/startroom', {
-          method: "POST",
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(text)
-        }).then((result) => result.json()).then((info) => this.saveResToState(info))
-        
-        console.log("Info:" + this.state.currentInfo);
-
         return (
           this.setState({ currentComp: components.QUESTION })
         );
@@ -144,22 +132,19 @@ class App extends Component {
   }
 
   saveResToState(data){
-    console.log("Room Config Return:", data);
-    // console.log(data);
+    console.log("Save");
+    console.log(data);
     this.setState({roomCode: data.roomCode});
 }
 
-  onRoomConfClick(id, roomName, playerCount){
+  onRoomConfClick(id){
     // switch statement depending on which button was pressed
     // var stuff;
     switch (id) {
       
       // Create next button
       case 1:
-        var text = {  "post": this.state.nickname,
-                      "roomName": roomName,
-                      "playerCount": playerCount};
-        console.log("Room Config Send:", text);
+        var text = {  "post": this.state.nickname};
         //Pass username to server
         fetch('/username', {
           method: "POST",
@@ -189,13 +174,16 @@ class App extends Component {
 
   onQuizConfigClick(categorys, qCount, qTime, nickname, roomcode){
     // switch statement depending on which button was pressed
+        console.log(this.props);
             var text = {
               roomCode: roomcode,
               categorys: categorys,
               numOfQuestions: qCount,
               maxTime: qTime
           };
-          console.log("Quiz Config Send:", text);
+
+          console.log("Sending")
+          console.log(text)
 
           fetch("/configurequiz", {
               method: "POST",
@@ -206,7 +194,7 @@ class App extends Component {
           })
               .then((result) => result.json())
               .then((info) => {
-                  console.log("Quiz Config Return: ",info);
+                  console.log(info);
           });
 
   this.setState({ currentComp: components.LOBBY })
