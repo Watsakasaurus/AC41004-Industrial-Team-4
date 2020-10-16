@@ -171,10 +171,10 @@ app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
     console.log(newRoomCode);
-    /*addNewPlayer("nicole");
+    addNewPlayer("nicole");
     addNewPlayer("arran");
     movePlayerToRoom("nicole", rooms[0].roomCode);
-    movePlayerToRoom("arran", rooms[0].roomCode);*/
+    movePlayerToRoom("arran", rooms[0].roomCode);
     //addNewQuiz(newRoomCode, "animals", 10);
 });
 
@@ -354,7 +354,39 @@ app.post('/roomallnicknames', (req, res) => {
 app.post('/startroom', (req, res) => {
     console.log('Post request recieved: Host wants to start the quiz');
 
-    //Pick up room code, category and number of questions from JSON in the request
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 3,
+            successful: false
+        }))
+    }
+    else {
+        
+        //update the room's status
+        rooms[index].status = 6;
+
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: rooms[index].status,
+            successful: true
+        }))
+    }
+
+});
+
+app.post('/configurequiz', (req, res) => {
+    console.log('Post request recieved: Host wants to configure the quiz');
+
+    //Pick up room code, category, number of questions and max time from JSON in the request
     let roomCode = req.body.roomCode;
     let category = req.body.category;
     let numOfQuestions = req.body.numOfQuestions;
@@ -379,7 +411,7 @@ app.post('/startroom', (req, res) => {
         rooms[index].maxtime = maxTime;
 
         //update the room's status
-        rooms[index].status = 6;
+        rooms[index].status = 5;
 
         //Send success message
         res.send(JSON.stringify({

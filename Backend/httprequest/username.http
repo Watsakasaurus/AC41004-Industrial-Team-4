@@ -31,7 +31,7 @@ GET  http://localhost:5000/questions
 Content-Type: application/json
 
 {
-    "roomCode": "5200d9c15f41f7020009"
+    "roomCode": "1ff35967b78ea2dd4872"
 }
 
 ###
@@ -58,10 +58,7 @@ POST http://localhost:5000/startroom
 Content-Type: application/json
 
 {
-    "roomCode": "75482006c349d55e86d5",
-    "category": "'animals'",
-    "numOfQuestions": 2,
-    "maxTime": 10
+    "roomCode": "1ff35967b78ea2dd4872"
 }
 
 ###
@@ -79,9 +76,21 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "01f2d833de707a8aa949",
+    "roomCode": "1ff35967b78ea2dd4872",
     "nickname": "nicole",
     "response": "test",
     "questionnumber": 1,
     "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/configurequiz
+Content-Type: application/json
+
+{
+    "roomCode": "1ff35967b78ea2dd4872",
+    "category": ["animals", "test"],
+    "numOfQuestions": 2,
+    "maxTime": 10
 }
