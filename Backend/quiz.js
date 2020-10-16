@@ -27,7 +27,7 @@ module.exports = class quiz {
         //let questionSet = query.getQuestions(this.category)
 
         query.getQuestions(this.category).then((data) => {
-            this.allQuestions = data.rows;  
+            this.allQuestions = data.rows;
         }).catch((err) => {
             console.error(err);
         });
@@ -42,13 +42,13 @@ module.exports = class quiz {
     }
 
     getAnswers() {
-
-          
+        // takes out the answers from any number of questions
         var i;
         for (i = 0; i <= this.allQuestions.length; i++) {
 
             this.allAnswers = this.allQuestions[i].answer;
             
+
         }
 
 
