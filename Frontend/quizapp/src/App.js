@@ -99,6 +99,18 @@ class App extends Component {
 
       // Create start game button
       case 1:
+        var text = {  "post": this.state.roomCode};
+        //Pass startroom to server
+        fetch('/startroom', {
+          method: "POST",
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify(text)
+        }).then((result) => result.json()).then((info) => this.saveResToState(info))
+        
+        console.log("Info:" + this.state.currentInfo);
+
         return (
           this.setState({ currentComp: components.QUESTION })
         );
