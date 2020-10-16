@@ -60,7 +60,7 @@ class QuestionPage extends Component {
                      "nickname" : this.props.nickname,
                      "response" : identifier,
                      "individualtime" : this.state.currentTime.toFixed(1),
-                     "questionnumber" : this.state.currentQuestion};
+                     "questionnumber" : this.state.questionsIterator};
                      console.log("Question Page Send:", text);
 
         fetch('/questionresponse', {
