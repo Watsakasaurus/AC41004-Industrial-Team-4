@@ -84,6 +84,7 @@ class App extends Component {
         {post: this.state.nickname}        
       ),
     }).then((result) => result.json()).then((info) => { console.log(info); })
+
   }
 
   // Called by Splash component when user presses begin button
@@ -131,20 +132,23 @@ class App extends Component {
     }
   }
 
-  saveResToState(data){
-    console.log("Save");
-    console.log(data);
+saveResToState(data){
+    console.log("Room Config Return:", data);
+    // console.log(data);
     this.setState({roomCode: data.roomCode});
 }
 
-  onRoomConfClick(id){
+  onRoomConfClick(id, roomName, playerCount){
     // switch statement depending on which button was pressed
     // var stuff;
     switch (id) {
       
       // Create next button
       case 1:
-        var text = {  "post": this.state.nickname};
+        var text = {  "post": this.state.nickname,
+                      "roomName": roomName,
+                      "playerCount": playerCount};
+        console.log("Room Config Send:", text);
         //Pass username to server
         fetch('/username', {
           method: "POST",
@@ -181,9 +185,10 @@ class App extends Component {
               numOfQuestions: qCount,
               maxTime: qTime
           };
+          console.log("Quiz Config Send:", text);
 
-          console.log("Sending")
-          console.log(text)
+          // console.log("Sending")
+          // console.log(text)
 
           fetch("/configurequiz", {
               method: "POST",
@@ -194,7 +199,7 @@ class App extends Component {
           })
               .then((result) => result.json())
               .then((info) => {
-                  console.log(info);
+                 console.log("Quiz Config Return: ",info);
           });
 
   this.setState({ currentComp: components.LOBBY })
