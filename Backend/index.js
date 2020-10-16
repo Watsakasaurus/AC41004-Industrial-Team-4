@@ -19,7 +19,7 @@ var rooms = [];
 
 //creates and adds a new room to the rooms array
 //returns the new room's generated passcode
-function addNewRoom(category) {
+function addNewRoom(category, roomName, playerCount) {
     let code = crypto.randomBytes(10).toString('hex');
     var check = findRoomByCode(code);
     //while a room with the generated code already exists, generate a new random code
@@ -29,7 +29,7 @@ function addNewRoom(category) {
     }
 
     //create and add a new room to the rooms array
-    var newRoom = new room(rooms.length, code, category);
+    var newRoom = new room(rooms.length, code, roomName, playerCount);
     rooms.push(newRoom);
     const roomMsg = newRoom.showWelcomeMsg();
     return newRoom.roomCode;
@@ -180,7 +180,7 @@ app.post('/username', (req, res) => {
     //Make new player object
     addNewPlayer(req.body.post);
     //Place player in a new room
-    newRoomCode = addNewRoom();
+    newRoomCode = addNewRoom(req.body.roomName, req.body.playerCount);
     //Move the player to new room
     let success = movePlayerToRoom(req.body.post, newRoomCode)
 

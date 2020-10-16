@@ -2,7 +2,7 @@ var quiz = require('./quiz.js')
 var query = require('./querries')
 module.exports = class room {
 
-    constructor(id, passcode, roomName) {
+    constructor(id, passcode, roomName, maxPlayers) {
         this.roomID = id;
         this.roomCode = passcode;
         this.roomName = roomName
@@ -12,6 +12,7 @@ module.exports = class room {
         this.active = true;
         this.status = 0;
         this.maxtime = 5;
+        this.maxPlayers = maxPlayers;
     }
     
 
