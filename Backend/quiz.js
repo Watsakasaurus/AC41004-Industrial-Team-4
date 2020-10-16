@@ -26,7 +26,7 @@ module.exports = class quiz {
         let query = new queries();
         //let questionSet = query.getQuestions(this.category)
 
-        query.getQuestions(this.category).then((data) => {
+        query.getQuestions(this.category, this.numOfQuestions).then((data) => {
             this.allQuestions = data.rows;
         }).catch((err) => {
             console.error(err);
