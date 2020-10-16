@@ -17,8 +17,7 @@ module.exports = class queries {
 
     // Making querries from the database
     getTestData() {
-        var num = 3;
-
+    
         return new Promise((resolve, reject) => {
             const client = new Client();
             client.connect().then(() => {
@@ -53,6 +52,7 @@ module.exports = class queries {
     //input is an array of categories to select questions from and the number of questions to select
     getQuestions(category, num)
     {
+        var ofset = Math.floor(Math.random()* 20 ) +1;
         let categories = "{" + category.join() +"}";
         return new Promise((resolve, reject) => {
             const client = new Client();
