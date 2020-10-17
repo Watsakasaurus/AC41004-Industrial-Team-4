@@ -38,7 +38,7 @@ class EnterRoomNumber extends React.Component {
                     <Container className="Room-code-input-con">
                         <h4>To join a room please enter the 16 digit room code below!</h4>
                         <form id="nickname-form" onSubmit={this.handleSubmit}>
-                            <Form.Control size="lg" type="number" placeholder="12345678910" className="Nickname-inputbox" maxLength="16" value={this.state.value} onChange={this.handleChange} />
+                            <Form.Control size="lg" type="text" placeholder="12345678910" className="Nickname-inputbox" maxLength="16" value={this.state.value} onChange={this.handleChange} />
                         </form>
                     </Container>
 
