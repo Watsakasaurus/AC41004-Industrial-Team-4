@@ -1,4 +1,5 @@
 
+ DROP TABLE IF EXISTS quiz;
 
 CREATE TABLE quiz(
 quizId SERIAL PRIMARY KEY, 

@@ -62,7 +62,7 @@ module.exports = class queries {
 
     getQuestions(category)
     {
-       
+       var num = 10;
         let categories = "{" + category.join() +"}";
         return new Promise((resolve, reject) => {
             const client = new Client();
