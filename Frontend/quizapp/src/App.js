@@ -99,12 +99,9 @@ class App extends Component {
 
     // switch statement depending on which button was pressed
     switch (id) {
-
       // Create start game button
       case 1:
-      // Create start game button
-      case 1:
-        var text = { "post": this.state.roomCode };
+        var text = { "roomCode": this.state.roomCode };
         //Pass startroom to server
         fetch('/startroom', {
           method: "POST",
@@ -113,12 +110,6 @@ class App extends Component {
           },
           body: JSON.stringify(text)
         }).then((result) => result.json()).then((info) => this.saveResToState(info))
-
-        console.log("Info:" + this.state.currentInfo);
-        this.onQuizStart()
-        // return (
-        //   // this.setState({ currentComp: components.QUESTION })
-        // );
 
       // Exit lobby button
       case 2:
@@ -136,6 +127,7 @@ class App extends Component {
 
       // Green button
       case 1:
+        this.lobbyWaitRefresh();
         return (
           this.setState({ 
             roomCode: roomcode,
@@ -277,6 +269,8 @@ class App extends Component {
 
   stopLobbyRefresh() {
     clearInterval(this.refreshTimer);
+    this.onQuizStart();
+    this.setState({ currentComp: components.QUESTION })
   }
 
   // called by Menu component user pressed a button
