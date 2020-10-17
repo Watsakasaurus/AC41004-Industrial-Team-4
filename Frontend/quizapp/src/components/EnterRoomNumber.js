@@ -21,7 +21,19 @@ class EnterRoomNumber extends React.Component {
     }
 
     // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
-    handleSubmit(event) {
+    handleSubmit(event, id) {
+        this.props.onClick(id)
+        var text = { "roomCode" : this.state.value,
+                     "nickname" : this.props.nickname,}
+        console.log("Room Number Page Send", text)
+
+        fetch('/roomadduser', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(text),
+        }).then((result) => result.json()).then((info) => { console.log("Room Number Page Return", info); })
         event.preventDefault() // Prevent default prevents the page refreshing
     }
 
@@ -45,14 +57,14 @@ class EnterRoomNumber extends React.Component {
                     <Container className="Menu-container">
                         <Row className="Menu-row">
                             <Col>
-                                <Button className="Menu-button" block variant="danger" onClick = {()=> this.props.onClick(2)}>
+                                <Button className="Menu-button" block variant="danger" onClick = {()=> this.handleSubmit}>
                                     <h1 className="Menu-cancel">
                                         x
                                     </h1>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick = {()=> this.props.onClick(1)}>
+                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick = {()=> this.handleSubmit}>
                                     <h1 className="Splash-button">
                                         Join!
                                     </h1>
