@@ -177,9 +177,9 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    //let newRoomCode = addNewRoom();
+    let newRoomCode = addNewRoom();
     //console.log(newRoomCode);
-    addNewPlayer("nicole");
+    /*addNewPlayer("nicole");
     addNewPlayer("arran");
     addNewPlayer("ross");
     addNewPlayer("aylin");
@@ -188,8 +188,9 @@ app.get('/', (req, res) => {
     movePlayerToRoom("arran", rooms[0].roomCode);
     movePlayerToRoom("ross", rooms[0].roomCode);
     movePlayerToRoom("aylin", rooms[0].roomCode);
-    console.log(rooms[0]);
-    //addNewQuiz(newRoomCode, "animals", 10);
+    console.log(rooms[0]);*/
+    addNewQuiz(newRoomCode, ["animals"], 10);
+    //console.log(rooms[0].currentQuiz.allOptions);
 });
 
 //function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
@@ -242,7 +243,7 @@ app.get('/cat_of_questions', (req, res) => {
 
 //function to send all questions to the front end
 //takes in roomCode. returns questions[]
-app.get('/questions', (req, res) => {
+app.post('/questions', (req, res) => {
     console.log('Post request recieved: send questions to quiz')
 
     //Pick up roomcode in the request
@@ -289,7 +290,7 @@ app.post('/roomadduser', (req, res) => {
         //Send failure message back
         res.send(JSON.stringify({
             nickname: nickName,
-            roomCode: newRoomCode,
+            roomCode: roomCode,
             status: 4
         }))
     }
@@ -297,7 +298,7 @@ app.post('/roomadduser', (req, res) => {
         //Send success message
         res.send(JSON.stringify({
             nickname: nickName,
-            roomCode: newRoomCode,
+            roomCode: roomCode,
             status: 0
         }))
     }

@@ -54,7 +54,8 @@ class App extends Component {
       response: '',
       post: '',
       roomCode: '12345678910',
-      currentInfo: []
+      currentInfo: [],
+      host: false
     }
   }
 
@@ -126,7 +127,7 @@ class App extends Component {
   }
 
   // Called by RoomCode component when user presses a button
-  onRoomClick(id) {
+  onRoomClick(id, roomcode) {
 
     // switch statement depending on which button was pressed
     switch (id) {
@@ -134,7 +135,10 @@ class App extends Component {
       // Green button
       case 1:
         return (
-          this.setState({ currentComp: components.LOBBY })
+          this.setState({ 
+            roomCode: roomcode,
+            currentComp: components.LOBBY,
+            host: false})
         );
 
       // Exit button
@@ -221,6 +225,7 @@ saveResToState(data){
           });
 
   this.setState({ currentComp: components.LOBBY })
+  this.setState({ host: true})
 
   }
 
@@ -280,11 +285,11 @@ saveResToState(data){
           <RoomConfigure onClick={this.onRoomConfClick.bind(this)} />);
       case components.ROOMCODE:
         return (
-          <EnterRoomNumber onClick={this.onRoomClick.bind(this)}/>
+          <EnterRoomNumber onClick={this.onRoomClick.bind(this)} nickname={this.state.nickname}/>
         )
       case components.LOBBY:
         return (
-          <Lobby onClick={this.onLobbyClick.bind(this)} players = {testPlayers} roomCode = {this.state.roomCode}/>
+          <Lobby onClick={this.onLobbyClick.bind(this)} host ={this.state.host} players = {testPlayers} roomCode = {this.state.roomCode}/>
         )
       case components.QUIZCONFIG:
         return (
