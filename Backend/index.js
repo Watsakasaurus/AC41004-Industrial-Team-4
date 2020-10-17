@@ -242,7 +242,7 @@ app.get('/cat_of_questions', (req, res) => {
 
 //function to send all questions to the front end
 //takes in roomCode. returns questions[]
-app.get('/questions', (req, res) => {
+app.post('/questions', (req, res) => {
     console.log('Post request recieved: send questions to quiz')
 
     //Pick up roomcode in the request
