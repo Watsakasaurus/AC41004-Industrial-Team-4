@@ -24,7 +24,7 @@ class EnterRoomNumber extends React.Component {
     handleSubmit(event, id) {
         this.props.onClick(id)
         var text = { "roomCode" : this.state.value,
-                     "nickname" : this.props.nickname,}
+                     "nickName" : this.props.nickname,}
         console.log("Room Number Page Send", text)
 
         fetch('/roomadduser', {

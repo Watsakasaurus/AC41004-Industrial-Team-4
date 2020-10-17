@@ -280,7 +280,7 @@ saveResToState(data){
           <RoomConfigure onClick={this.onRoomConfClick.bind(this)} />);
       case components.ROOMCODE:
         return (
-          <EnterRoomNumber onClick={this.onRoomClick.bind(this)}/>
+          <EnterRoomNumber onClick={this.onRoomClick.bind(this)} nickname={this.state.nickname}/>
         )
       case components.LOBBY:
         return (
