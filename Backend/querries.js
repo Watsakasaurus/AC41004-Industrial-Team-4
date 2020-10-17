@@ -23,7 +23,7 @@ module.exports = class queries {
     }
     // Making querries from the database
     getTestData() {
-    
+        var num = 10;
         return new Promise((resolve, reject) => {
             const client = new Client();
             client.connect().then(() => {
