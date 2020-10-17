@@ -177,9 +177,9 @@ function startServer() {
 //Initial connection to the server
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
-    //let newRoomCode = addNewRoom();
+    let newRoomCode = addNewRoom();
     //console.log(newRoomCode);
-    addNewPlayer("nicole");
+    /*addNewPlayer("nicole");
     addNewPlayer("arran");
     addNewPlayer("ross");
     addNewPlayer("aylin");
@@ -188,8 +188,9 @@ app.get('/', (req, res) => {
     movePlayerToRoom("arran", rooms[0].roomCode);
     movePlayerToRoom("ross", rooms[0].roomCode);
     movePlayerToRoom("aylin", rooms[0].roomCode);
-    console.log(rooms[0]);
-    //addNewQuiz(newRoomCode, "animals", 10);
+    console.log(rooms[0]);*/
+    addNewQuiz(newRoomCode, ["animals"], 10);
+    //console.log(rooms[0].currentQuiz.allOptions);
 });
 
 //function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
