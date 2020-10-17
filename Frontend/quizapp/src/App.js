@@ -57,7 +57,8 @@ class App extends Component {
       currentInfo: [],
       players: [],
       host: false,
-      gameState: 0
+      gameState: 0,
+      questions: testQuestions
     }
   }
 
@@ -114,9 +115,10 @@ class App extends Component {
         }).then((result) => result.json()).then((info) => this.saveResToState(info))
 
         console.log("Info:" + this.state.currentInfo);
-        return (
-          this.setState({ currentComp: components.QUESTION })
-        );
+        this.onQuizStart()
+        // return (
+        //   // this.setState({ currentComp: components.QUESTION })
+        // );
 
       // Exit lobby button
       case 2:
@@ -127,7 +129,7 @@ class App extends Component {
   }
 
   // Called by RoomCode component when user presses a button
-  onRoomClick(id) {
+  onRoomClick(id, roomcode) {
 
     // switch statement depending on which button was pressed
     switch (id) {
@@ -135,7 +137,8 @@ class App extends Component {
       // Green button
       case 1:
         return (
-          this.setState({
+          this.setState({ 
+            roomCode: roomcode,
             currentComp: components.LOBBY,
             host: false
           })
@@ -309,6 +312,33 @@ class App extends Component {
     }
   }
 
+  onQuizStart(){
+    var text = { "roomCode" : this.state.roomCode}
+        console.log("Questions Send:", text);
+        fetch('/questions', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(text),
+        }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
+  }
+
+  reformatQuestions(info){
+    console.log("Questions Return", info);
+    // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
+    let reformedQs = []
+    for(var x in info){
+      // console.log(info[x]);
+      reformedQs.push([info[x].question,info[x].option1,info[x].option2,info[x].option2,info[x].option4, 
+        [info[x].option1,info[x].option2,info[x].option2,info[x].option4].indexOf(info[x].answer)+1]);
+    }
+    this.state.questions = reformedQs;
+    console.log(reformedQs)
+    this.setState({ currentComp: components.QUESTION })
+  }
+
+
   // returns the JSX of a component depending on compID value passed in
   returnComponent(compID) {
     switch (compID) {
@@ -320,7 +350,7 @@ class App extends Component {
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage questions={testQuestions} nickname={this.state.nickname} roomcode={this.state.roomCode} />);
+          <QuestionPage questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);
