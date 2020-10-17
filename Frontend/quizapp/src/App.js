@@ -54,7 +54,8 @@ class App extends Component {
       response: '',
       post: '',
       roomCode: '12345678910',
-      currentInfo: []
+      currentInfo: [],
+      host: false
     }
   }
 
@@ -134,7 +135,9 @@ class App extends Component {
       // Green button
       case 1:
         return (
-          this.setState({ currentComp: components.LOBBY })
+          this.setState({ 
+            currentComp: components.LOBBY,
+            host: false})
         );
 
       // Exit button
@@ -221,6 +224,7 @@ saveResToState(data){
           });
 
   this.setState({ currentComp: components.LOBBY })
+  this.setState({ host: true})
 
   }
 
@@ -284,7 +288,7 @@ saveResToState(data){
         )
       case components.LOBBY:
         return (
-          <Lobby onClick={this.onLobbyClick.bind(this)} players = {testPlayers} roomCode = {this.state.roomCode}/>
+          <Lobby onClick={this.onLobbyClick.bind(this)} host ={this.state.host} players = {testPlayers} roomCode = {this.state.roomCode}/>
         )
       case components.QUIZCONFIG:
         return (
