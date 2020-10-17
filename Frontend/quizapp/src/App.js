@@ -268,6 +268,7 @@ class App extends Component {
   }
 
   stopLobbyRefresh() {
+    
     clearInterval(this.refreshTimer);
     this.onQuizStart();
     this.setState({ currentComp: components.QUESTION })
