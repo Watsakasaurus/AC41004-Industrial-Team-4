@@ -74,12 +74,33 @@ class ResultsPage extends Component {
     }
   };
 
+renderBars(players, colours, scores){
+  console.log(players);
+  var items = []
+  for(var x in players){
+    console.log("BAR: " + x)
+    items.push(
+      <div>
+        <div className="Result-div">
+           <UserBadge name={players[x]} user_clr={colours[x]} />
+        </div>
+        <div className="Result-div2">
+          <Score score={scores[x]} user_clr={colours[x]} />
+        </div>
+      </div>
+    );
+  }
+  return items;
+
+}
+
+
   render() {
 
 
-    let players = ["Andrew", "Alfie", "Sophie", "Callum"];
-    let colours = ["primary", "success", "danger", "warning"]
-    let plyr_score = ["100", "85", "45", "20"]
+    let players = this.props.players;
+    let colours = this.props.colours;
+    let plyr_score = this.props.plyr_score;
 
 
     return (
@@ -97,41 +118,7 @@ class ResultsPage extends Component {
           </Jumbotron>
         </div>
 
-        <div>
-          <div className="Result-div">
-            <UserBadge name={players[0]} user_clr={colours[0]} />
-          </div>
-          <div className="Result-div2">
-            <Score score={plyr_score[0]} user_clr={colours[0]} />
-          </div>
-        </div>
-
-        <div>
-          <div className="Result-div">
-            <UserBadge name={players[1]} user_clr={colours[1]} />
-          </div>
-          <div className="Result-div2">
-            <Score score={plyr_score[1]} user_clr={colours[1]} />
-          </div>
-        </div>
-
-        <div>
-          <div className="Result-div">
-            <UserBadge name={players[2]} user_clr={colours[2]} />
-          </div>
-          <div className="Result-div2">
-            <Score score={plyr_score[2]} user_clr={colours[2]} />
-          </div>
-        </div>
-
-        <div>
-          <div className="Result-div">
-            <UserBadge name={players[3]} user_clr={colours[3]} />
-          </div>
-          <div className="Result-div2">
-            <Score score={plyr_score[3]} user_clr={colours[3]} />
-          </div>
-        </div>
+       {this.renderBars(players, colours, plyr_score)}
 
         <br>
         </br>

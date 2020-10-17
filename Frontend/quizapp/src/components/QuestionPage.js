@@ -148,7 +148,10 @@ class QuestionPage extends Component {
     answerLayout() {
         return (
             // <h1>Answered</h1>
-            <Results result="Incorrect" points={50} score={100}></Results>
+            <Results result="Incorrect" points={50} score={100} 
+            players={["Andrew", "Alfie", "Sophie", "Callum"]}
+            colours ={["primary", "success", "danger", "warning"]}
+            plyr_score = {["100", "85", "45", "20"]}></Results>
         );
     }
 

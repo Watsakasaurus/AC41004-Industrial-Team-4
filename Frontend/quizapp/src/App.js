@@ -136,6 +136,7 @@ class App extends Component {
 
       // Green button
       case 1:
+        this.lobbyWaitRefresh();
         return (
           this.setState({ 
             roomCode: roomcode,
@@ -276,6 +277,7 @@ class App extends Component {
   }
 
   stopLobbyRefresh() {
+    
     clearInterval(this.refreshTimer);
   }
 
