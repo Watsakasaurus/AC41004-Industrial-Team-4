@@ -21,8 +21,8 @@ class EnterRoomNumber extends React.Component {
     }
 
     // When the button to submit the form is pressed, pass the form input as a prop up to parent via the passed down function
-    handleSubmit(event, id) {
-        this.props.onClick(id)
+    handleSubmit(event) {
+        // event.preventDefault() // Prevent default prevents the page refreshing
         var text = { "roomCode" : this.state.value,
                      "nickName" : this.props.nickname,}
         console.log("Room Number Page Send", text)
@@ -33,8 +33,20 @@ class EnterRoomNumber extends React.Component {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(text),
-        }).then((result) => result.json()).then((info) => { console.log("Room Number Page Return", info); })
-        event.preventDefault() // Prevent default prevents the page refreshing
+        }).then((result) => result.json()).then((info) => {this.sortOut(info)}) // console.log("Room Number Page Return", info)
+        this.props.onClick(2);
+    }
+
+    sortOut(info){
+         console.log("Room Number Page Return", info)
+        
+        // console.log("info status", info.status);
+        if(info.status != 0){
+            this.props.onClick(2)
+        }else{
+            this.props.onClick(1, info.roomCode)
+        }
+        
     }
 
     render() {
@@ -49,7 +61,7 @@ class EnterRoomNumber extends React.Component {
 
                     <Container className="Room-code-input-con">
                         <h4>To join a room please enter the 20 digit room code below!</h4>
-                        <form id="nickname-form" onSubmit={this.handleSubmit}>
+                        <form id="nickname-form" >
                             <Form.Control size="lg" type="text" placeholder="12345678910" className="Nickname-inputbox" maxLength="20" value={this.state.value} onChange={this.handleChange} />
                         </form>
                     </Container>
@@ -57,14 +69,14 @@ class EnterRoomNumber extends React.Component {
                     <Container className="Menu-container">
                         <Row className="Menu-row">
                             <Col>
-                                <Button className="Menu-button" block variant="danger" onClick = {()=> this.handleSubmit}>
+                                <Button className="Menu-button" block variant="danger" onClick = {()=> this.props.onClick(2)}>
                                     <h1 className="Menu-cancel">
                                         x
                                     </h1>
                                 </Button>
                             </Col>
                             <Col>
-                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick = {()=> this.handleSubmit}>
+                                <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick = {()=> this.handleSubmit()}>
                                     <h1 className="Splash-button">
                                         Join!
                                     </h1>

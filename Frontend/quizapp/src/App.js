@@ -127,7 +127,7 @@ class App extends Component {
   }
 
   // Called by RoomCode component when user presses a button
-  onRoomClick(id) {
+  onRoomClick(id, roomcode) {
 
     // switch statement depending on which button was pressed
     switch (id) {
@@ -136,6 +136,7 @@ class App extends Component {
       case 1:
         return (
           this.setState({ 
+            roomCode: roomcode,
             currentComp: components.LOBBY,
             host: false})
         );
