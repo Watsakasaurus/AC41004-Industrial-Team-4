@@ -1,8 +1,11 @@
 var quiz = require('./quiz.js')
 var query = require('./querries')
-module.exports = class room {
 
-    constructor(id, passcode, roomName, maxPlayers) {
+module.exports = class room 
+{
+
+    constructor(id, passcode, roomName, maxPlayers)
+    {
         this.roomID = id;
         this.roomCode = passcode;
         this.roomName = roomName
@@ -15,20 +18,22 @@ module.exports = class room {
         this.maxPlayers = maxPlayers;
     }
     
-
     //returns the ID of the room
-    getRoomId() {
+    getRoomId() 
+    {
         return this.roomID
     }
 
     //returns a welcome message
-    showWelcomeMsg() {
+    showWelcomeMsg() 
+    {
         return "Welcome to the quiz room"
     }
 
     //creates a new quiz and sets the current quiz
     //inputs are the category and number of questions for the quiz
-    newQuiz(category, numOfQuestions) {
+    newQuiz(category, numOfQuestions) 
+    {
         var newQuiz = new quiz(category, numOfQuestions);
         this.currentQuiz = newQuiz;
         return newQuiz
@@ -36,7 +41,8 @@ module.exports = class room {
 
     //closes a room by setting active to false
     //returns the active property
-    closeRoom() {
+    closeRoom() 
+    {
         this.active = false;
         return this.active;
     }
@@ -45,7 +51,6 @@ module.exports = class room {
     testDatabaseConnection()
     {
         var testQuery = new query();
-        //testQuery.getTestData();
     }
 
 }

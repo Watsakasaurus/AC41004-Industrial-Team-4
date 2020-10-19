@@ -1,5 +1,3 @@
-//Include expressJS
-
 const express = require('express')
 let room = require('./room.js')
 let player = require('./player.js')
@@ -116,7 +114,8 @@ function removeNonactiveRooms() {
     console.log(indexes)
 
     //https://stackoverflow.com/questions/3396088/how-do-i-remove-an-object-from-an-array-with-javascript
-    for (i = 0; i < indexes.length; i++) {
+    for (i = 0; i < indexes.length; i++) 
+    {
         rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
 }
@@ -178,19 +177,7 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
-    //console.log(newRoomCode);
-    /*addNewPlayer("nicole");
-    addNewPlayer("arran");
-    addNewPlayer("ross");
-    addNewPlayer("aylin");
-    addNewRoom("animals", "room1", 3)
-    movePlayerToRoom("nicole", rooms[0].roomCode);
-    movePlayerToRoom("arran", rooms[0].roomCode);
-    movePlayerToRoom("ross", rooms[0].roomCode);
-    movePlayerToRoom("aylin", rooms[0].roomCode);
-    console.log(rooms[0]);*/
     addNewQuiz(newRoomCode, ["animals"], 10);
-    //console.log(rooms[0].currentQuiz.allOptions);
 });
 
 //function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
@@ -205,6 +192,7 @@ app.post('/username', (req, res) => {
     //Move the player to new room
     let success = movePlayerToRoom(req.body.post, newRoomCode)
 
+    //if successful, return roomcode and success status
     if(success === true)
     {
         res.send(JSON.stringify(
@@ -214,6 +202,7 @@ app.post('/username', (req, res) => {
             }
         ))
     }
+    //if failure, return error status
     else
     {
         res.send(JSON.stringify(
@@ -222,23 +211,6 @@ app.post('/username', (req, res) => {
             }
         ))
     }
-});
-
-// Connection to the database to get number of questions 
-app.get('/num_of_questions', (req, res) => {
-    test1query.getTestData().then((data) => {
-        res.status(200).json(data.rows);
-    }).catch((err) => {
-        console.error(err);
-    });
-});
-// Second connection to the database to get question based on the category
-app.get('/cat_of_questions', (req, res) => {
-    test1query.getQuestions().then((data) => {
-        res.status(200).json(data.rows);
-    }).catch((err) => {
-        console.error(err);
-    });
 });
 
 //function to send all questions to the front end
@@ -364,7 +336,7 @@ app.post('/roomallnicknames', (req, res) => {
             nicknames.push(nickname);
         }
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             nicknames: nicknames,
@@ -399,7 +371,7 @@ app.post('/startroom', (req, res) => {
         //update the room's status
         rooms[index].status = 6;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             status: rooms[index].status,
@@ -441,7 +413,7 @@ app.post('/configurequiz', (req, res) => {
         //update the room's status
         rooms[index].status = 5;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             status: rooms[index].status,
@@ -503,7 +475,7 @@ app.post('/questionresponse', (req, res) => {
                 rooms[index].players[i].correct[req.body.questionnumber - 1] = false;
             }
 
-            //Send success message
+            //Send success message and return info
             res.send(JSON.stringify({
                 roomCode: req.body.roomCode,
                 playerscore: rooms[index].players[i].totalScore,
@@ -538,7 +510,7 @@ app.post('/history', (req, res) => {
         //update the room's status to show the quiz has ended
         rooms[index].status = 9;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             players: rooms[index].players,
