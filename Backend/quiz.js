@@ -1,16 +1,12 @@
 const { json } = require("body-parser");
 const queries = require("./querries");
 
-module.exports = class quiz {
-    constructor(category, numOfQuestions) {
+module.exports = class quiz 
+{
+    constructor(category, numOfQuestions) 
+    {
         this.category = category;
         this.numOfQuestions = numOfQuestions;
-        //this.difficulty = difficulty;
-        //this.currentQuestion = "";
-        //this.currentAnswer = "";
-        //this.currentOptions = [];
-        //
-
         this.allQuestions = {};
         this.allAnswers = [];
         this.allOptions = [];
@@ -20,21 +16,15 @@ module.exports = class quiz {
         this.getOptions();
     }
 
-    getQuestions() {
-        //get the questions from db info
-        //this.allQuestions =
-
+    getQuestions() 
+    {
         let query = new queries();
-        //let questionSet = query.getQuestions(this.category)
-
         query.getQuestions(this.category, this.numOfQuestions).then((data) => {
             this.allQuestions = data.rows;
         }).catch((err) => {
             console.error(err);
         });
-
         console.log("Questions: " + this.allQuestions)
-
     }
 
     getOptions() {
@@ -56,14 +46,12 @@ module.exports = class quiz {
         console.info(this.allOptions);
     }
 
-    getAnswers() {
+    getAnswers() 
+    {
         // takes out the answers from any number of questions
         var i;
         for (i = 0; i <= this.allQuestions.length; i++) {
-
             this.allAnswers = this.allQuestions[i].answer;
-            
-
         }
         console.info(this.allAnswers);
     }

@@ -1,6 +1,7 @@
 module.exports = class player
 {
-    constructor(nickname){
+    constructor(nickname)
+    {
         this.name = nickname;
         this.score = 0;
         this.totalScore = 0;
