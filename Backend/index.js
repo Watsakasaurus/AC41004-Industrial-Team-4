@@ -180,7 +180,7 @@ app.get('/', (req, res) => {
 });
 
 //function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
-//takes in post (nickname), roomName and playerCount. returns roomCode and status
+//takes in post (nickname), roomName and playerCount. returns roomCode, status and URL for sharing with friends
 app.post('/username', (req, res) => {
     console.log('Post request recieved: New player in a new room')
 
@@ -191,13 +191,16 @@ app.post('/username', (req, res) => {
     //Move the player to new room
     let success = movePlayerToRoom(req.body.post, newRoomCode)
 
-    //if successful, return roomcode and success status
+    //Get current URL for the sharing code
+    let url = req.protocol + '://' + req.get('host') + '/joinWithCode/' + newRoomCode
+
     if(success === true)
     {
         res.send(JSON.stringify(
             {
                 roomCode: newRoomCode,
-                status: 0,
+                shareURL: url,
+                status: 0,   
             }
         ))
     }
@@ -572,6 +575,16 @@ app.post('/playagain', (req, res) => {
         }
     }
 });
+
+//Endpoint for joing room with code in url
+app.get('/joinWithCode/:roomCode', (req, res)=>
+    {
+        console.log("GET request recieved: Player joins with URL");
+
+        //Get the roomcode
+        let roomCode = req.params.roomCode
+    }
+)
 
 //Start the server
 startServer();
