@@ -264,7 +264,7 @@ class App extends Component {
         this.stopLobbyRefresh()
       }
 
-    }, 2500);
+    }, 500);
   }
 
   stopLobbyRefresh() {
