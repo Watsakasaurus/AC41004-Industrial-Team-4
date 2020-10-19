@@ -33,4 +33,16 @@ module.exports = class player
         this.totalScore = 0;
     }
 
+    //clears the player's responses
+    clearResponses()
+    {
+        this.responses.splice(0,this.responses.length);
+    }
+
+    //clears the player's response history
+    clearCorrect()
+    {
+        this.correct.splice(0,this.correct.length);
+    }
+
 }

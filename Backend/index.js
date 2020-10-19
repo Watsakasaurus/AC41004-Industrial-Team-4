@@ -147,8 +147,7 @@ function movePlayerToRoom(nickname, roomCode) {
 
     //check if room is full
     var maxRoomCapacity = rooms[index].maxPlayers;
-    if(rooms[index].players.length >= maxRoomCapacity)
-    {
+    if (rooms[index].players.length >= maxRoomCapacity) {
         console.log("max room capacity reached " + maxRoomCapacity + " " + rooms[index].players.length)
         return false; //returns false if the room is full
     }
@@ -178,7 +177,7 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
-    //console.log(newRoomCode);
+    console.log(newRoomCode);
     /*addNewPlayer("nicole");
     addNewPlayer("arran");
     addNewPlayer("ross");
@@ -189,7 +188,7 @@ app.get('/', (req, res) => {
     movePlayerToRoom("ross", rooms[0].roomCode);
     movePlayerToRoom("aylin", rooms[0].roomCode);
     console.log(rooms[0]);*/
-    addNewQuiz(newRoomCode, ["animals"], 10);
+    //addNewQuiz(newRoomCode, ["brain teasers"], 10);
     //console.log(rooms[0].currentQuiz.allOptions);
 });
 
@@ -205,17 +204,15 @@ app.post('/username', (req, res) => {
     //Move the player to new room
     let success = movePlayerToRoom(req.body.post, newRoomCode)
 
-    if(success === true)
-    {
+    if (success === true) {
         res.send(JSON.stringify(
             {
                 roomCode: newRoomCode,
-                status: 0,   
+                status: 0,
             }
         ))
     }
-    else
-    {
+    else {
         res.send(JSON.stringify(
             {
                 status: 8
@@ -395,7 +392,7 @@ app.post('/startroom', (req, res) => {
         }))
     }
     else {
-        
+
         //update the room's status
         rooms[index].status = 6;
 
@@ -547,6 +544,59 @@ app.post('/history', (req, res) => {
         }))
     }
 
+});
+
+//function to change state of the room to show a new quiz has been created for playing again
+//takes in roomCode. returns roomCode, status, successful
+app.post('/playagain', (req, res) => {
+    console.log('Post request recieved: Play again');
+
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 3,
+            successful: false
+        }))
+    }
+    else {
+        if (rooms[index].status == 9) {
+            //create new quiz and add to the room
+            addNewQuiz(roomCode, rooms[index].currentQuiz.category, rooms[index].currentQuiz.numOfQuestions);
+
+            //update the room's status
+            rooms[index].status = 7;
+
+            //reset each player's score and response history
+            for(i = 0; i < rooms[index].players.length; i++){
+                rooms[index].players[i].resetScore();
+                rooms[index].players[i].resetTotalScore();
+                rooms[index].players[i].clearResponses();
+                rooms[index].players[i].clearCorrect();
+            }
+
+            //Send success message
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                status: rooms[index].status,
+                successful: true
+            }))
+        }
+        else {
+            //Send failure message back if quiz is still ongoing
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                status: 1,
+                successful: false
+            }))
+        }
+    }
 });
 
 //Start the server
