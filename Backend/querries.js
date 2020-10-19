@@ -15,37 +15,6 @@ module.exports = class queries
         this.client = new Client();
 
     }
-    
-    // Making querries to the database
-    getTestData() 
-    {
-        var num = 10;
-        return new Promise((resolve, reject) => {
-            const client = new Client();
-            client.connect().then(() => {
-                client.query('SELECT * FROM quiz limit ' + num, (err, rws) => {
-                    if (err) reject(err);
-                    resolve(rws);
-                });
-
-            });
-        });
-    }
-
-    // Retrieves data based on the desired category by the user
-    getTestData1() 
-    {
-        var cat = "'animals'";
-        return new Promise((resolve, reject) => {
-            const client = new Client();
-            client.connect().then(() => {
-                client.query("SELECT * FROM quiz WHERE category = " + cat, (err, rws) => {
-                    if (err) reject(err);
-                    resolve(rws);
-                });
-            });
-        });
-    }
 
     //retrieves a given number of questions from the given categories
     //input is an array of categories to select questions from and the number of questions to select
