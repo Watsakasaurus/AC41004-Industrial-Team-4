@@ -39,7 +39,8 @@ function TimeLeft(props) {
 
 
 window.onload = function () {
-  setInterval(count, 1000);
+  //setInterval(count, 1000);
+  
 };
 
 let counter = 0;
@@ -65,7 +66,20 @@ class ResultsPage extends Component {
 
   }
 
-  setclr = () => {
+onload(props){
+  var text = { "roomCode": this.props.roomCode };
+  //perform the fetch
+  fetch('/roomallplayers', {
+    method: "POST",
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(text)
+  }).then((result) => result.json()).then((info) =>  this.setState({players: info.nicknames, players: info.score}))
+
+}
+  
+setclr = () => {
     if (Result === this.state.correct) {
       this.setState({ colour: "green" });
     }
