@@ -140,7 +140,7 @@ class QuestionPage extends Component {
                         {this.makeButton(this.state.currentQuestion[4], 4, 1)}
                     </Col>
                 </Row>
-                <h1>{this.state.currentTime.toFixed(2)}</h1>
+                {/* <h1>{this.state.currentTime.toFixed(2)}</h1> */}
             </Container>
         );
     }
