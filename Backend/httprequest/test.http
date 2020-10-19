@@ -1,0 +1,170 @@
+POST http://localhost:5000/username
+Content-Type: application/json
+
+{
+    "post": "nicole"
+}
+
+###
+
+POST http://localhost:5000/roomadduser
+Content-Type: application/json
+
+{
+    "nickName": "rossmaider",
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/roomadduser
+Content-Type: application/json
+
+{
+    "nickName": "JohnSmith",
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/configurequiz
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "category": ["animals", "brain teasers"],
+    "numOfQuestions": 3,
+    "maxTime": 5
+}
+
+###
+
+POST http://localhost:5000/roomallnicknames
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/startroom
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+GET  http://localhost:5000/questions
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "nicole",
+    "response": "test",
+    "questionnumber": 1,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "nicole",
+    "response": "test2",
+    "questionnumber": 2,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "nicole",
+    "response": "test3",
+    "questionnumber": 3,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "JohnSmith",
+    "response": "test",
+    "questionnumber": 1,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "JohnSmith",
+    "response": "test2",
+    "questionnumber": 2,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/questionresponse
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef",
+    "nickname": "JohnSmith",
+    "response": "test3",
+    "questionnumber": 3,
+    "individualtime": 1
+}
+
+###
+
+POST http://localhost:5000/history
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/playagain
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
+
+###
+
+POST http://localhost:5000/roomallplayers
+Content-Type: application/json
+
+{
+    "roomCode": "56f56c047e023faedaef"
+}
