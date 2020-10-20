@@ -1,5 +1,3 @@
-//Include expressJS
-
 const express = require('express')
 let room = require('./room.js')
 let player = require('./player.js')
@@ -116,7 +114,8 @@ function removeNonactiveRooms() {
     console.log(indexes)
 
     //https://stackoverflow.com/questions/3396088/how-do-i-remove-an-object-from-an-array-with-javascript
-    for (i = 0; i < indexes.length; i++) {
+    for (i = 0; i < indexes.length; i++) 
+    {
         rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
 }
@@ -147,8 +146,7 @@ function movePlayerToRoom(nickname, roomCode) {
 
     //check if room is full
     var maxRoomCapacity = rooms[index].maxPlayers;
-    if(rooms[index].players.length >= maxRoomCapacity)
-    {
+    if (rooms[index].players.length >= maxRoomCapacity) {
         console.log("max room capacity reached " + maxRoomCapacity + " " + rooms[index].players.length)
         return false; //returns false if the room is full
     }
@@ -178,23 +176,11 @@ function startServer() {
 app.get('/', (req, res) => {
     res.send(`<h1>Welcome to the quiz</h1>`);
     let newRoomCode = addNewRoom();
-    //console.log(newRoomCode);
-    /*addNewPlayer("nicole");
-    addNewPlayer("arran");
-    addNewPlayer("ross");
-    addNewPlayer("aylin");
-    addNewRoom("animals", "room1", 3)
-    movePlayerToRoom("nicole", rooms[0].roomCode);
-    movePlayerToRoom("arran", rooms[0].roomCode);
-    movePlayerToRoom("ross", rooms[0].roomCode);
-    movePlayerToRoom("aylin", rooms[0].roomCode);
-    console.log(rooms[0]);*/
     addNewQuiz(newRoomCode, ["animals"], 10);
-    //console.log(rooms[0].currentQuiz.allOptions);
 });
 
 //function used when a new player joins and creates a new room. Also takes in and applies some room settings such as name and num of players
-//takes in post (nickname), roomName and playerCount. returns roomCode and status
+//takes in post (nickname), roomName and playerCount. returns roomCode, status and URL for sharing with friends
 app.post('/username', (req, res) => {
     console.log('Post request recieved: New player in a new room')
 
@@ -205,15 +191,20 @@ app.post('/username', (req, res) => {
     //Move the player to new room
     let success = movePlayerToRoom(req.body.post, newRoomCode)
 
+    //Get current URL for the sharing code
+    let url = req.protocol + '://' + req.get('host') + '/joinWithCode/' + newRoomCode
+
     if(success === true)
     {
         res.send(JSON.stringify(
             {
                 roomCode: newRoomCode,
+                shareURL: url,
                 status: 0,   
             }
         ))
     }
+    //if failure, return error status
     else
     {
         res.send(JSON.stringify(
@@ -222,23 +213,6 @@ app.post('/username', (req, res) => {
             }
         ))
     }
-});
-
-// Connection to the database to get number of questions 
-app.get('/num_of_questions', (req, res) => {
-    test1query.getTestData().then((data) => {
-        res.status(200).json(data.rows);
-    }).catch((err) => {
-        console.error(err);
-    });
-});
-// Second connection to the database to get question based on the category
-app.get('/cat_of_questions', (req, res) => {
-    test1query.getQuestions().then((data) => {
-        res.status(200).json(data.rows);
-    }).catch((err) => {
-        console.error(err);
-    });
 });
 
 //function to send all questions to the front end
@@ -364,7 +338,7 @@ app.post('/roomallnicknames', (req, res) => {
             nicknames.push(nickname);
         }
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             nicknames: nicknames,
@@ -395,11 +369,11 @@ app.post('/startroom', (req, res) => {
         }))
     }
     else {
-        
+
         //update the room's status
         rooms[index].status = 6;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             status: rooms[index].status,
@@ -441,7 +415,7 @@ app.post('/configurequiz', (req, res) => {
         //update the room's status
         rooms[index].status = 5;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             status: rooms[index].status,
@@ -497,13 +471,15 @@ app.post('/questionresponse', (req, res) => {
 
                 //store that user's answer was correct
                 rooms[index].players[i].correct[req.body.questionnumber - 1] = true;
+                rooms[index].players[i].streak += 1;
             }
             else {
                 //store that user's answer was incorrect
                 rooms[index].players[i].correct[req.body.questionnumber - 1] = false;
+                rooms[index].players[i].resetStreak();
             }
 
-            //Send success message
+            //Send success message and return info
             res.send(JSON.stringify({
                 roomCode: req.body.roomCode,
                 playerscore: rooms[index].players[i].totalScore,
@@ -538,7 +514,7 @@ app.post('/history', (req, res) => {
         //update the room's status to show the quiz has ended
         rooms[index].status = 9;
 
-        //Send success message
+        //Send success message and return info
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
             players: rooms[index].players,
@@ -548,6 +524,70 @@ app.post('/history', (req, res) => {
     }
 
 });
+
+//function to change state of the room to show a new quiz has been created for playing again
+//takes in roomCode. returns roomCode, status, successful
+app.post('/playagain', (req, res) => {
+    console.log('Post request recieved: Play again');
+
+    //Pick up room code from JSON in the request
+    let roomCode = req.body.roomCode;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 3,
+            successful: false
+        }))
+    }
+    else {
+        if (rooms[index].status == 9) {
+            //create new quiz and add to the room
+            addNewQuiz(roomCode, rooms[index].currentQuiz.category, rooms[index].currentQuiz.numOfQuestions);
+
+            //update the room's status
+            rooms[index].status = 7;
+
+            //reset each player's score and response history
+            for(i = 0; i < rooms[index].players.length; i++){
+                rooms[index].players[i].resetScore();
+                rooms[index].players[i].resetTotalScore();
+                rooms[index].players[i].clearResponses();
+                rooms[index].players[i].clearCorrect();
+                rooms[index].players[i].resetStreak();
+            }
+
+            //Send success message
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                status: rooms[index].status,
+                successful: true
+            }))
+        }
+        else {
+            //Send failure message back if quiz is still ongoing
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                status: 1,
+                successful: false
+            }))
+        }
+    }
+});
+
+//Endpoint for joing room with code in url
+app.get('/joinWithCode/:roomCode', (req, res)=>
+    {
+        console.log("GET request recieved: Player joins with URL");
+
+        //Get the roomcode
+        let roomCode = req.params.roomCode
+    }
+)
 
 //Start the server
 startServer();

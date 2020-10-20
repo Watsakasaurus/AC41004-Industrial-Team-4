@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: ./
+      dockerfile: DockerFile 
+    image: nodejs
+    container_name: Api
+    restart: unless-stopped
+    
+    expose:
+        - "5000"
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/Desktop/AC41004-Industrial-Team-4/Backend
+      - /node_modules:/Desktop/AC41004-Industrial-Team-4/Backend/node_modules
+    
+    
+   

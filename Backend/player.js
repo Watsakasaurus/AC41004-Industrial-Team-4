@@ -1,11 +1,13 @@
 module.exports = class player
 {
-    constructor(nickname){
+    constructor(nickname)
+    {
         this.name = nickname;
         this.score = 0;
         this.totalScore = 0;
         this.responses = []; //store the player's response to each question
         this.correct = []; //store whether or not the player got each question correct
+        this.streak = 0; //store how many questions the player got correct in a row
     }
 
     //increases the player's score by a number of points
@@ -31,6 +33,24 @@ module.exports = class player
     resetTotalScore()
     {
         this.totalScore = 0;
+    }
+
+    //clears the player's responses
+    clearResponses()
+    {
+        this.responses.splice(0,this.responses.length);
+    }
+
+    //clears the player's response history
+    clearCorrect()
+    {
+        this.correct.splice(0,this.correct.length);
+    }
+
+    //resets a player's streak to zero
+    resetStreak()
+    {
+        this.streak = 0;
     }
 
 }
