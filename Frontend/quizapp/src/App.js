@@ -8,6 +8,8 @@ import RoomConfigure from './components/RoomConfigure';
 import EnterRoomNumber from './components/EnterRoomNumber';
 import Lobby from './components/Lobby';
 import QuizConfigure from './components/QuizConfigure';
+import Scorebored from './components/Scoreboard';
+
 
 const testQuestions =
   [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
@@ -40,7 +42,8 @@ const components = {
   ROOMCONF: 6,
   LOBBY: 7,
   ROOMCODE: 8,
-  QUIZCONFIG: 9
+  QUIZCONFIG: 9,
+  SCOREBOARD: 10
 }
 
 class App extends Component {
@@ -56,6 +59,7 @@ class App extends Component {
       roomCode: '12345678910',
       currentInfo: [],
       players: [],
+
       host: false,
       gameState: 0,
       questions: testQuestions
@@ -319,6 +323,11 @@ class App extends Component {
         }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
   }
 
+  onQuizEnd(){
+    this.setState({ currentComp: components.SCOREBOARD })
+  }
+
+
   reformatQuestions(info){
     console.log("Questions Return", info);
     // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
@@ -345,7 +354,7 @@ class App extends Component {
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
+          <QuestionPage endQuiz={this.onQuizEnd.bind(this)} questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);
@@ -364,6 +373,9 @@ class App extends Component {
       case components.QUIZCONFIG:
         return (
           <QuizConfigure testCategorys={testCategorys} onClick={this.onQuizConfigClick.bind(this)} playerNickname={this.state.nickname} roomcode={this.state.roomCode} /> );
+      case components.SCOREBOARD:
+        return (
+          <Scorebored roomCode = {this.state.roomCode} />);
       default:
         return (
           <h1>An Error has occured, please refresh your page.</h1>);
@@ -376,6 +388,7 @@ class App extends Component {
       <div>
         {this.returnComponent(this.state.currentComp)}
       </div>
+      //<Scorebored />
     )
   };
 }
