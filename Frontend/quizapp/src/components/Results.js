@@ -79,12 +79,12 @@ onload(props){
 
 }
   
-setclr = () => {
+setclr() {
     if (Result === this.state.correct) {
-      this.setState({ colour: "green" });
+      this.setState({ colour: "#28A745" });
     }
     else if (Result === this.state.incorrect) {
-      this.setState({ colour: "red" });
+      this.setState({ colour: "#FF0100" });
     }
   };
 
@@ -96,10 +96,10 @@ renderBars(players, colours, scores){
     items.push(
       <div>
         <div className="Result-div">
-           <UserBadge name={players[x]} user_clr={colours[x]} />
+           <UserBadge name={players[x].name} user_clr={colours[x]} />
         </div>
         <div className="Result-div2">
-          <Score score={scores[x]} user_clr={colours[x]} />
+          <Score score={players[x].totalScore} user_clr={colours[x]} />
         </div>
       </div>
     );
@@ -120,10 +120,11 @@ renderBars(players, colours, scores){
     return (
       <Container className="p-3">
 
+      {this.setclr()} 
         <div>
           <Jumbotron className="jumbotron" style={{ backgroundColor: this.state.colour }}>
             <Container className="Results-part1">
-              <Result result={this.state.correct} />
+              <Result result = {this.props.result} />
             </Container>
 
             <Container className="Results-part1">
