@@ -471,10 +471,12 @@ app.post('/questionresponse', (req, res) => {
 
                 //store that user's answer was correct
                 rooms[index].players[i].correct[req.body.questionnumber - 1] = true;
+                rooms[index].players[i].streak += 1;
             }
             else {
                 //store that user's answer was incorrect
                 rooms[index].players[i].correct[req.body.questionnumber - 1] = false;
+                rooms[index].players[i].resetStreak();
             }
 
             //Send success message and return info
@@ -556,6 +558,7 @@ app.post('/playagain', (req, res) => {
                 rooms[index].players[i].resetTotalScore();
                 rooms[index].players[i].clearResponses();
                 rooms[index].players[i].clearCorrect();
+                rooms[index].players[i].resetStreak();
             }
 
             //Send success message

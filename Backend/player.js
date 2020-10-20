@@ -7,6 +7,7 @@ module.exports = class player
         this.totalScore = 0;
         this.responses = []; //store the player's response to each question
         this.correct = []; //store whether or not the player got each question correct
+        this.streak = 0; //store how many questions the player got correct in a row
     }
 
     //increases the player's score by a number of points
@@ -44,6 +45,12 @@ module.exports = class player
     clearCorrect()
     {
         this.correct.splice(0,this.correct.length);
+    }
+
+    //resets a player's streak to zero
+    resetStreak()
+    {
+        this.streak = 0;
     }
 
 }
