@@ -62,7 +62,8 @@ class ResultsPage extends Component {
       correct: "Correct",
       incorrect: "Incorrect",
       colour: "#28A745",
-      result: ""
+      result: "",
+      players:[]
 
     };
     // var { playerNickname } = this.state.nickname;
@@ -79,7 +80,7 @@ onload(props){
     },
     body: JSON.stringify(text)
   }).then((result) => result.json()).then((info) =>  this.setState({players: info.nicknames, players: info.score}))
-
+    return this.state.players;
 }
  
 
@@ -91,7 +92,7 @@ correct(players,nickname){
         this.setState({ colour: "#28A745" });  
         this.setState({result: "Correct"}); 
       }
-      else{
+      else if(players[x].correct === "false"){
         this.setState({ colour: "#FF0100" }); 
         this.setState({result: "Incorrect"})
           }
