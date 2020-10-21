@@ -102,11 +102,13 @@ class ResultsPage extends Component {
           return this.state.result;
             }
         }
-                        }
+     
+          
+                         }
     }
   
 
-  renderBars(players, colours, scores){
+  renderBars(players, colours){
     console.log(players);
     var items = []
     for(var x in players){
@@ -152,7 +154,7 @@ class ResultsPage extends Component {
           </Jumbotron>
         </div>
 
-       {this.renderBars(players, colours, plyr_score)}
+       {this.renderBars(players, colours)}
 
         <br>
         </br>
