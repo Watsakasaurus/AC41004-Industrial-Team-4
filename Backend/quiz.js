@@ -17,7 +17,6 @@ module.exports = class quiz {
         query.getQuestions(this.category, this.numOfQuestions).then((data) => {
             this.dbJSON = data.rows;
             console.log(this.dbJSON);
-            //console.info(this.allQuestions);
 
             this.getQuestions();
             this.getAnswers();
@@ -35,29 +34,19 @@ module.exports = class quiz {
         for (i = 0; i < this.dbJSON.length; i++) {
             this.allQuestions.push(this.dbJSON[i].question);
         }
-
         console.info(this.allQuestions);
-
     }
 
     getOptions() {
         //separates out the options (including the answer) from any number of questions
         console.log("Getting options....");
         var i;
-        var options = ["","","",""];
         for (i = 0; i < this.dbJSON.length; i++) {
-            //adds all options and the answer into a new array
-            options[0] = this.dbJSON[i].option1;
-            options[1] = this.dbJSON[i].option2;
-            options[2] = this.dbJSON[i].option3;
-            options[3] = this.dbJSON[i].option4;
-
-            //adds the options array
-            this.allOptions.push(options);
+            //adds all the options to the array
+            this.allOptions.push([this.dbJSON[i].option1, this.dbJSON[i].option2, this.dbJSON[i].option3, this.dbJSON[i].option4]);
 
         }
         console.info(this.allOptions);
-        //console.log(this.allOptions[0][0]);
     }
 
     getAnswers() {

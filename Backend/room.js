@@ -36,8 +36,6 @@ module.exports = class room
         this.currentQuiz = newQuiz;
         
         this.currentQuiz.getdbJSON();
-        //this.currentQuiz.getAnswers();
-        //this.currentQuiz.getOptions();
     }
 
     //closes a room by setting active to false

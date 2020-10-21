@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
     "nickName": "rossmaider",
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
     "nickName": "JohnSmith",
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -31,8 +31,8 @@ POST http://localhost:5000/configurequiz
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
-    "category": ["animals", "brain teasers"],
+    "roomCode": "4b49cf4dbac6884667c5",
+    "categorys": ["animals", "brain teasers"],
     "numOfQuestions": 3,
     "maxTime": 5
 }
@@ -43,7 +43,7 @@ POST http://localhost:5000/roomallnicknames
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -52,7 +52,7 @@ POST http://localhost:5000/startroom
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -61,7 +61,7 @@ POST  http://localhost:5000/questions
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -70,7 +70,7 @@ POST  http://localhost:5000/question
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "questionNumber": 1
 }
 
@@ -80,7 +80,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "nicole",
     "response": "Sloth",
     "questionnumber": 1,
@@ -93,7 +93,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "nicole",
     "response": "Snail",
     "questionnumber": 2,
@@ -106,7 +106,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "nicole",
     "response": "Felis silvestris catus",
     "questionnumber": 3,
@@ -119,7 +119,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "JohnSmith",
     "response": "Sloth",
     "questionnumber": 1,
@@ -132,7 +132,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "JohnSmith",
     "response": "Fox",
     "questionnumber": 2,
@@ -145,7 +145,7 @@ POST http://localhost:5000/questionresponse
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b",
+    "roomCode": "4b49cf4dbac6884667c5",
     "nickname": "JohnSmith",
     "response": "Felis silvestris catus",
     "questionnumber": 3,
@@ -158,7 +158,7 @@ POST http://localhost:5000/history
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -167,7 +167,7 @@ POST http://localhost:5000/playagain
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }
 
 ###
@@ -176,5 +176,5 @@ POST http://localhost:5000/roomallplayers
 Content-Type: application/json
 
 {
-    "roomCode": "99faf5558000a29d9a0b"
+    "roomCode": "4b49cf4dbac6884667c5"
 }

@@ -114,8 +114,7 @@ function removeNonactiveRooms() {
     console.log(indexes)
 
     //https://stackoverflow.com/questions/3396088/how-do-i-remove-an-object-from-an-array-with-javascript
-    for (i = 0; i < indexes.length; i++) 
-    {
+    for (i = 0; i < indexes.length; i++) {
         rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
 }
@@ -194,19 +193,17 @@ app.post('/username', (req, res) => {
     //Get current URL for the sharing code
     let url = req.protocol + '://' + req.get('host') + '/joinWithCode/' + newRoomCode
 
-    if(success === true)
-    {
+    if (success === true) {
         res.send(JSON.stringify(
             {
                 roomCode: newRoomCode,
                 shareURL: url,
-                status: 0,   
+                status: 0,
             }
         ))
     }
     //if failure, return error status
-    else
-    {
+    else {
         res.send(JSON.stringify(
             {
                 status: 8
@@ -261,19 +258,33 @@ app.post('/question', (req, res) => {
         //Send failure message back
         res.send(JSON.stringify({
             roomCode: req.body.roomCode,
+            question: "",
+            options: [],
             status: 3,
             successful: false
         }))
     }
     else {
-        //Send success message
-        res.send(JSON.stringify({
-            roomCode: req.body.roomCode,
-            question: rooms[index].currentQuiz.allQuestions[num],
-            options: rooms[index].currentQuiz.allOptions[num],
-            status: rooms[index].status,
-            successful: true
-        }))
+        if ((num > rooms[index].currentQuiz.numOfQuestions) || (num < 1)) {
+            //Send failure message back if over the maximum or under 1
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                question: "",
+                options: [],
+                status: 10,
+                successful: false
+            }))
+        }
+        else {
+            //Send success message
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                question: rooms[index].currentQuiz.allQuestions[num - 1],
+                options: rooms[index].currentQuiz.allOptions[num - 1],
+                status: rooms[index].status,
+                successful: true
+            }))
+        }
     }
 })
 
@@ -588,7 +599,7 @@ app.post('/playagain', (req, res) => {
             rooms[index].status = 7;
 
             //reset each player's score and response history
-            for(i = 0; i < rooms[index].players.length; i++){
+            for (i = 0; i < rooms[index].players.length; i++) {
                 rooms[index].players[i].resetScore();
                 rooms[index].players[i].resetTotalScore();
                 rooms[index].players[i].clearResponses();
@@ -615,13 +626,12 @@ app.post('/playagain', (req, res) => {
 });
 
 //Endpoint for joing room with code in url
-app.get('/joinWithCode/:roomCode', (req, res)=>
-    {
-        console.log("GET request recieved: Player joins with URL");
+app.get('/joinWithCode/:roomCode', (req, res) => {
+    console.log("GET request recieved: Player joins with URL");
 
-        //Get the roomcode
-        let roomCode = req.params.roomCode
-    }
+    //Get the roomcode
+    let roomCode = req.params.roomCode
+}
 )
 
 //Start the server
