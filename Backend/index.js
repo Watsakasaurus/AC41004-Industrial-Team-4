@@ -513,10 +513,14 @@ app.post('/questionresponse', (req, res) => {
 
             //compare user answer with correct one
             //allAnswers needs to be created
+            console.log("playerscore; " + (rooms[index].maxtime - req.body.individualtime) * 10);
+            console.log("req.body.response:",req.body.response);
+            console.log("currentQuiz.allAnswers[req.body.questionnumber - 1]",rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]);
             if (req.body.response === rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]) {
                 //if correct, update score of player
                 //if player nickname given in req.body equals the nickname of the player in the room
                 //update the score of the player
+                console.log("playerscore; " + (rooms[index].maxtime - req.body.individualtime) * 10);
                 rooms[index].players[i].score = (rooms[index].maxtime - req.body.individualtime) * 10;
                 rooms[index].players[i].updateTotalScore();
 

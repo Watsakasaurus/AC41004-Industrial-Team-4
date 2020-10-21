@@ -95,7 +95,7 @@ class QuestionPage extends Component {
         var text = {
             roomCode: this.props.roomcode,
             nickname: this.props.nickname,
-            response: identifier,
+            response: this.state.currentQuestion[identifier],
             individualtime: this.state.currentTime.toFixed(1),
             questionnumber: this.state.questionsIterator+1,
         };
@@ -117,6 +117,33 @@ class QuestionPage extends Component {
         this.waitforResults(identifier)
     }
 
+
+    waitforResults(identifier){
+        this.refreshTimer = setInterval(() => {
+            console.log("LOOP");
+                    var text = {
+                        roomCode: this.props.roomcode,
+                    };
+                    // console.log("Question Page Send:", text);
+                    fetch("/roomallplayers", {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                        },
+                        body: JSON.stringify(text),
+                    }).then((result) => result.json()).then((info) => {this.checkResults(info, identifier)});
+                if(this.state.answerData){
+                   this.stopWait();
+                   return;
+                }
+      
+          }, 500);
+    }
+
+    stopWait(){
+        clearInterval(this.refreshTimer);
+    }
+
     checkResults(info, identifier){
         var allPlayersAnswered = true;
         for(var x=0; x<info.players.length;x++){
@@ -127,6 +154,7 @@ class QuestionPage extends Component {
         console.log("Roomallplayers", info);
         this.setState({answerData: allPlayersAnswered})
         if(allPlayersAnswered){
+            this.stopWait();
         setTimeout(
             function () {
                 this.setState({ layout: 1 });
@@ -148,29 +176,8 @@ class QuestionPage extends Component {
 
 
 
-    waitforResults(identifier){
-        this.refreshTimer = setInterval(() => {
-            console.log("LOOP");
-                    var text = {
-                        roomCode: this.props.roomcode,
-                    };
-                    // console.log("Question Page Send:", text);
-                    fetch("/roomallplayers", {
-                        method: "POST",
-                        headers: {
-                            "Content-type": "application/json",
-                        },
-                        body: JSON.stringify(text),
-                    }).then((result) => result.json()).then((info) => {this.checkResults(info, identifier)});
-                if(this.state.answerData){
-                   this.stopWait();
-                }
-      
-          }, 500);
-    }
-
-    stopWait(){
-        clearInterval(this.refreshTimer);
+    componentWillUnmount(){
+        this.stopWait();
     }
 
     timeOut(father) {
