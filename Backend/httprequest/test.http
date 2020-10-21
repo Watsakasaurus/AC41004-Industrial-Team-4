@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
     "nickName": "rossmaider",
-    "roomCode": "8c833fb8a338557c69c6"
+    "roomCode": "cdaab31454153ef94bc7"
 }
 
 ###
@@ -31,7 +31,7 @@ POST http://localhost:5000/configurequiz
 Content-Type: application/json
 
 {
-    "roomCode": "8c833fb8a338557c69c6",
+    "roomCode": "e055ca76918270948182",
     "category": ["animals", "brain teasers"],
     "numOfQuestions": 3,
     "maxTime": 5

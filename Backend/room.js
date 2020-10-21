@@ -34,9 +34,10 @@ module.exports = class room
     {
         var newQuiz = new quiz(category, numOfQuestions);
         this.currentQuiz = newQuiz;
+        
         this.currentQuiz.getQuestions();
-        this.currentQuiz.getAnswers();
-        this.currentQuiz.getOptions();
+        //this.currentQuiz.getAnswers();
+        //this.currentQuiz.getOptions();
     }
 
     //closes a room by setting active to false

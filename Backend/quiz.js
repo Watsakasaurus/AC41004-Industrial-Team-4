@@ -18,22 +18,28 @@ module.exports = class quiz
 
     getQuestions() 
     {
+        console.log("Getting questions....")
         let query = new queries();
         query.getQuestions(this.category, this.numOfQuestions).then((data) => {
             this.allQuestions = data.rows;
-            console.log(data.rows);
+            console.log(this.allQuestions);
+            //console.info(this.allQuestions);
+            
+            this.getAnswers();
+            this.getOptions();
+
         }).catch((err) => {
             console.error(err);
         });
-        console.info(this.allQuestions);
         //console.log(this.allQuestions[0].answer);
     }
 
     getOptions() {
         //separates out the options (including the answer) from any number of questions
+        console.log("Getting options....")
         var i;
         var options = [];
-        for (i = 0; i <= this.allQuestions.length; i++) {
+        for (i = 0; i < this.allQuestions.length; i++) {
             //adds all options and the answer into a new array
             options.push(this.allQuestions[i].option1);
             options.push(this.allQuestions[i].option2);
@@ -42,7 +48,6 @@ module.exports = class quiz
 
             //adds the options array
             this.allOptions.push(options);
-            console.log(options);
         }
         console.info(this.allOptions);
         //console.log(this.allOptions[0][0]);
@@ -50,10 +55,14 @@ module.exports = class quiz
 
     getAnswers() 
     {
+        console.log("Getting answers....")
+
         // takes out the answers from any number of questions
         var i;
-        for (i = 0; i <= this.allQuestions.length; i++) {
-            this.allAnswers[i] = this.allQuestions[i].answer;
+        for (i = 0; i < this.allQuestions.length; i++) {
+            //this.allAnswers[i] = this.allQuestions[i].answer;
+            let ans = this.allQuestions[i].answer
+            this.allAnswers.push(ans)
         }
         console.info(this.allAnswers);
         //console.log(this.allAnswers[0]);
