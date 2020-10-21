@@ -65,7 +65,7 @@ class ResultsPage extends Component {
       result: ""
 
     };
-     var { playerNickname } = this.state.nickname;
+    // var { playerNickname } = this.state.nickname;
 
   }
 
@@ -83,21 +83,21 @@ onload(props){
 }
  
 
-correct(players,playerNickname){
+correct(players,nickname){
   
-for(var x in players){
-  if (playerNickname === players[x].name){
-    if(players[x].correct === "true"){
-      this.setState({ colour: "#28A745" });  
-      this.setState({result: "Correct"}); 
-    }
-    else{
-      this.setState({ colour: "#FF0100" }); 
-      this.setState({result: "Incorrect"})
-        }
-    }
-                    }
-}
+  for(var x in players){
+    if (nickname === players[x].name){
+      if(players[x].correct === "true"){
+        this.setState({ colour: "#28A745" });  
+        this.setState({result: "Correct"}); 
+      }
+      else{
+        this.setState({ colour: "#FF0100" }); 
+        this.setState({result: "Incorrect"})
+          }
+      }
+                      }
+  }
 setclr() {
     if (Result === this.state.correct) {
       this.setState({ colour: "#28A745" });
@@ -134,12 +134,13 @@ renderBars(players, colours, scores){
     let players = this.props.players;
     let colours = this.props.colours;
     let plyr_score = this.props.plyr_score;
+    let nickname = this.props.nickname;
 
 
     return (
       <Container className="p-3">
 
-      {this.correct(players,playerNickname)} 
+      {this.correct(players,nickname)} 
         <div>
           <Jumbotron className="jumbotron" style={{ backgroundColor: this.state.colour }}>
             <Container className="Results-part1">
