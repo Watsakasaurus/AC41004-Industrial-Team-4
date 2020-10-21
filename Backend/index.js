@@ -385,9 +385,11 @@ app.post('/roomallnicknames', (req, res) => {
             nickname = rooms[index].players[i].name;
             nicknames.push(nickname);
         }
-
+        console.log("TIME: "+rooms[index].maxtime+ " NUMQ: " + rooms[index].numOfQuestions)
         //Send success message and return info
         res.send(JSON.stringify({
+            maxTime: rooms[index].maxtime,
+            numOfQuestions: rooms[index].numOfQuestions,
             roomCode: req.body.roomCode,
             nicknames: nicknames,
             status: rooms[index].status,
@@ -463,6 +465,7 @@ app.post('/configurequiz', (req, res) => {
 
         //update the room's status
         rooms[index].status = 5;
+        rooms[index].numOfQuestions = numOfQuestions;
 
         //Send success message and return info
         res.send(JSON.stringify({

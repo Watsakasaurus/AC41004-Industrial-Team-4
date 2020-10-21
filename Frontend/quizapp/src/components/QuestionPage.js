@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Results from "./Results";
 
 // time between questions in ms
-const timeBetweenQs = 4000;
+const timeBetweenQs = 2500;
 
 //function that simply creates and returns a button with text and onclick funciton
 // function
@@ -19,10 +19,10 @@ class QuestionPage extends Component {
             questions: props.questions,
             currentQuestion: props.questions[0],
             questionsIterator: 0,
-            maxQuestions: props.questions.length,
+            maxQuestions: props.numOfQuestions,
             answers: [],
             layout: 1,
-            currentTime: timeBetweenQs,
+            currentTime: props.maxTime,
             answerData: false,
             allplayerdata: []
         };
@@ -196,7 +196,7 @@ class QuestionPage extends Component {
     buttonLayout() {
         var questionTimer = (
             <QuestionTimer
-                startCount={5}
+                startCount={this.props.maxTime}
                 timeFinished={this.timeOut}
                 updateTime={this.updateTime.bind(this)}
                 parent={this}

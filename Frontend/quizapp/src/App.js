@@ -62,7 +62,9 @@ class App extends Component {
 
       host: false,
       gameState: 0,
-      questions: testQuestions
+      questions: testQuestions,
+      numOfQuestions: 10,
+      maxTime: 5
     }
   }
 
@@ -202,6 +204,9 @@ class App extends Component {
     for (var x in categorys) {
       catVals.push(categorys[x].value)
     }
+
+    // this.setState({numOfQuestions: qCount,
+    //   maxTime: qTime})
     var text = {
       roomCode: roomcode,
       categorys: catVals,
@@ -255,14 +260,18 @@ class App extends Component {
           'Content-type': 'application/json'
         },
         body: JSON.stringify(text)
-      }).then((result) => result.json()).then((info) =>
-        this.setState({
+      }).then((result) => result.json()).then((info) => {this.setState({
           players: info.nicknames,
-          gameState: info.status
-        })
+          gameState: info.status,
+          maxTime: info.maxTime,
+          numOfQuestions: info.numOfQuestions
+        });
+        console.log(info)}
       )
 
-      console.log(this.state.gameState)
+      console.log("gameState: " +this.state.gameState)
+      console.log(this.state.numOfQuestions)
+      console.log(this.state.maxTime)
 
       if (this.state.gameState == 6){
         this.stopLobbyRefresh()
@@ -363,7 +372,7 @@ class App extends Component {
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage endQuiz={this.onQuizEnd.bind(this)} questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
+          <QuestionPage endQuiz={this.onQuizEnd.bind(this)} questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode} maxTime={this.state.maxTime} numOfQuestions={this.state.numOfQuestions}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);

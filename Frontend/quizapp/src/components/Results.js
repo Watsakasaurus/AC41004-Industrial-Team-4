@@ -95,16 +95,18 @@ class ResultsPage extends Component {
       console.log("RESULTS nick:", nickname, players[x].name);
       console.log("RESULTS corr:", players[x].correct[this.props.questionNumber]);
       if (nickname === players[x].name){
-        this.setState({score: players[x].score})
+        this.setState()
         if(players[x].correct[this.props.questionNumber] === true){
 
-          this.setState({ colour: "#28A745",});  
-          this.setState({result: "Correct"}); 
+          this.setState({ colour: "#28A745",
+                          score: Math.round(players[x].score),
+                          result: "Correct"}); 
           return this.state.result;
         }
         else if(players[x].correct[this.props.questionNumber] === false){
-          this.setState({ colour: "#FF0100" }); 
-          this.setState({result: "Incorrect"})
+          this.setState({ colour: "#FF0100",
+                          score: 0,
+                          result: "Incorrect"})
           return this.state.result;
             }
         }
