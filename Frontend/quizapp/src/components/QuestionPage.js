@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Results from "./Results";
 
 // time between questions in ms
-const timeBetweenQs = 1000;
+const timeBetweenQs = 4000;
 
 //function that simply creates and returns a button with text and onclick funciton
 // function
@@ -23,7 +23,8 @@ class QuestionPage extends Component {
             answers: [],
             layout: 1,
             currentTime: timeBetweenQs,
-            answerData: false
+            answerData: false,
+            allplayerdata: []
         };
     }
 
@@ -145,6 +146,7 @@ class QuestionPage extends Component {
     }
 
     checkResults(info, identifier){
+        this.setState({allplayerdata: info})
         var allPlayersAnswered = true;
         for(var x=0; x<info.players.length;x++){
             if(info.players[x].responses.length!=this.state.questionsIterator+1){
@@ -237,6 +239,8 @@ class QuestionPage extends Component {
                     colours={["primary", "success", "danger", "warning"]}
                     plyr_score={["100", "85", "45", "20"]}
                     nickname={this.props.nickname}
+                    questionNumber={this.state.questionsIterator}
+                    allplayerdata = {this.state.allplayerdata}
                 ></Results>
             );
         }else{

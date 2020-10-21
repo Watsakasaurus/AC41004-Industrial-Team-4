@@ -60,7 +60,10 @@ class ResultsPage extends Component {
       incorrect: "Incorrect",
       colour: "#28A745",
       result: "",
-      players:[]
+      score: 0,
+      players:[],
+      scores:[],
+      tscores:[]
      
 
 
@@ -68,35 +71,38 @@ class ResultsPage extends Component {
     
   }
 
-  componentDidMount(){
-    var text = { "roomCode": this.props.roomCode };
-    //perform the fetch
-    fetch('/roomallplayers', {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(text)
-    }).then((result) => result.json()).then((info) => {
+  // componentDidMount(){
+  //   var text = { "roomCode": this.props.roomCode };
+  //   //perform the fetch
+  //   fetch('/roomallplayers', {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify(text)
+  //   }).then((result) => result.json()).then((info) => {
       
-          this.setState({players: info.nicknames, players: info.score})
+  //         this.setState({players: info.nicknames, players: info.score})
     
-      return this.state.players;
-        });
-        // console.log(this.state.players)
-  }
+  //     return this.state.players;
+  //       });
+  //       // console.log(this.state.players)
+  // }
  
-
   correct(players,nickname){
     
     for(var x in players){
+      console.log("RESULTS nick:", nickname, players[x].name);
+      console.log("RESULTS corr:", players[x].correct[this.props.questionNumber]);
       if (nickname === players[x].name){
-        if(players[x].correct === "true"){
-          this.setState({ colour: "#28A745" });  
+        this.setState({score: players[x].score})
+        if(players[x].correct[this.props.questionNumber] === true){
+
+          this.setState({ colour: "#28A745",});  
           this.setState({result: "Correct"}); 
           return this.state.result;
         }
-        else if(players[x].correct === "false"){
+        else if(players[x].correct[this.props.questionNumber] === false){
           this.setState({ colour: "#FF0100" }); 
           this.setState({result: "Incorrect"})
           return this.state.result;
@@ -129,19 +135,37 @@ class ResultsPage extends Component {
   }
 
 
+  componentDidMount(){
+    var players = [];
+    var scores = [];
+    var tscores = [];
+
+    let playerd = this.props.allplayerdata.players;
+    for(var x; x<playerd.length; x++){
+      players.push(playerd[x].name);
+      scores.push(playerd[x].score);
+      tscores.push(playerd[x].totalScore);
+    }
+
+    this.setState({players: players,
+                  scores:scores,
+                  tscores:tscores,
+                  })
+                  this.correct(playerd,this.props.nickname)
+                }
+  
+
+
   render() {
-
-
-    let players = this.state.players;
-    let colours = this.props.colours;
+    let playerd = this.props.allplayerdata.players;
+   
+    
+    // let colours = this.props.colours;
     let plyr_score = this.props.plyr_score;
-    let nickname = this.props.nickname;
-
-
+    // let nickname = this.props.nickname;
+    
     return (
       <Container className="p-3">
-
-      {this.correct(players,nickname)} 
         <div>
           <Jumbotron className="jumbotron" style={{ backgroundColor: this.state.colour }}>
             <Container className="Results-part1">
@@ -149,12 +173,12 @@ class ResultsPage extends Component {
             </Container>
 
             <Container className="Results-part1">
-              <Points points={this.props.score} />
+              <Points points={this.state.score} />
             </Container>
           </Jumbotron>
         </div>
 
-       {this.renderBars(players, colours)}
+       {this.renderBars(playerd, this.props.colours)}
 
         <br>
         </br>
