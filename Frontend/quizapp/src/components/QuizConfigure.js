@@ -69,7 +69,7 @@ export class QuizConfigure extends Component {
 
                         <Container>
                         <div className="Room-prop">
-                                <h4>Select Catagories :</h4>
+                                <h4>Select Categories :</h4>
                                 <Select
                                     className="Nickname-inputbox"
                                     options={this.props.testCategorys}
