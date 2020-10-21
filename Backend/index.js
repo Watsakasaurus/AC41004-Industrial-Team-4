@@ -390,7 +390,8 @@ app.post('/configurequiz', (req, res) => {
 
     //Pick up room code, category, number of questions and max time from JSON in the request
     let roomCode = req.body.roomCode;
-    let category = req.body.category;
+    let category = [];
+    category = req.body.categorys;
     let numOfQuestions = req.body.numOfQuestions;
     let maxTime = req.body.maxTime;
 
