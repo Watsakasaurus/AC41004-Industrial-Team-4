@@ -83,7 +83,7 @@ class ResultsPage extends Component {
     
       return this.state.players;
         });
-        console.log(this.state.players)
+        // console.log(this.state.players)
   }
  
 
@@ -112,7 +112,7 @@ class ResultsPage extends Component {
     console.log(players);
     var items = []
     for(var x in players){
-      console.log("BAR: " + x)
+      // console.log("BAR: " + x)
       items.push(
         <div>
           <div className="Result-div">

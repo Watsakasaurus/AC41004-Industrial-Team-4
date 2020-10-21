@@ -8,7 +8,7 @@ import RoomConfigure from './components/RoomConfigure';
 import EnterRoomNumber from './components/EnterRoomNumber';
 import Lobby from './components/Lobby';
 import QuizConfigure from './components/QuizConfigure';
-import Scorebored from './components/Scoreboard';
+import Scoreboard from './components/Scoreboard';
 
 
 const testQuestions =
@@ -384,7 +384,7 @@ class App extends Component {
           <QuizConfigure testCategorys={testCategorys} onClick={this.onQuizConfigClick.bind(this)} playerNickname={this.state.nickname} roomcode={this.state.roomCode} /> );
       case components.SCOREBOARD:
         return (
-          <Scorebored roomCode = {this.state.roomCode} />);
+          <Scoreboard roomCode = {this.state.roomCode} />);
       default:
         return (
           <h1>An Error has occured, please refresh your page.</h1>);
