@@ -8,7 +8,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Badge from "react-bootstrap/Badge";
 
 function Result(props) {
-  //if (question_right ==  1)
+  
   return <h1 className="Ques_result"> {props.result}!</h1>;
 }
 
@@ -39,10 +39,7 @@ function TimeLeft(props) {
 }
 
 
-window.onload = function () {
-  //setInterval(count, 1000);
-  
-};
+
 
 let counter = 0;
 
@@ -64,75 +61,76 @@ class ResultsPage extends Component {
       colour: "#28A745",
       result: "",
       players:[]
+     
+
 
     };
-    // var { playerNickname } = this.state.nickname;
-
+    
   }
 
-onload(props){
-  var text = { "roomCode": this.props.roomCode };
-  //perform the fetch
-  fetch('/roomallplayers', {
-    method: "POST",
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(text)
-  }).then((result) => result.json()).then((info) =>  this.setState({players: info.nicknames, players: info.score}))
-    return this.state.players;
-}
+  componentDidMount(){
+    var text = { "roomCode": this.props.roomCode };
+    //perform the fetch
+    fetch('/roomallplayers', {
+      method: "POST",
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(text)
+    }).then((result) => result.json()).then((info) => {
+      
+          this.setState({players: info.nicknames, players: info.score})
+    
+      return this.state.players;
+        });
+        console.log(this.state.players)
+  }
  
 
-correct(players,nickname){
+  correct(players,nickname){
+    
+    for(var x in players){
+      if (nickname === players[x].name){
+        if(players[x].correct === "true"){
+          this.setState({ colour: "#28A745" });  
+          this.setState({result: "Correct"}); 
+          return this.state.result;
+        }
+        else if(players[x].correct === "false"){
+          this.setState({ colour: "#FF0100" }); 
+          this.setState({result: "Incorrect"})
+          return this.state.result;
+            }
+        }
+                        }
+    }
   
-  for(var x in players){
-    if (nickname === players[x].name){
-      if(players[x].correct === "true"){
-        this.setState({ colour: "#28A745" });  
-        this.setState({result: "Correct"}); 
-      }
-      else if(players[x].correct === "false"){
-        this.setState({ colour: "#FF0100" }); 
-        this.setState({result: "Incorrect"})
-          }
-      }
-                      }
-  }
-setclr() {
-    if (Result === this.state.correct) {
-      this.setState({ colour: "#28A745" });
-    }
-    else if (Result === this.state.incorrect) {
-      this.setState({ colour: "#FF0100" });
-    }
-  };
 
-renderBars(players, colours, scores){
-  console.log(players);
-  var items = []
-  for(var x in players){
-    console.log("BAR: " + x)
-    items.push(
-      <div>
-        <div className="Result-div">
-           <UserBadge name={players[x].name} user_clr={colours[x]} />
+  renderBars(players, colours, scores){
+    console.log(players);
+    var items = []
+    for(var x in players){
+      console.log("BAR: " + x)
+      items.push(
+        <div>
+          <div className="Result-div">
+            <UserBadge name={players[x].name} user_clr={colours[x]} />
+          </div>
+          <div className="Result-div2">
+            <Score score={players[x].totalScore} user_clr={colours[x]} />
+          </div>
         </div>
-        <div className="Result-div2">
-          <Score score={players[x].totalScore} user_clr={colours[x]} />
-        </div>
-      </div>
-    );
-  }
-  return items;
+      );
+    }
+    return items;
 
-}
+  }
 
 
   render() {
 
 
-    let players = this.props.players;
+    let players = this.state.players;
     let colours = this.props.colours;
     let plyr_score = this.props.plyr_score;
     let nickname = this.props.nickname;
