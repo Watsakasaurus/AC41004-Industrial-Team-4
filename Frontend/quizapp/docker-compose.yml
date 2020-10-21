@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: ./
+      dockerfile: DockerFile
+  
+    container_name: react_app_v2
+    restart: unless-stopped
+    
+    expose:
+        - "2540"
+    ports:
+      - "2540:3000"
+    stdin_open: true
+    volumes:
+      - .:/Desktop/AC41004-Industrial-Team-4/Frontend/quizapp
+      - /node_modules:/Desktop/AC41004-Industrial-Team-4/Backend/Frontend/quizapp/src/node_modules
+    
+    
+   
