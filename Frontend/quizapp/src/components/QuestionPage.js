@@ -124,7 +124,6 @@ class QuestionPage extends Component {
                     this.state.questionsIterator + 1 <
                     this.state.maxQuestions
                 ) {
-                    this.fetchQuestion();
                     this.setState({
                         // currentQuestion: this.state.questions[
                         //     this.state.questionsIterator + 1
@@ -132,6 +131,7 @@ class QuestionPage extends Component {
                         questionsIterator: this.state.questionsIterator + 1,
                         answers: this.state.answers.concat(identifier),
                     });
+                    this.fetchQuestion();
                 } else {
                     //round over
                     console.log(this.state.answers);
