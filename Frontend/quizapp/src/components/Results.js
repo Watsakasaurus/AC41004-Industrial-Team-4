@@ -13,6 +13,7 @@ function Result(props) {
 }
 
 function Points(props) {
+
   return <h2 className="user_points"> {props.points} Points! </h2>;
 }
 
@@ -60,9 +61,11 @@ class ResultsPage extends Component {
     this.state = {
       correct: "Correct",
       incorrect: "Incorrect",
-      colour: "#28A745"
+      colour: "#28A745",
+      result: ""
+
     };
-    // const { playerNickname } = props;
+    // var { playerNickname } = this.state.nickname;
 
   }
 
@@ -78,7 +81,23 @@ onload(props){
   }).then((result) => result.json()).then((info) =>  this.setState({players: info.nicknames, players: info.score}))
 
 }
+ 
+
+correct(players,nickname){
   
+  for(var x in players){
+    if (nickname === players[x].name){
+      if(players[x].correct === "true"){
+        this.setState({ colour: "#28A745" });  
+        this.setState({result: "Correct"}); 
+      }
+      else{
+        this.setState({ colour: "#FF0100" }); 
+        this.setState({result: "Incorrect"})
+          }
+      }
+                      }
+  }
 setclr() {
     if (Result === this.state.correct) {
       this.setState({ colour: "#28A745" });
@@ -115,20 +134,21 @@ renderBars(players, colours, scores){
     let players = this.props.players;
     let colours = this.props.colours;
     let plyr_score = this.props.plyr_score;
+    let nickname = this.props.nickname;
 
 
     return (
       <Container className="p-3">
 
-      {this.setclr()} 
+      {this.correct(players,nickname)} 
         <div>
           <Jumbotron className="jumbotron" style={{ backgroundColor: this.state.colour }}>
             <Container className="Results-part1">
-              <Result result = {this.props.result} />
+              <Result result = {this.state.result} />
             </Container>
 
             <Container className="Results-part1">
-              <Points points="100" />
+              <Points points={this.props.score} />
             </Container>
           </Jumbotron>
         </div>
