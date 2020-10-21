@@ -25,13 +25,13 @@ const testQuestions =
 
 const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum2', 'Ross', 'Aylin']
 
-const testCategorys = [{ value: "History", label: "History" },
-{ value: "Callum Darling", label: "Callum Darling" },
-{ value: "Movies", label: "Movies" },
-{ value: "Sports", label: "Sports" },
-{ value: "Aviation", label: "Aviation" },
-{ value: "Computing", label: "Computing" },
-{ value: "Dogs", label: "Dogs" }]
+const testCategorys = [{ value: "animals", label: "Animals" },
+{ value: "brain-teasers", label: "Brain Teasers" },
+{ value: "celebrities", label: "Celebrities" },
+{ value: "entertainment", label: "Entertainment" },
+{ value: "general", label: "General" },
+{ value: "science-technology", label: "Science & Tech" },
+{ value: "people", label: "Famous People" }]
 
 const components = {
   SPLASH: 1,
