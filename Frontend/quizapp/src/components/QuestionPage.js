@@ -90,8 +90,8 @@ class QuestionPage extends Component {
                     });
                 } else {
                     //round over
-                    this.setState({ layout: 0 });
                     console.log(this.state.answers);
+                    this.props.endQuiz();
                 }
             }.bind(this),
             timeBetweenQs

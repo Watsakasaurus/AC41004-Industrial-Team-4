@@ -281,7 +281,7 @@ app.post('/roomadduser', (req, res) => {
 //function to return to client array of player objects (containing nicknames, scores etc)
 //takes in roomCode. returns roomCode, players[] and status
 app.post('/roomallplayers', (req, res) => {
-    console.log('Post request recieved: All players in an existing room (nicknames & scores)');
+    console.log('Post request recieved: All players in an existing room');
 
     //Pick up room code from JSON in the request
     let roomCode = req.body.roomCode;
@@ -460,6 +460,8 @@ app.post('/questionresponse', (req, res) => {
             //store user's answer
             rooms[index].players[i].responses[req.body.questionnumber - 1] = req.body.response;
 
+            console.log(rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]);
+
             //compare user answer with correct one
             //allAnswers needs to be created
             if (req.body.response === rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]) {
@@ -484,7 +486,8 @@ app.post('/questionresponse', (req, res) => {
                 roomCode: req.body.roomCode,
                 playerscore: rooms[index].players[i].totalScore,
                 status: rooms[index].status,
-                successful: true
+                successful: true,
+                answer: rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]
             }))
         }
     }

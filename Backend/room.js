@@ -1,5 +1,4 @@
 var quiz = require('./quiz.js')
-var query = require('./querries')
 
 module.exports = class room 
 {
@@ -10,8 +9,7 @@ module.exports = class room
         this.roomCode = passcode;
         this.roomName = roomName
         this.players = [];
-        this.defaultQuiz = ["animals"];
-        this.currentQuiz = this.newQuiz(this.defaultQuiz, 10);
+        this.currentQuiz = {};
         this.active = true;
         this.status = 0;
         this.maxtime = 5;
@@ -36,7 +34,10 @@ module.exports = class room
     {
         var newQuiz = new quiz(category, numOfQuestions);
         this.currentQuiz = newQuiz;
-        return newQuiz
+        
+        this.currentQuiz.getQuestions();
+        //this.currentQuiz.getAnswers();
+        //this.currentQuiz.getOptions();
     }
 
     //closes a room by setting active to false
@@ -45,12 +46,6 @@ module.exports = class room
     {
         this.active = false;
         return this.active;
-    }
-
-    //tests the connection to the database
-    testDatabaseConnection()
-    {
-        var testQuery = new query();
     }
 
 }

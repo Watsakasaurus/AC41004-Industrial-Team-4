@@ -299,3 +299,57 @@ code {
 .Room-prop{
   padding-top: 2rem;
 }
+
+.Scoreboard{
+  background-color: #28a745;
+  color: white;
+  border-radius: 15px;
+}
+
+.Scoreboard-winner-title{
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom:5px dotted white;
+}
+
+.Scoreboard-winner-player{
+  padding-top: 1rem;
+  border-bottom:5px dotted white;
+  padding-bottom: 0.5rem;
+}
+
+.Scoreboard-stats-top{
+  padding-top: 1rem;
+}
+
+.Scoreboard-stats-bottom{
+  padding-bottom: 1rem;
+}
+
+.Scoreboard-shadow{
+  -webkit-box-shadow: 0px 10px 37px -5px rgba(189,189,189,1);
+  -moz-box-shadow: 0px 10px 37px -5px rgba(189,189,189,1);
+  box-shadow: 0px 10px 37px -5px rgba(189,189,189,1);
+}
+
+.Scoreboard-player-list{
+  margin-top: 3rem;
+  border-radius: 15px;
+  max-height: 325px;
+  overflow: auto;
+}
+
+.Scoreboard-player-list-title{
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom:5px solid rgb(21, 22, 66);;
+}
+
+.Scoreboard-player-list-item{
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.test{
+  align-items: right;
+}
