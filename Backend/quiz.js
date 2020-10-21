@@ -11,9 +11,9 @@ module.exports = class quiz
         this.allAnswers = [];
         this.allOptions = [];
 
-        this.getQuestions();
-        this.getAnswers();
-        this.getOptions();
+        //this.getQuestions();
+        //this.getAnswers();
+        //this.getOptions();
     }
 
     getQuestions() 
@@ -21,10 +21,12 @@ module.exports = class quiz
         let query = new queries();
         query.getQuestions(this.category, this.numOfQuestions).then((data) => {
             this.allQuestions = data.rows;
+            console.log(data.rows);
         }).catch((err) => {
             console.error(err);
         });
-        console.log("Questions: " + this.allQuestions)
+        console.info(this.allQuestions);
+        //console.log(this.allQuestions[0].answer);
     }
 
     getOptions() {
@@ -37,13 +39,13 @@ module.exports = class quiz
             options.push(this.allQuestions[i].option2);
             options.push(this.allQuestions[i].option3);
             options.push(this.allQuestions[i].option4);
-            options.push(this.allQuestions[i].answer);
 
             //adds the options array
             this.allOptions.push(options);
-            //console.log(options);
+            console.log(options);
         }
         console.info(this.allOptions);
+        //console.log(this.allOptions[0][0]);
     }
 
     getAnswers() 
@@ -51,9 +53,10 @@ module.exports = class quiz
         // takes out the answers from any number of questions
         var i;
         for (i = 0; i <= this.allQuestions.length; i++) {
-            this.allAnswers = this.allQuestions[i].answer;
+            this.allAnswers[i] = this.allQuestions[i].answer;
         }
         console.info(this.allAnswers);
+        //console.log(this.allAnswers[0]);
     }
 
 }
