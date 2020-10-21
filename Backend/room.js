@@ -35,7 +35,7 @@ module.exports = class room
         var newQuiz = new quiz(category, numOfQuestions);
         this.currentQuiz = newQuiz;
         
-        this.currentQuiz.getQuestions();
+        this.currentQuiz.getdbJSON();
         //this.currentQuiz.getAnswers();
         //this.currentQuiz.getOptions();
     }

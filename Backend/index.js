@@ -241,7 +241,39 @@ app.post('/questions', (req, res) => {
     else //Otherwise send questions
     {
         let roomFound = rooms[roomIndex]
-        res.send(JSON.stringify(rooms[roomIndex].currentQuiz.allQuestions))
+        res.send(JSON.stringify(rooms[roomIndex].currentQuiz.dbJSON));
+    }
+})
+
+//function to send a question and its options to the front end
+//takes in roomCode and question number. returns question and options[]
+app.post('/question', (req, res) => {
+    console.log('Post request recieved: send a question and its options')
+
+    //Pick up roomcode and question number in the request
+    let roomCode = req.body.roomCode;
+    let num = req.body.questionNumber;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            status: 3,
+            successful: false
+        }))
+    }
+    else {
+        //Send success message
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            question: rooms[index].currentQuiz.allQuestions[num],
+            options: rooms[index].currentQuiz.allOptions[num],
+            status: rooms[index].status,
+            successful: true
+        }))
     }
 })
 
@@ -487,8 +519,7 @@ app.post('/questionresponse', (req, res) => {
                 roomCode: req.body.roomCode,
                 playerscore: rooms[index].players[i].totalScore,
                 status: rooms[index].status,
-                successful: true,
-                answer: rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]
+                successful: true
             }))
         }
     }
