@@ -277,6 +277,11 @@ app.post('/question', (req, res) => {
         }
         else {
             //Send success message
+            // console.log(currentQuiz);
+            console.log("roomcode:", req.body.roomCode,"question:", rooms[index].currentQuiz.allQuestions[num - 1],
+            "options:", rooms[index].currentQuiz.allOptions[num - 1],
+            "status: ",rooms[index].status,
+            "successful:", true)
             res.send(JSON.stringify({
                 roomCode: req.body.roomCode,
                 question: rooms[index].currentQuiz.allQuestions[num - 1],

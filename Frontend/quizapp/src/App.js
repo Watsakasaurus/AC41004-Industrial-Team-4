@@ -275,7 +275,7 @@ class App extends Component {
     
     clearInterval(this.refreshTimer);
     this.onQuizStart();
-    this.setState({ currentComp: components.QUESTION })
+    // this.setState({ currentComp: components.QUESTION })
   }
 
   // called by Menu component user pressed a button
@@ -312,15 +312,17 @@ class App extends Component {
   }
 
   onQuizStart(){
-    var text = { "roomCode" : this.state.roomCode}
-        console.log("Questions Send:", text);
-        fetch('/questions', {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(text),
-        }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
+    // var text = { "roomCode" : this.state.roomCode}
+    //     console.log("Questions Send:", text);
+    //     fetch('/questions', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(text),
+    //     }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
+    this.setState({ questions: testQuestions,
+      currentComp: components.QUESTION })
   }
 
   onQuizEnd(){
@@ -328,19 +330,26 @@ class App extends Component {
   }
 
 
-  reformatQuestions(info){
-    console.log("Questions Return", info);
-    // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
-    let reformedQs = []
-    for(var x in info){
-      // console.log(info[x]);
-      reformedQs.push([info[x].question,info[x].option1,info[x].option2,info[x].option2,info[x].option4, 
-        [info[x].option1,info[x].option2,info[x].option2,info[x].option4].indexOf(info[x].answer)+1]);
-    }
-    this.state.questions = reformedQs;
-    console.log(reformedQs)
-    this.setState({ currentComp: components.QUESTION })
-  }
+  // reformatQuestions(info){
+  //   console.log("Questions Return", info);
+  //   // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
+  //   let reformedQs = []
+  //   if(info.length){
+  //     for(var x in info){
+  //       // console.log(info[x]);
+  //       reformedQs.push([info[x].question,info[x].option1,info[x].option2,info[x].option2,info[x].option4, 
+  //         [info[x].option1,info[x].option2,info[x].option2,info[x].option4].indexOf(info[x].answer)+1]);
+  //     }
+  //   }else{
+  //     reformedQs = testQuestions;
+  //   }
+    
+
+
+  //   console.log(reformedQs)
+  //   this.setState({ questions: reformedQs,
+  //                   currentComp: components.QUESTION })
+  // }
 
 
   // returns the JSX of a component depending on compID value passed in
