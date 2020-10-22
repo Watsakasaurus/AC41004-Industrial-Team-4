@@ -50,13 +50,13 @@ function Menu(props) {
             </Col>
           </Row>
           <Row className="Menu-row">
-            <Col>
+            {/* <Col>
               <Button className="Menu-button" block variant="warning" onClick = {() => props.onClick(3)}>
                 <h1 className="Menu-cancel">
                   o
                 </h1>
               </Button>
-            </Col>
+            </Col> */}
             <Col>
               <Button className="Menu-button" block variant="danger" onClick = {() => props.onClick(4)}>
                 <h1 className="Menu-cancel">
