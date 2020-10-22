@@ -41,9 +41,10 @@ export class QuizConfigure extends Component {
     };
 
     handleSubmit(){
-        
-        console.log("QuizConfig Submitting")
-        this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime, this.props.playerNickname, this.props.roomcode);
+        if(!this.state.selectedChoice.length<1){
+            console.log("QuizConfig Submitting")
+            this.props.onClick(this.state.selectedChoice, this.state.questionCount, this.state.questionTime, this.props.playerNickname, this.props.roomcode);
+        }
     }
 
     // handleSubmit = (event) => {
