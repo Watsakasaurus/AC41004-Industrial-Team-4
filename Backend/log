@@ -1,0 +1,2705 @@
+
+> backend@1.0.0 start /mnt/c/Users/Callum/Documents/Development/AC41004-Industrial-Team-4/Backend
+> node index.js
+
+Server is running....
+Listening for connections on 5000
+Post request recieved: New player in an existing room
+No player with nickname 'sdfg' in nonactive players array.
+new player: sdfg
+Room with passcode '' doesn't exist.
+Post request recieved: New player in a new room
+No player with nickname 's' in nonactive players array.
+new player: s
+Player s moved to room b4044035f6cf6f8018d2
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 10
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in an existing room
+Player sdfg moved to room b4044035f6cf6f8018d2
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 62
+req.body.response: BAliens
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+Platoon
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 60
+req.body.response: Joseph Grimm
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 67
+req.body.response: January 8, 1977
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 68
+req.body.response: January 8, 1935
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+playerscore; 68
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Adam Rich
+playerscore; 61
+req.body.response: Ralph Macchio
+currentQuiz.allAnswers[req.body.questionnumber - 1] Adam Rich
+Post request recieved: Responses from the players
+Adam Rich
+playerscore; 61
+req.body.response: Meeno Peluce
+currentQuiz.allAnswers[req.body.questionnumber - 1] Adam Rich
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Rapper turned actor Will Smith married this actress in 1997 options: [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Rapper turned actor Will Smith married this actress in 1997 options: [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jada Pinkett
+playerscore; 59
+req.body.response: Shia LeBeouf
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jada Pinkett
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+Jada Pinkett
+playerscore; 93
+req.body.response: Brandy Norwood
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jada Pinkett
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: What famous actor did Catherine Zeta Jones marry in 2000? options: [ 'Kirk Douglas',
+  'Michael Douglas',
+  'Jeff Bridges',
+  'Lloyd Bridges' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: What famous actor did Catherine Zeta Jones marry in 2000? options: [ 'Kirk Douglas',
+  'Michael Douglas',
+  'Jeff Bridges',
+  'Lloyd Bridges' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Michael Douglas
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Michael Douglas
+Post request recieved: Responses from the players
+Michael Douglas
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Michael Douglas
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Singer Jennifer Lopez married this famous singer in 2004. options: [ 'Dave Grohl',
+  'Enrique Iglesias',
+  'Gavin Rossdale',
+  'Mark Anthony' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Singer Jennifer Lopez married this famous singer in 2004. options: [ 'Dave Grohl',
+  'Enrique Iglesias',
+  'Gavin Rossdale',
+  'Mark Anthony' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Mark Anthony
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Mark Anthony
+Post request recieved: Responses from the players
+Mark Anthony
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Mark Anthony
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Actor Ben Stiller married this actress in 2000. options: [ 'Pam Anderson',
+  'Nikki Taylor',
+  'Christine Taylor',
+  'Heather Graham' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: Actor Ben Stiller married this actress in 2000. options: [ 'Pam Anderson',
+  'Nikki Taylor',
+  'Christine Taylor',
+  'Heather Graham' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Christine Taylor
+playerscore; 65
+req.body.response: Christine Taylor
+currentQuiz.allAnswers[req.body.questionnumber - 1] Christine Taylor
+playerscore; 65
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+Christine Taylor
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Christine Taylor
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time. options: [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time. options: [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jim Carrey
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jim Carrey
+Post request recieved: Responses from the players
+Jim Carrey
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jim Carrey
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films. options: [ 'Orlando Bloom',
+  'Sean Astin',
+  'Garrett Hedlund',
+  'Garrett Hedlund' ] status:  6 successful: true
+Post request recieved: send a question and its options
+roomcode: b4044035f6cf6f8018d2 question: This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films. options: [ 'Orlando Bloom',
+  'Sean Astin',
+  'Garrett Hedlund',
+  'Garrett Hedlund' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Oliver Phelps
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Oliver Phelps
+Post request recieved: Responses from the players
+Oliver Phelps
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Oliver Phelps
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room ee9991f68527903ff15a
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 1
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?' ]
+Getting answers....
+[ 'Platoon' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: ee9991f68527903ff15a question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 56
+req.body.response: BAliens
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname 'sdfg' in nonactive players array.
+new player: sdfg
+Player sdfg moved to room f27f67a64343759d0ca3
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 10
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: f27f67a64343759d0ca3 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 54
+req.body.response: BAliens
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players in an existing room
+Post request recieved: New player in a new room
+No player with nickname 'ghj' in nonactive players array.
+new player: ghj
+Player ghj moved to room ed3e9b5615041022d77e
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 10
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 57
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 57
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 53
+req.body.response: George Eliot
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 55
+req.body.response: August 16, 1935
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Adam Rich
+playerscore; 60
+req.body.response: Jason Bateman
+currentQuiz.allAnswers[req.body.questionnumber - 1] Adam Rich
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: Rapper turned actor Will Smith married this actress in 1997 options: [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jada Pinkett
+playerscore; 58
+req.body.response: Jada Pinkett
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jada Pinkett
+playerscore; 58
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: What famous actor did Catherine Zeta Jones marry in 2000? options: [ 'Kirk Douglas',
+  'Michael Douglas',
+  'Jeff Bridges',
+  'Lloyd Bridges' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Michael Douglas
+playerscore; 54
+req.body.response: Kirk Douglas
+currentQuiz.allAnswers[req.body.questionnumber - 1] Michael Douglas
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: Singer Jennifer Lopez married this famous singer in 2004. options: [ 'Dave Grohl',
+  'Enrique Iglesias',
+  'Gavin Rossdale',
+  'Mark Anthony' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Mark Anthony
+playerscore; 56
+req.body.response: Gavin Rossdale
+currentQuiz.allAnswers[req.body.questionnumber - 1] Mark Anthony
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: Actor Ben Stiller married this actress in 2000. options: [ 'Pam Anderson',
+  'Nikki Taylor',
+  'Christine Taylor',
+  'Heather Graham' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Christine Taylor
+playerscore; 69
+req.body.response: Christine Taylor
+currentQuiz.allAnswers[req.body.questionnumber - 1] Christine Taylor
+playerscore; 69
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time. options: [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jim Carrey
+playerscore; 58
+req.body.response: Matt Dillon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jim Carrey
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: ed3e9b5615041022d77e question: This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films. options: [ 'Orlando Bloom',
+  'Sean Astin',
+  'Garrett Hedlund',
+  'Garrett Hedlund' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Oliver Phelps
+playerscore; 57
+req.body.response: Garrett Hedlund
+currentQuiz.allAnswers[req.body.questionnumber - 1] Oliver Phelps
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room 344982bc16123be46066
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 1
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?' ]
+Getting answers....
+[ 'Platoon' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in an existing room
+No player with nickname 'hjkl;' in nonactive players array.
+new player: hjkl;
+Player hjkl; moved to room 344982bc16123be46066
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 344982bc16123be46066 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 344982bc16123be46066 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 57
+req.body.response: BAliens
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+Platoon
+playerscore; 69
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 69
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 61
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 61
+Post request recieved: Responses from the players
+undefined
+playerscore; 61
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 61
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 56
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 56
+Post request recieved: Responses from the players
+undefined
+playerscore; 61
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 61
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 55
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 55
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+undefined
+playerscore; 61
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 61
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 59
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 59
+Post request recieved: All players in an existing room
+Post request recieved: Responses from the players
+undefined
+playerscore; 67
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 67
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname 'sfgh' in nonactive players array.
+new player: sfgh
+Player sfgh moved to room c956da093817d0dd45bc
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{}
+Quiz category:  num: 1
+[]
+Getting questions....
+[]
+Getting answers....
+[]
+Getting options....
+[]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in a new room
+No player with nickname 'sfgh' in nonactive players array.
+new player: sfgh
+Player sfgh moved to room 19c00b1f01b7d226e2fb
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 10
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 19c00b1f01b7d226e2fb question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Responses from the players
+Platoon
+playerscore; 61
+req.body.response: BAliens
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 19c00b1f01b7d226e2fb question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 76
+req.body.response: James Barrie
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+playerscore; 76
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 19c00b1f01b7d226e2fb question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 65
+req.body.response: January 8, 1977
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 19c00b1f01b7d226e2fb question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room a135a6cec3c23b895396
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{entertainment}
+Quiz category: entertainment num: 1
+[]
+Getting questions....
+[]
+Getting answers....
+[]
+Getting options....
+[]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room e35c33751e6bc5b4926f
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{entertainment}
+Quiz category: entertainment num: 1
+[]
+Getting questions....
+[]
+Getting answers....
+[]
+Getting options....
+[]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: e35c33751e6bc5b4926f question: undefined options: undefined status:  6 successful: true
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: New player in a new room
+No player with nickname 'sdfg' in nonactive players array.
+new player: sdfg
+Player sdfg moved to room eb15fdf95dc641a71b9d
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 1
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?' ]
+Getting answers....
+[ 'Platoon' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: eb15fdf95dc641a71b9d question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 63
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 63
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 80
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 80
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room 0a79c2f7720f73a3c0e6
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 10
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 0a79c2f7720f73a3c0e6 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 58
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 58
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: New player in a new room
+No player with nickname '\sdf' in nonactive players array.
+new player: \sdf
+Player \sdf moved to room 95de9fda261d62b78b9b
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 1
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?' ]
+Getting answers....
+[ 'Platoon' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 95de9fda261d62b78b9b question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 57
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 57
+Post request recieved: All players in an existing room
+Post request recieved: All players in an existing room
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room 3ab030fd3548310f807d
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 11
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' },
+  { quizid: 30,
+    question:
+     'This American is an actor, producer, director and general philanthropist.  He is responsible for setting up the Sundance Independent Film Festival.',
+    answer: 'Robert Redford',
+    option1: 'Stephen Dorff',
+    option2: 'Matthew Broderick',
+    option3: 'Nick Nolte',
+    option4: 'Robert Redford',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+  'This American is an actor, producer, director and general philanthropist.  He is responsible for setting up the Sundance Independent Film Festival.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps',
+  'Robert Redford' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ],
+  [ 'Stephen Dorff',
+    'Matthew Broderick',
+    'Nick Nolte',
+    'Robert Redford' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 63
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 63
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 54
+req.body.response: John Dunne
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Adam Rich
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Adam Rich
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: Rapper turned actor Will Smith married this actress in 1997 options: [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jada Pinkett
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jada Pinkett
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: What famous actor did Catherine Zeta Jones marry in 2000? options: [ 'Kirk Douglas',
+  'Michael Douglas',
+  'Jeff Bridges',
+  'Lloyd Bridges' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Michael Douglas
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Michael Douglas
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: Singer Jennifer Lopez married this famous singer in 2004. options: [ 'Dave Grohl',
+  'Enrique Iglesias',
+  'Gavin Rossdale',
+  'Mark Anthony' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Mark Anthony
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Mark Anthony
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: Actor Ben Stiller married this actress in 2000. options: [ 'Pam Anderson',
+  'Nikki Taylor',
+  'Christine Taylor',
+  'Heather Graham' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Christine Taylor
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Christine Taylor
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time. options: [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jim Carrey
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jim Carrey
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: 3ab030fd3548310f807d question: This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films. options: [ 'Orlando Bloom',
+  'Sean Astin',
+  'Garrett Hedlund',
+  'Garrett Hedlund' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Oliver Phelps
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Oliver Phelps
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room b7413e96d63a023a4cd0
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 9
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: b7413e96d63a023a4cd0 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 62
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 62
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b7413e96d63a023a4cd0 question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 54
+req.body.response: Joseph Grimm
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: b7413e96d63a023a4cd0 question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: All players in an existing room
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room af1e5492f0fded67a640
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 1
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?' ]
+Getting answers....
+[ 'Platoon' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: af1e5492f0fded67a640 question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 59
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 59
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 55
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 55
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 54
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 54
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 50
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 50
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 50
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 50
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 92
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 92
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+Post request recieved: Responses from the players
+undefined
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] undefined
+playerscore; 100
+Post request recieved: All players in an existing room
+Post request recieved: Quiz history
+Post request recieved: New player in a new room
+No player with nickname '' in nonactive players array.
+new player: 
+Player  moved to room cc63c94813b27b634d53
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{entertainment}
+Quiz category: entertainment num: 10
+[]
+Getting questions....
+[]
+Getting answers....
+[]
+Getting options....
+[]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: cc63c94813b27b634d53 question: undefined options: undefined status:  6 successful: true
+Post request recieved: New player in a new room
+No player with nickname 'b' in nonactive players array.
+new player: b
+Player b moved to room def92ad4103001ea1e2d
+Post request recieved: Host wants to configure the quiz
+Getting from DB...
+{celebrities}
+Quiz category: celebrities num: 11
+[ { quizid: 20,
+    question:
+     'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+    answer: 'Platoon',
+    option1: 'The Color of Money',
+    option2: 'Platoon',
+    option3: 'Top Gun',
+    option4: 'BAliens',
+    category: 'celebrities' },
+  { quizid: 21,
+    question:
+     'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+    answer: 'James Barrie',
+    option1: 'John Dunne',
+    option2: 'George Eliot',
+    option3: 'Joseph Grimm',
+    option4: 'James Barrie',
+    category: 'celebrities' },
+  { quizid: 22,
+    question: 'When was Elvis born?',
+    answer: 'January 8, 1935',
+    option1: 'January 8, 1935',
+    option2: 'January 8, 1977',
+    option3: 'August 16, 1935',
+    option4: 'August 8, 1977',
+    category: 'celebrities' },
+  { quizid: 23,
+    question:
+     'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+    answer: 'Adam Rich',
+    option1: 'Jason Bateman',
+    option2: 'Adam Rich',
+    option3: 'Meeno Peluce',
+    option4: 'Ralph Macchio',
+    category: 'celebrities' },
+  { quizid: 24,
+    question:
+     'Rapper turned actor Will Smith married this actress in 1997',
+    answer: 'Jada Pinkett',
+    option1: 'Brandy Norwood',
+    option2: 'Nia Long',
+    option3: 'Jada Pinkett',
+    option4: 'Shia LeBeouf',
+    category: 'celebrities' },
+  { quizid: 25,
+    question: 'What famous actor did Catherine Zeta Jones marry in 2000?',
+    answer: 'Michael Douglas',
+    option1: 'Kirk Douglas',
+    option2: 'Michael Douglas',
+    option3: 'Jeff Bridges',
+    option4: 'Lloyd Bridges',
+    category: 'celebrities' },
+  { quizid: 26,
+    question: 'Singer Jennifer Lopez married this famous singer in 2004.',
+    answer: 'Mark Anthony',
+    option1: 'Dave Grohl',
+    option2: 'Enrique Iglesias',
+    option3: 'Gavin Rossdale',
+    option4: 'Mark Anthony',
+    category: 'celebrities' },
+  { quizid: 27,
+    question: 'Actor Ben Stiller married this actress in 2000.',
+    answer: 'Christine Taylor',
+    option1: 'Pam Anderson',
+    option2: 'Nikki Taylor',
+    option3: 'Christine Taylor',
+    option4: 'Heather Graham',
+    category: 'celebrities' },
+  { quizid: 28,
+    question:
+     'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+    answer: 'Jim Carrey',
+    option1: 'Dean Cain',
+    option2: 'Jim Carrey',
+    option3: 'Matt Dillon',
+    option4: 'Alan Cumming',
+    category: 'celebrities' },
+  { quizid: 29,
+    question:
+     'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+    answer: 'Oliver Phelps',
+    option1: 'Orlando Bloom',
+    option2: 'Sean Astin',
+    option3: 'Garrett Hedlund',
+    option4: 'Garrett Hedlund',
+    category: 'celebrities' },
+  { quizid: 30,
+    question:
+     'This American is an actor, producer, director and general philanthropist.  He is responsible for setting up the Sundance Independent Film Festival.',
+    answer: 'Robert Redford',
+    option1: 'Stephen Dorff',
+    option2: 'Matthew Broderick',
+    option3: 'Nick Nolte',
+    option4: 'Robert Redford',
+    category: 'celebrities' } ]
+Getting questions....
+[ 'One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie?',
+  'This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan.',
+  'When was Elvis born?',
+  'He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough.',
+  'Rapper turned actor Will Smith married this actress in 1997',
+  'What famous actor did Catherine Zeta Jones marry in 2000?',
+  'Singer Jennifer Lopez married this famous singer in 2004.',
+  'Actor Ben Stiller married this actress in 2000.',
+  'This actor made his film debut in Rubberface and followed it with appearances in Copper Mountain, Once Bitten and Peggy Sue Got Married before he hit the big time.',
+  'This British actor is the eldest of a pair of twins and who played George Weasley in the Harry Potter series of films.',
+  'This American is an actor, producer, director and general philanthropist.  He is responsible for setting up the Sundance Independent Film Festival.' ]
+Getting answers....
+[ 'Platoon',
+  'James Barrie',
+  'January 8, 1935',
+  'Adam Rich',
+  'Jada Pinkett',
+  'Michael Douglas',
+  'Mark Anthony',
+  'Christine Taylor',
+  'Jim Carrey',
+  'Oliver Phelps',
+  'Robert Redford' ]
+Getting options....
+[ [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ],
+  [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ],
+  [ 'January 8, 1935',
+    'January 8, 1977',
+    'August 16, 1935',
+    'August 8, 1977' ],
+  [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ],
+  [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ],
+  [ 'Kirk Douglas',
+    'Michael Douglas',
+    'Jeff Bridges',
+    'Lloyd Bridges' ],
+  [ 'Dave Grohl',
+    'Enrique Iglesias',
+    'Gavin Rossdale',
+    'Mark Anthony' ],
+  [ 'Pam Anderson',
+    'Nikki Taylor',
+    'Christine Taylor',
+    'Heather Graham' ],
+  [ 'Dean Cain', 'Jim Carrey', 'Matt Dillon', 'Alan Cumming' ],
+  [ 'Orlando Bloom',
+    'Sean Astin',
+    'Garrett Hedlund',
+    'Garrett Hedlund' ],
+  [ 'Stephen Dorff',
+    'Matthew Broderick',
+    'Nick Nolte',
+    'Robert Redford' ] ]
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: Host wants to start the quiz
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: All players' nicknames in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: One of Johnny Depps earliest film roles was as Gator Lerner in what 1986 movie? options: [ 'The Color of Money', 'Platoon', 'Top Gun', 'BAliens' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Platoon
+playerscore; 65
+req.body.response: Platoon
+currentQuiz.allAnswers[req.body.questionnumber - 1] Platoon
+playerscore; 65
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: This Scottish author, portrayed by Johnny Depp in the movie Finding Neverland, created the fictional character Peter Pan. options: [ 'John Dunne', 'George Eliot', 'Joseph Grimm', 'James Barrie' ] status:  6 successful: true
+Post request recieved: Responses from the players
+James Barrie
+playerscore; 55
+req.body.response: John Dunne
+currentQuiz.allAnswers[req.body.questionnumber - 1] James Barrie
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: When was Elvis born? options: [ 'January 8, 1935',
+  'January 8, 1977',
+  'August 16, 1935',
+  'August 8, 1977' ] status:  6 successful: true
+Post request recieved: Responses from the players
+January 8, 1935
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] January 8, 1935
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: He played Nicholas Bradford on the ultra popular 70s sitcom Eight is Enough. options: [ 'Jason Bateman', 'Adam Rich', 'Meeno Peluce', 'Ralph Macchio' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Adam Rich
+playerscore; 74
+req.body.response: Adam Rich
+currentQuiz.allAnswers[req.body.questionnumber - 1] Adam Rich
+playerscore; 74
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: Rapper turned actor Will Smith married this actress in 1997 options: [ 'Brandy Norwood', 'Nia Long', 'Jada Pinkett', 'Shia LeBeouf' ] status:  6 successful: true
+Post request recieved: Responses from the players
+Jada Pinkett
+playerscore; 100
+req.body.response: undefined
+currentQuiz.allAnswers[req.body.questionnumber - 1] Jada Pinkett
+Post request recieved: All players in an existing room
+Post request recieved: send a question and its options
+roomcode: def92ad4103001ea1e2d question: What famous actor did Catherine Zeta Jones marry in 2000? options: [ 'Kirk Douglas',
+  'Michael Douglas',
+  'Jeff Bridges',
+  'Lloyd Bridges' ] status:  6 successful: true

@@ -30,6 +30,7 @@ class Scoreboard extends Component {
             },
             body: JSON.stringify(text)
         }).then((result) => result.json()).then((info) => {
+            console.log("/history return", info);
             info.players.forEach(element => {
                 console.log("setting WINNER")
 

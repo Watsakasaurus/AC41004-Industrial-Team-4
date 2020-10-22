@@ -114,8 +114,7 @@ function removeNonactiveRooms() {
     console.log(indexes)
 
     //https://stackoverflow.com/questions/3396088/how-do-i-remove-an-object-from-an-array-with-javascript
-    for (i = 0; i < indexes.length; i++) 
-    {
+    for (i = 0; i < indexes.length; i++) {
         rooms = rooms.filter((item) => item.roomID !== indexes[i]);
     }
 }
@@ -194,19 +193,17 @@ app.post('/username', (req, res) => {
     //Get current URL for the sharing code
     let url = req.protocol + '://' + req.get('host') + '/joinWithCode/' + newRoomCode
 
-    if(success === true)
-    {
+    if (success === true) {
         res.send(JSON.stringify(
             {
                 roomCode: newRoomCode,
                 shareURL: url,
-                status: 0,   
+                status: 0,
             }
         ))
     }
     //if failure, return error status
-    else
-    {
+    else {
         res.send(JSON.stringify(
             {
                 status: 8
@@ -241,7 +238,58 @@ app.post('/questions', (req, res) => {
     else //Otherwise send questions
     {
         let roomFound = rooms[roomIndex]
-        res.send(JSON.stringify(rooms[roomIndex].currentQuiz.allQuestions))
+        res.send(JSON.stringify(rooms[roomIndex].currentQuiz.dbJSON));
+    }
+})
+
+//function to send a question and its options to the front end
+//takes in roomCode and question number. returns question and options[]
+app.post('/question', (req, res) => {
+    console.log('Post request recieved: send a question and its options')
+
+    //Pick up roomcode and question number in the request
+    let roomCode = req.body.roomCode;
+    let num = req.body.questionNumber;
+
+    let index = findRoomByCode(roomCode);
+
+    //if failed to find a room with the given passcode
+    if (index < 0) {
+        //Send failure message back
+        res.send(JSON.stringify({
+            roomCode: req.body.roomCode,
+            question: "",
+            options: [],
+            status: 3,
+            successful: false
+        }))
+    }
+    else {
+        if ((num > rooms[index].currentQuiz.numOfQuestions) || (num < 1)) {
+            //Send failure message back if over the maximum or under 1
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                question: "",
+                options: [],
+                status: 10,
+                successful: false
+            }))
+        }
+        else {
+            //Send success message
+            // console.log(currentQuiz);
+            console.log("roomcode:", req.body.roomCode,"question:", rooms[index].currentQuiz.allQuestions[num - 1],
+            "options:", rooms[index].currentQuiz.allOptions[num - 1],
+            "status: ",rooms[index].status,
+            "successful:", true)
+            res.send(JSON.stringify({
+                roomCode: req.body.roomCode,
+                question: rooms[index].currentQuiz.allQuestions[num - 1],
+                options: rooms[index].currentQuiz.allOptions[num - 1],
+                status: rooms[index].status,
+                successful: true
+            }))
+        }
     }
 })
 
@@ -281,7 +329,7 @@ app.post('/roomadduser', (req, res) => {
 //function to return to client array of player objects (containing nicknames, scores etc)
 //takes in roomCode. returns roomCode, players[] and status
 app.post('/roomallplayers', (req, res) => {
-    console.log('Post request recieved: All players in an existing room (nicknames & scores)');
+    console.log('Post request recieved: All players in an existing room');
 
     //Pick up room code from JSON in the request
     let roomCode = req.body.roomCode;
@@ -337,9 +385,11 @@ app.post('/roomallnicknames', (req, res) => {
             nickname = rooms[index].players[i].name;
             nicknames.push(nickname);
         }
-
+        console.log("TIME: "+rooms[index].maxtime+ " NUMQ: " + rooms[index].numOfQuestions)
         //Send success message and return info
         res.send(JSON.stringify({
+            maxTime: rooms[index].maxtime,
+            numOfQuestions: rooms[index].numOfQuestions,
             roomCode: req.body.roomCode,
             nicknames: nicknames,
             status: rooms[index].status,
@@ -390,7 +440,8 @@ app.post('/configurequiz', (req, res) => {
 
     //Pick up room code, category, number of questions and max time from JSON in the request
     let roomCode = req.body.roomCode;
-    let category = req.body.category;
+    let category = [];
+    category = req.body.categorys;
     let numOfQuestions = req.body.numOfQuestions;
     let maxTime = req.body.maxTime;
 
@@ -414,6 +465,7 @@ app.post('/configurequiz', (req, res) => {
 
         //update the room's status
         rooms[index].status = 5;
+        rooms[index].numOfQuestions = numOfQuestions;
 
         //Send success message and return info
         res.send(JSON.stringify({
@@ -460,13 +512,20 @@ app.post('/questionresponse', (req, res) => {
             //store user's answer
             rooms[index].players[i].responses[req.body.questionnumber - 1] = req.body.response;
 
+            console.log(rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]);
+
             //compare user answer with correct one
             //allAnswers needs to be created
+            // console.log("playerscore; " + (rooms[index].maxtime - req.body.individualtime) * 10);
+            // console.log("req.body.response:",req.body.response);
+            // console.log("currentQuiz.allAnswers[req.body.questionnumber - 1]",rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]);
+            console.log(req.body.individualtime);
             if (req.body.response === rooms[index].currentQuiz.allAnswers[req.body.questionnumber - 1]) {
                 //if correct, update score of player
                 //if player nickname given in req.body equals the nickname of the player in the room
                 //update the score of the player
-                rooms[index].players[i].score = (rooms[index].maxtime - req.body.individualtime) * 10;
+                console.log("playerscore; " + (rooms[index].maxtime - req.body.individualtime) * 10);
+                rooms[index].players[i].score = req.body.individualtime * 10;
                 rooms[index].players[i].updateTotalScore();
 
                 //store that user's answer was correct
@@ -553,7 +612,7 @@ app.post('/playagain', (req, res) => {
             rooms[index].status = 7;
 
             //reset each player's score and response history
-            for(i = 0; i < rooms[index].players.length; i++){
+            for (i = 0; i < rooms[index].players.length; i++) {
                 rooms[index].players[i].resetScore();
                 rooms[index].players[i].resetTotalScore();
                 rooms[index].players[i].clearResponses();
@@ -580,13 +639,12 @@ app.post('/playagain', (req, res) => {
 });
 
 //Endpoint for joing room with code in url
-app.get('/joinWithCode/:roomCode', (req, res)=>
-    {
-        console.log("GET request recieved: Player joins with URL");
+app.get('/joinWithCode/:roomCode', (req, res) => {
+    console.log("GET request recieved: Player joins with URL");
 
-        //Get the roomcode
-        let roomCode = req.params.roomCode
-    }
+    //Get the roomcode
+    let roomCode = req.params.roomCode
+}
 )
 
 //Start the server

@@ -8,7 +8,7 @@ import RoomConfigure from './components/RoomConfigure';
 import EnterRoomNumber from './components/EnterRoomNumber';
 import Lobby from './components/Lobby';
 import QuizConfigure from './components/QuizConfigure';
-import Scorebored from './components/Scoreboard';
+import Scoreboard from './components/Scoreboard';
 
 
 const testQuestions =
@@ -25,13 +25,13 @@ const testQuestions =
 
 const testPlayers = ['Alfie', 'Callum', 'Sophie', 'Andrew', 'Peter', 'Arran', 'Nicole', 'Callum2', 'Ross', 'Aylin']
 
-const testCategorys = [{ value: "History", label: "History" },
-{ value: "Callum Darling", label: "Callum Darling" },
-{ value: "Movies", label: "Movies" },
-{ value: "Sports", label: "Sports" },
-{ value: "Aviation", label: "Aviation" },
-{ value: "Computing", label: "Computing" },
-{ value: "Dogs", label: "Dogs" }]
+const testCategorys = [{ value: "animals", label: "Animals" },
+{ value: "Brain Teasers", label: "Brain Teasers" },
+{ value: "celebrities", label: "Celebrities" },
+{ value: "literature", label: "Literature" }/*,
+{ value: "general", label: "General" },
+{ value: "science-technology", label: "Science & Tech" },
+{ value: "people", label: "Famous People" }*/]
 
 const components = {
   SPLASH: 1,
@@ -62,7 +62,9 @@ class App extends Component {
 
       host: false,
       gameState: 0,
-      questions: testQuestions
+      questions: testQuestions,
+      numOfQuestions: 10,
+      maxTime: 5
     }
   }
 
@@ -114,7 +116,7 @@ class App extends Component {
           },
           body: JSON.stringify(text)
         }).then((result) => result.json()).then((info) => this.saveResToState(info))
-
+        break;
       // Exit lobby button
       case 2:
         return (
@@ -202,6 +204,9 @@ class App extends Component {
     for (var x in categorys) {
       catVals.push(categorys[x].value)
     }
+
+    // this.setState({numOfQuestions: qCount,
+    //   maxTime: qTime})
     var text = {
       roomCode: roomcode,
       categorys: catVals,
@@ -255,14 +260,18 @@ class App extends Component {
           'Content-type': 'application/json'
         },
         body: JSON.stringify(text)
-      }).then((result) => result.json()).then((info) =>
-        this.setState({
+      }).then((result) => result.json()).then((info) => {this.setState({
           players: info.nicknames,
-          gameState: info.status
-        })
+          gameState: info.status,
+          maxTime: info.maxTime,
+          numOfQuestions: info.numOfQuestions
+        });
+        console.log(info)}
       )
 
-      console.log(this.state.gameState)
+      console.log("gameState: " +this.state.gameState)
+      console.log(this.state.numOfQuestions)
+      console.log(this.state.maxTime)
 
       if (this.state.gameState == 6){
         this.stopLobbyRefresh()
@@ -275,7 +284,7 @@ class App extends Component {
     
     clearInterval(this.refreshTimer);
     this.onQuizStart();
-    this.setState({ currentComp: components.QUESTION })
+    // this.setState({ currentComp: components.QUESTION })
   }
 
   // called by Menu component user pressed a button
@@ -312,35 +321,76 @@ class App extends Component {
   }
 
   onQuizStart(){
-    var text = { "roomCode" : this.state.roomCode}
-        console.log("Questions Send:", text);
-        fetch('/questions', {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(text),
-        }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
+    // var text = { "roomCode" : this.state.roomCode}
+    //     console.log("Questions Send:", text);
+    //     fetch('/questions', {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(text),
+    //     }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
+    this.fetchQuestion();
   }
+
+  fetchQuestion() {
+    var text = {
+        roomCode: this.state.roomCode,
+        nickname: this.state.nickname,
+        questionNumber: 1
+
+    };
+    console.log("Question Send:", text);
+
+    fetch("/question", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(text),
+    })
+        .then((result) => result.json())
+        .then((info) => {
+            this.formatFetchedQuesiton(info);
+        });
+}
+
+formatFetchedQuesiton(info){
+    console.log("Question Return", info);
+    var newQ = [info.question];
+    for(var x = 0; x<info.options.length; x++){
+        newQ.push(info.options[x]);
+    }
+    console.log("newQ: ", newQ)
+    this.setState({questions: [newQ],
+                   currentComp: components.QUESTION })
+}
 
   onQuizEnd(){
     this.setState({ currentComp: components.SCOREBOARD })
   }
 
 
-  reformatQuestions(info){
-    console.log("Questions Return", info);
-    // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
-    let reformedQs = []
-    for(var x in info){
-      // console.log(info[x]);
-      reformedQs.push([info[x].question,info[x].option1,info[x].option2,info[x].option2,info[x].option4, 
-        [info[x].option1,info[x].option2,info[x].option2,info[x].option4].indexOf(info[x].answer)+1]);
-    }
-    this.state.questions = reformedQs;
-    console.log(reformedQs)
-    this.setState({ currentComp: components.QUESTION })
-  }
+  // reformatQuestions(info){
+  //   console.log("Questions Return", info);
+  //   // [["This drink contains caffeine.", "A Mineral water", "B Orange juice", "C Coffee", "D Beer", 3],
+  //   let reformedQs = []
+  //   if(info.length){
+  //     for(var x in info){
+  //       // console.log(info[x]);
+  //       reformedQs.push([info[x].question,info[x].option1,info[x].option2,info[x].option2,info[x].option4, 
+  //         [info[x].option1,info[x].option2,info[x].option2,info[x].option4].indexOf(info[x].answer)+1]);
+  //     }
+  //   }else{
+  //     reformedQs = testQuestions;
+  //   }
+    
+
+
+  //   console.log(reformedQs)
+  //   this.setState({ questions: reformedQs,
+  //                   currentComp: components.QUESTION })
+  // }
 
 
   // returns the JSX of a component depending on compID value passed in
@@ -354,7 +404,7 @@ class App extends Component {
           <EnterNickname changeValue={this.setNickname.bind(this)} />);
       case components.QUESTION:
         return (
-          <QuestionPage endQuiz={this.onQuizEnd.bind(this)} questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode}/>);
+          <QuestionPage endQuiz={this.onQuizEnd.bind(this)} questions={this.state.questions} nickname={this.state.nickname} roomcode={this.state.roomCode} maxTime={this.state.maxTime} numOfQuestions={this.state.numOfQuestions}/>);
       case components.RESULTS:
         return (
           <ResultsPage></ResultsPage>);
@@ -375,7 +425,7 @@ class App extends Component {
           <QuizConfigure testCategorys={testCategorys} onClick={this.onQuizConfigClick.bind(this)} playerNickname={this.state.nickname} roomcode={this.state.roomCode} /> );
       case components.SCOREBOARD:
         return (
-          <Scorebored roomCode = {this.state.roomCode} />);
+          <Scoreboard roomCode = {this.state.roomCode} />);
       default:
         return (
           <h1>An Error has occured, please refresh your page.</h1>);

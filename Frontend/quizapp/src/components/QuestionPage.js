@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Results from "./Results";
 
 // time between questions in ms
-const timeBetweenQs = 500;
+const timeBetweenQs = 2500;
 
 //function that simply creates and returns a button with text and onclick funciton
 // function
@@ -19,11 +19,49 @@ class QuestionPage extends Component {
             questions: props.questions,
             currentQuestion: props.questions[0],
             questionsIterator: 0,
-            maxQuestions: props.questions.length,
+            maxQuestions: props.numOfQuestions,
             answers: [],
             layout: 1,
-            currentTime: timeBetweenQs
+            currentTime: props.maxTime,
+            answerData: false,
+            allplayerdata: []
         };
+    }
+
+    fetchQuestion() {
+        var text = {
+            roomCode: this.props.roomcode,
+            nickname: this.props.nickname,
+            questionNumber: this.state.questionsIterator+1
+    
+        };
+        console.log("Question Send:", text);
+
+        fetch("/question", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(text),
+        })
+            .then((result) => result.json())
+            .then((info) => {
+                this.formatFetchedQuesiton(info);
+            });
+    }
+
+    formatFetchedQuesiton(info){
+        console.log("Question Return", info);
+        var newQ = [info.question];
+        for(var x = 0; x<info.options.length; x++){
+            newQ.push(info.options[x]);
+        }
+        console.log("newQ: ", newQ)
+        this.setState({currentQuestion: newQ})
+    }
+
+    componentDidMount() {
+        this.fetchQuestion();
     }
 
     //Createes a question button, currently contains code to make the button red if needed
@@ -50,54 +88,98 @@ class QuestionPage extends Component {
         }
     }
 
-
-
     //indicates that one of the answer buttons has been pressed. Identifier tells which button has been pressed 1-4
     onButtonClick(identifier) {
         //TODO  Send answer to backend
-
-        var text = { "roomCode" : this.props.roomcode,
-                     "nickname" : this.props.nickname,
-                     "response" : identifier,
-                     "individualtime" : this.state.currentTime.toFixed(1),
-                     "questionnumber" : this.state.questionsIterator};
-                     console.log("Question Page Send:", text);
-
-        fetch('/questionresponse', {
+        this.setState({ layout: 0,
+                        answerData: false})
+        var text = {
+            roomCode: this.props.roomcode,
+            nickname: this.props.nickname,
+            response: this.state.currentQuestion[identifier],
+            individualtime: this.state.currentTime.toFixed(1),
+            questionnumber: this.state.questionsIterator+1,
+        };
+        console.log("Question Page Send:", text);
+        fetch("/questionresponse", {
             method: "POST",
             headers: {
-                'Content-type': 'application/json'
+                "Content-type": "application/json",
             },
             body: JSON.stringify(text),
-        }).then((result) => result.json()).then((info) => { console.log("Question Page Return", info); })
+        })
+            .then((result) => result.json())
+            .then((info) => {
+                console.log("Question Page Return", info);
+            });
 
         //set the state to display the results page until the timeout is complete
-        this.setState({ layout: 0 });
+        this.setState({ layout: 0 })
+        this.waitforResults(identifier)
+    }
 
+
+    waitforResults(identifier){
+        this.refreshTimer = setInterval(() => {
+            console.log("LOOP");
+                    var text = {
+                        roomCode: this.props.roomcode,
+                    };
+                    // console.log("Question Page Send:", text);
+                    fetch("/roomallplayers", {
+                        method: "POST",
+                        headers: {
+                            "Content-type": "application/json",
+                        },
+                        body: JSON.stringify(text),
+                    }).then((result) => result.json()).then((info) => {this.checkResults(info, identifier)});
+                if(this.state.answerData){
+                   this.stopWait();
+                   return;
+                }
+      
+          }, 500);
+    }
+
+    stopWait(){
+        clearInterval(this.refreshTimer);
+    }
+
+    checkResults(info, identifier){
+        this.setState({allplayerdata: info})
+        var allPlayersAnswered = true;
+        for(var x=0; x<info.players.length;x++){
+            if(info.players[x].responses.length!=this.state.questionsIterator+1){
+                allPlayersAnswered = false;
+            }
+        }
+        console.log("Roomallplayers", info);
+        this.setState({answerData: allPlayersAnswered})
+        if(allPlayersAnswered){
+            this.stopWait();
         setTimeout(
             function () {
-                //Start the timer
-                //After timeout, change back to questionpage for next question
                 this.setState({ layout: 1 });
                 //checks if all questions have been disaplayed, if not moves current question on
-                if (
-                    this.state.questionsIterator + 1 < this.state.maxQuestions
-                ) {
+                if (this.state.questionsIterator + 1 <this.state.maxQuestions) {
                     this.setState({
-                        currentQuestion: this.state.questions[this.state.questionsIterator + 1],
                         questionsIterator: this.state.questionsIterator + 1,
                         answers: this.state.answers.concat(identifier),
                     });
+                    this.fetchQuestion();
                 } else {
                     //round over
                     console.log(this.state.answers);
                     this.props.endQuiz();
                 }
-            }.bind(this),
-            timeBetweenQs
-        );
+            }.bind(this),timeBetweenQs);
+        }
+    }
 
-        console.log(identifier);
+
+
+    componentWillUnmount(){
+        this.stopWait();
     }
 
     timeOut(father) {
@@ -107,14 +189,14 @@ class QuestionPage extends Component {
         father.onButtonClick(5);
     }
 
-    updateTime(time){
-        this.setState({currentTime: time})
+    updateTime(time) {
+        this.setState({ currentTime: time });
     }
 
     buttonLayout() {
         var questionTimer = (
             <QuestionTimer
-                startCount={5}
+                startCount={this.props.maxTime}
                 timeFinished={this.timeOut}
                 updateTime={this.updateTime.bind(this)}
                 parent={this}
@@ -146,13 +228,26 @@ class QuestionPage extends Component {
     }
 
     answerLayout() {
-        return (
-            // <h1>Answered</h1>
-            <Results result="Incorrect" points={50} score={100} 
-            players={["Andrew", "Alfie", "Sophie", "Callum"]}
-            colours ={["primary", "success", "danger", "warning"]}
-            plyr_score = {["100", "85", "45", "20"]}></Results>
-        );
+        if(this.state.answerData){
+            return (
+                // <h1>Answered</h1>
+                <Results
+                    result="Incorrect"
+                    points={50}
+                    score={100}
+                    players={["Andrew", "Alfie", "Sophie", "Callum"]}
+                    colours={["primary", "success", "danger", "warning"]}
+                    plyr_score={["100", "85", "45", "20"]}
+                    nickname={this.props.nickname}
+                    questionNumber={this.state.questionsIterator}
+                    allplayerdata = {this.state.allplayerdata}
+                ></Results>
+            );
+        }else{
+            return (
+                    <h1>Waiting for other players</h1>
+                );
+        }
     }
 
     render() {
@@ -167,7 +262,7 @@ class QuestionPage extends Component {
                     </h1>
                     <hr />
                     <h3 className="Question-indicator">
-                        {this.state.questions[this.state.questionsIterator][0]}
+                        {this.state.currentQuestion[0]}
                     </h3>
                 </Container>
                 {/* <QuestionTimer startCount={10} timeFinished={this.timeOut} parent = {this}/> */}

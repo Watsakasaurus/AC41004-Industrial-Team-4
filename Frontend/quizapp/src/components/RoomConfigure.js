@@ -80,7 +80,7 @@ class RoomConfigure extends React.Component {
                                     onChange={this.updateRoomName}
                                 />
                             </div>
-                            <div className="Room-prop">
+                            {/* <div className="Room-prop">
                                 <h4>Room Password</h4>
                                 <Form.Control
                                     size="lg"
@@ -91,7 +91,7 @@ class RoomConfigure extends React.Component {
                                     value={this.state.roomPass}
                                     onChange={this.updateRoomPass}
                                 />
-                            </div>
+                            </div> */}
                             <div className="Room-prop">
                                 <h4>Player Count : {this.state.playerCount}</h4>
                                 <input

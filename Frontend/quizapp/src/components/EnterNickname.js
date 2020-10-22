@@ -41,10 +41,10 @@ class EnterNickname extends React.Component {
                                 <h4>Please choose a Nickname</h4>
 
                                 <form id="nickname-form" onSubmit={this.handleSubmit}>
-                                    <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" pattern="^\S+$" maxLength="15" value={this.state.value} onChange={this.handleChange} />
+                                    <Form.Control size="lg" type="text" placeholder="Enter Nickname" className="Nickname-inputbox" maxLength="15" value={this.state.value} onChange={this.handleChange} />
                                 </form>
                                 
-                                <p>No Spaces, 15 Characters Max, No Personal Infomation</p>
+                                <p>15 Characters Max, No Personal Infomation</p>
                     </Container>
 
                     <Container className="Menu-container">
