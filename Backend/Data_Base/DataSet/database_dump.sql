@@ -55,37 +55,37 @@ VALUES ('What color is the head of the South American stork Jabiru, whose body i
 /* Category brain teasers*/
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('Which of these is true about the sleep of zebras?','They sleep standing up.','All of these','They sleep standing up.','They would fall asleep every 5 to 6 hours.','They need more than 12 hours of sleep a day.','brain teasers');
+VALUES ('Which of these is true about the sleep of zebras?','They sleep standing up.','All of these','They sleep standing up.','They would fall asleep every 5 to 6 hours.','They need more than 12 hours of sleep a day.','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('A farmer had 12 sheep and 3 cows. All of the animals except 9 sheep died. How many animals did he have left in his farm?','9 sheep','5 cows and 1 sheep','9 sheep','2 cows','none','brain teasers'); 
+VALUES ('A farmer had 12 sheep and 3 cows. All of the animals except 9 sheep died. How many animals did he have left in his farm?','9 sheep','5 cows and 1 sheep','9 sheep','2 cows','none','Brain Teasers'); 
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('I dont speak, I cannot hear, but I always tell the truth.','The Mirror','The watch','Fish','The Mirror','Old granny','brain teasers');
+VALUES ('I dont speak, I cannot hear, but I always tell the truth.','The Mirror','The watch','Fish','The Mirror','Old granny','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('How does this proverb continue: The squeaking wheel gets ...','The grease','The rust','Removed','The broken','The grease','brain teasers'); 
+VALUES ('How does this proverb continue: The squeaking wheel gets ...','The grease','The rust','Removed','The broken','The grease','Brain Teasers'); 
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('A contestant on a TV show had to answer 26 questions. For each correct answer he received 8 points, while a wrong answer penalized him 5 points. How many answers did the man answer correctly, bearing in mind that he eventually had 0 points?','10', '12', '8', '16','10','brain teasers');
+VALUES ('A contestant on a TV show had to answer 26 questions. For each correct answer he received 8 points, while a wrong answer penalized him 5 points. How many answers did the man answer correctly, bearing in mind that he eventually had 0 points?','10', '12', '8', '16','10','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('You have a square and a circle and the perimeter of the square is equal to the circumference of the circle. Which of the two figures covers a bigger area?','The circle','The square','The circl','No conclusions can be drawn from the given information', 'Both cover the same area','brain teasers'); 
+VALUES ('You have a square and a circle and the perimeter of the square is equal to the circumference of the circle. Which of the two figures covers a bigger area?','The circle','The square','The circl','No conclusions can be drawn from the given information', 'Both cover the same area','Brain Teasers'); 
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
 VALUES ('What on earth could dance, and live and die?
-Without legs, or lungs, or being alive?','Fire','Water','Darkness','Darkness','Wind','brain teasers');
+Without legs, or lungs, or being alive?','Fire','Water','Darkness','Darkness','Wind','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
 VALUES ('I have eight to spare, in case I lose my one.
 Im not a number.
-What am I?.','a cat','a dog','one','nine','a cat','brain teasers');
+What am I?.','a cat','a dog','one','nine','a cat','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('How long did the Hundred years war last?','116 years','110 years','98 years','116 years','116 years','brain teasers');
+VALUES ('How long did the Hundred years war last?','116 years','110 years','98 years','116 years','116 years','Brain Teasers');
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
-VALUES ('What food can be Chinese, Jerusalem and Globe?','Artichoke','Artichoke','Curry','Cracker','Pork','brain teasers');
+VALUES ('What food can be Chinese, Jerusalem and Globe?','Artichoke','Artichoke','Curry','Cracker','Pork','Brain Teasers');
 /* Category celebrities*/
 
 INSERT INTO quiz(question, answer, option1, option2, option3, option4, category)
