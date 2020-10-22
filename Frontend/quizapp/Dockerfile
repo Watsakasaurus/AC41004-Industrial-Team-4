@@ -1,8 +1,8 @@
-FROM node:14.1-alpine 
+FROM node:13 
 
 # Create app directory
+#WORKDIR /Desktop/AC41004-Industrial-Team-4/Frontend/quizapp
 WORKDIR /Desktop/AC41004-Industrial-Team-4/Frontend/quizapp
-
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
@@ -18,6 +18,6 @@ RUN npm audit fix
 #RUN npm ci 
 
 # Bundle app source
-COPY . ./
+COPY . .
 
 CMD ["npm", "start"]

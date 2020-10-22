@@ -1,0 +1,43 @@
+version: "3"
+services:
+  database:
+    image: postgres:12-alpine
+
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: Uni_db
+      POSTGRES_USER: aylin
+      POSTGRES_PASSWORD: aylin
+
+    
+    volumes:
+      - ./Data_Base/DataSet
+
+  back_end:
+    build: ./Backend
+
+    # container_name: Api
+    restart: unless-stopped
+
+    # expose:
+      # - "5000"
+    ports:
+      - "5000:5000"
+    links:
+      - database
+
+  front_end:
+    build: ./Frontend/quizapp
+    container_name: front_end_app
+    restart: unless-stopped
+
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    links:
+      - back_end
