@@ -42,11 +42,12 @@ class Scoreboard extends Component {
 
                     return {
                         players,
-                        streak
+                        streak,
+                        scores
                     };
                 });
             });
-
+            
             for (var index = 0, len =  this.state.scores.length; index < len; index++) {
 
                 console.log("FINDING WINNER")
