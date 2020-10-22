@@ -116,7 +116,7 @@ class App extends Component {
           },
           body: JSON.stringify(text)
         }).then((result) => result.json()).then((info) => this.saveResToState(info))
-
+        break;
       // Exit lobby button
       case 2:
         return (
@@ -330,9 +330,41 @@ class App extends Component {
     //         },
     //         body: JSON.stringify(text),
     //     }).then((result) => result.json()).then((info) => {  this.reformatQuestions(info) })
-    this.setState({ questions: testQuestions,
-      currentComp: components.QUESTION })
+    this.fetchQuestion();
   }
+
+  fetchQuestion() {
+    var text = {
+        roomCode: this.state.roomCode,
+        nickname: this.state.nickname,
+        questionNumber: 1
+
+    };
+    console.log("Question Send:", text);
+
+    fetch("/question", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify(text),
+    })
+        .then((result) => result.json())
+        .then((info) => {
+            this.formatFetchedQuesiton(info);
+        });
+}
+
+formatFetchedQuesiton(info){
+    console.log("Question Return", info);
+    var newQ = [info.question];
+    for(var x = 0; x<info.options.length; x++){
+        newQ.push(info.options[x]);
+    }
+    console.log("newQ: ", newQ)
+    this.setState({questions: [newQ],
+                   currentComp: components.QUESTION })
+}
 
   onQuizEnd(){
     this.setState({ currentComp: components.SCOREBOARD })
