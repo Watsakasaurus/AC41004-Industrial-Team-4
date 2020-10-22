@@ -4,31 +4,25 @@ import Row from 'react-bootstrap/esm/Row';
 import Button from 'react-bootstrap/esm/Button';
 import { Container } from 'react-bootstrap';
 
-let winnerName = "Bob"
-let players = ["Andrew", "Alfie", "Sophie", "Callum"]
-let playersScore = ["100", "85", "45", "20"]
-let noOfQuestions = "20"
-let winnerCorrectAnswers = "15"
-let winnerScore = "65";
-let playerCorrectAnswers = "6"
-let playerScore = "23";
-let position = "3rd";
-
 class Scoreboard extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             players: [],
-            scores: [22]
+            scores: [],
+            streak:[],
+            provisionalWinnerName:"",
+            provisionalWinnerScore: 0
         }
     }
 
     componentDidMount() {
-        // This fetch only requires roomcode
+        // This fetch only requires roomcode, which is passed down
         var text = { "roomCode": this.props.roomCode};
 
-        // Perform the fetch, savePlayersToState is called to store the response 
+        // Perform the fetch, get player results and store in arrays
         fetch('/history', {
             method: "POST",
             headers: {
@@ -37,16 +31,48 @@ class Scoreboard extends Component {
             body: JSON.stringify(text)
         }).then((result) => result.json()).then((info) => {
             info.players.forEach(element => {
+                console.log("setting WINNER")
+
+                console.table("Players",this.state.players);
                 this.setState(state => {
                     const players = state.players.concat(element.name);
-                    const scores = state.scores.concat(element.scores);
+                    const scores = state.players.concat(element.totalScore);
+                    const streak = state.streak.concat(element.streak);
 
                     return {
                         players,
-                        scores
+                        streak
                     };
                 });
             });
+
+            for (var index = 0, len =  this.state.scores.length; index < len; index++) {
+
+                console.log("FINDING WINNER")
+    
+                console.table("Players",this.state.players);
+                console.table("Score", this.state.scores);
+                console.table("Winner", this.state.provisionalWinnerName,this.state.provisionalWinnerScore);
+    
+    
+                if(this.state.scores[index] < this.state.provisionalWinnerScore[1]){
+                    console.log("Provisional Winner is greater then the current player");
+    
+                } else if(this.state.scores[index] > this.state.provisionalWinnerScore){
+                    console.log("Provisional Winner is less then the current player");
+
+                    this.setState({
+                        provisionalWinnerName: this.state.players[index],
+                        provisionalWinnerScore:  this.state.scores[index]
+                    })
+    
+                } else if(this.state.scores === this.state.provisionalWinnerScore){
+                    this.setState({
+                        provisionalWinnerName: "tie",
+                    })
+                    console.log("Provisional Winner and the current player are equal");
+                }
+            }
         });
     }
 
@@ -64,10 +90,10 @@ class Scoreboard extends Component {
                             <h2>Winner</h2>
                         </Row>
                         <Row className="Generic-center Scoreboard-winner-player">
-                            <h1>Sophie1234</h1>
+                            <h1>{this.state.provisionalWinnerName}</h1>
                         </Row>
                         <Row className="Generic-center Scoreboard-stats-top">
-                            <h4>Score : 12345</h4>
+                            <h4>Score : {this.state.provisionalWinnerScore}</h4>
                         </Row>
                         <Row className="Generic-center Scoreboard-stats-bottom">
                             <h4>Questions : 14/18</h4>
@@ -82,15 +108,21 @@ class Scoreboard extends Component {
                                 <h4>Player Name</h4>
                             </Col>
                             <Col className="text-right">
+                                <h4>Highest Streak</h4>
+                            </Col>
+                            <Col className="text-right">
                                 <h4>Player Score</h4>
                             </Col>
                         </Row>
                     </Col>
                     <Col>
                         {this.state.players.map((name,index) =>
-                            <Row className="Scoreboard-player-list-item">
-                                <Col key={name}>
+                            <Row key={name} className="Scoreboard-player-list-item">
+                                <Col>
                                     <h4>{name}</h4>
+                                </Col>
+                                <Col className="text-right">
+                                    <h4>{this.state.streak[index]}</h4>
                                 </Col>
                                 <Col className="text-right">
                                     <h4>{this.state.scores[index]}</h4>
