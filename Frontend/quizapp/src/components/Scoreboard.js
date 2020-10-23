@@ -37,7 +37,7 @@ class Scoreboard extends Component {
                 console.table("Players",this.state.players);
                 this.setState(state => {
                     const players = state.players.concat(element.name);
-                    const scores = state.players.concat(element.totalScore);
+                    const scores = state.scores.concat(element.totalScore);
                     const streak = state.streak.concat(element.streak);
 
                     return {
@@ -57,7 +57,7 @@ class Scoreboard extends Component {
                 console.table("Winner", this.state.provisionalWinnerName,this.state.provisionalWinnerScore);
     
     
-                if(this.state.scores[index] < this.state.provisionalWinnerScore[1]){
+                if(this.state.scores[index] < this.state.provisionalWinnerScore){
                     console.log("Provisional Winner is greater then the current player");
     
                 } else if(this.state.scores[index] > this.state.provisionalWinnerScore){
