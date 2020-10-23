@@ -1,0 +1,11 @@
+version: "3"
+services:
+  database:
+    image: postgres:12-alpine
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: Uni_db
+      POSTGRES_USER: aylin
+      POSTGRES_PASSWORD: aylin
