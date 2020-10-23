@@ -366,9 +366,17 @@ formatFetchedQuesiton(info){
                    currentComp: components.QUESTION })
 }
 
-  onQuizEnd(){
-    this.setState({ currentComp: components.SCOREBOARD })
-  }
+onQuizEnd(){
+  this.setState({ currentComp: components.SCOREBOARD })
+}
+
+onScoreboardClick(){
+
+  // TODO Add Playagain end point
+
+  this.setState({currentComp: components.MENU})
+ 
+}
 
 
   // reformatQuestions(info){
@@ -425,7 +433,7 @@ formatFetchedQuesiton(info){
           <QuizConfigure testCategorys={testCategorys} onClick={this.onQuizConfigClick.bind(this)} playerNickname={this.state.nickname} roomcode={this.state.roomCode} /> );
       case components.SCOREBOARD:
         return (
-          <Scoreboard roomCode = {this.state.roomCode} />);
+          <Scoreboard roomCode = {this.state.roomCode} onClick={this.onScoreboardClick.bind(this)}/>);
       default:
         return (
           <h1>An Error has occured, please refresh your page.</h1>);
@@ -438,7 +446,6 @@ formatFetchedQuesiton(info){
       <div>
         {this.returnComponent(this.state.currentComp)}
       </div>
-      //<Scorebored />
     )
   };
 }

@@ -133,7 +133,7 @@ class Scoreboard extends Component {
 
 
                 <Container className="Menu-container">
-                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success">
+                    <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success" onClick={() => this.props.onClick()}>
                         <h1 className="Splash-button">
                             Next
                         </h1>
