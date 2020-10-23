@@ -40,9 +40,9 @@ services:
       inner_network:
         ipv4_address: 172.16.0.12
     expose:
-      - "80"
+      - "3000"
     ports:
-      - "80:3000"
+      - "3000:3000"
     #userns_mode: host
     stdin_open: true
     links:
