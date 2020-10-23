@@ -97,9 +97,6 @@ class Scoreboard extends Component {
                         <Row className="Generic-center Scoreboard-stats-top">
                             <h4>Score : {this.state.provisionalWinnerScore}</h4>
                         </Row>
-                        <Row className="Generic-center Scoreboard-stats-bottom">
-                            <h4>Questions : 14/18</h4>
-                        </Row>
                     </Col>
                 </Container>
 
@@ -139,7 +136,7 @@ class Scoreboard extends Component {
                     <Button className="Menu-button Menu-green-circles" form="nickname-form" type="submit" block variant="success">
                         <h1 className="Splash-button">
                             Next
-                            </h1>
+                        </h1>
                     </Button>
                 </Container>
 
