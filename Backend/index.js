@@ -18,7 +18,7 @@ var rooms = [];
 //creates and adds a new room to the rooms array
 //returns the new room's generated passcode
 function addNewRoom(category, roomName, playerCount) {
-    let code = crypto.randomBytes(10).toString('hex');
+    let code = crypto.randomBytes(3).toString('hex');
     var check = findRoomByCode(code);
     //while a room with the generated code already exists, generate a new random code
     while (check >= 0) {
