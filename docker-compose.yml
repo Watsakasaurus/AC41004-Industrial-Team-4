@@ -1,0 +1,57 @@
+version: "3"
+services:
+  database:
+    image: postgres:12-alpine
+
+    networks:
+      inner_network:
+        ipv4_address: 172.16.0.10
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: Uni_db
+      POSTGRES_USER: aylin
+      POSTGRES_PASSWORD: aylin
+
+    volumes:
+      - ./Data_Base/DataSet
+  #Baack end starts here
+  back_end:
+    build: ./Backend
+    restart: unless-stopped
+    networks:
+      inner_network:
+        ipv4_address: 172.16.0.11
+    expose:
+      - "5000"
+    ports:
+      - "5000:5000"
+    #userns_mode: host
+    links:
+      - database
+  # Front end starts here
+  front_end:
+    build: ./Frontend/quizapp
+    container_name: front_end_app
+    restart: unless-stopped
+    networks:
+      inner_network:
+        ipv4_address: 172.16.0.12
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    #userns_mode: host
+    stdin_open: true
+    links:
+      - back_end
+# private network config
+networks:
+  inner_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/28
